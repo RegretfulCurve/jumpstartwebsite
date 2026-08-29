@@ -1,0 +1,7 @@
+base    jumpstart
+author  JumpStart
+email   admin@jumpstart.gg
+date    2026-06-17
+name    JumpStart Profile Plugin
+desc    Provides a JSON API endpoint for user profile data
+url     https://jumpstart.gg

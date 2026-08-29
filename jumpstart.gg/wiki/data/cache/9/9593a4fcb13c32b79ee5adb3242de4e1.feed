@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- generator="FeedCreator 1.8" -->
+<?xml-stylesheet href="https://www.jumpstart.gg/wiki/lib/exe/css.php?s=feed" type="text/css"?>
+<rdf:RDF
+    xmlns="http://purl.org/rss/1.0/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <channel rdf:about="https://www.jumpstart.gg/wiki/feed.php">
+        <title>JumpStart</title>
+        <description></description>
+        <link>https://www.jumpstart.gg/wiki/</link>
+        <image rdf:resource="https://www.jumpstart.gg/wiki/lib/exe/fetch.php?media=wiki:logo.png" />
+       <dc:date>2026-08-19T00:46:24+00:00</dc:date>
+        <items>
+            <rdf:Seq>
+                <rdf:li rdf:resource="https://www.jumpstart.gg/wiki/doku.php?id=start&amp;rev=1781213313&amp;do=diff"/>
+            </rdf:Seq>
+        </items>
+    </channel>
+    <image rdf:about="https://www.jumpstart.gg/wiki/lib/exe/fetch.php?media=wiki:logo.png">
+        <title>JumpStart</title>
+        <link>https://www.jumpstart.gg/wiki/</link>
+        <url>https://www.jumpstart.gg/wiki/lib/exe/fetch.php?media=wiki:logo.png</url>
+    </image>
+    <item rdf:about="https://www.jumpstart.gg/wiki/doku.php?id=start&amp;rev=1781213313&amp;do=diff">
+        <dc:format>text/html</dc:format>
+        <dc:date>2026-06-11T21:28:33+00:00</dc:date>
+        <dc:creator>Anonymous (anonymous@undisclosed.example.com)</dc:creator>
+        <title>start</title>
+        <link>https://www.jumpstart.gg/wiki/doku.php?id=start&amp;rev=1781213313&amp;do=diff</link>
+        <description>&lt;style&gt;
+@font-face { font-family: 'Forevs'; src: url('/wiki/lib/tpl/bootstrap3/fonts/ForevsDemo-Regular.otf') format('opentype'); font-weight: normal; }
+@font-face { font-family: 'Forevs'; src: url('/wiki/lib/tpl/bootstrap3/fonts/ForevsDemo-Bold.otf') format('opentype'); font-weight: bold; }
+
+/* Grid fills full viewport — navbar floats over it */
+.js-wrap {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 999;
+    display: grid;
+    grid-template-co…</description>
+    </item>
+</rdf:RDF>

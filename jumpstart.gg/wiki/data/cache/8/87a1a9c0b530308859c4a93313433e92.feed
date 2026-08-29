@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- generator="FeedCreator 1.8" -->
+<?xml-stylesheet href="https://jumpstart.gg/wiki/lib/exe/css.php?s=feed" type="text/css"?>
+<rdf:RDF
+    xmlns="http://purl.org/rss/1.0/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <channel rdf:about="https://jumpstart.gg/wiki/feed.php">
+        <title>JumpStart - characters</title>
+        <description></description>
+        <link>https://jumpstart.gg/wiki/</link>
+        <image rdf:resource="https://jumpstart.gg/wiki/lib/exe/fetch.php?media=wiki:logo.png" />
+       <dc:date>2026-08-10T10:13:08+00:00</dc:date>
+        <items>
+            <rdf:Seq>
+                <rdf:li rdf:resource="https://jumpstart.gg/wiki/doku.php?id=characters:abrams&amp;rev=1782550351&amp;do=diff"/>
+                <rdf:li rdf:resource="https://jumpstart.gg/wiki/doku.php?id=characters:start&amp;rev=1781376796&amp;do=diff"/>
+            </rdf:Seq>
+        </items>
+    </channel>
+    <image rdf:about="https://jumpstart.gg/wiki/lib/exe/fetch.php?media=wiki:logo.png">
+        <title>JumpStart</title>
+        <link>https://jumpstart.gg/wiki/</link>
+        <url>https://jumpstart.gg/wiki/lib/exe/fetch.php?media=wiki:logo.png</url>
+    </image>
+    <item rdf:about="https://jumpstart.gg/wiki/doku.php?id=characters:abrams&amp;rev=1782550351&amp;do=diff">
+        <dc:format>text/html</dc:format>
+        <dc:date>2026-06-27T08:52:31+00:00</dc:date>
+        <dc:creator>Anonymous (anonymous@undisclosed.example.com)</dc:creator>
+        <title>abrams</title>
+        <link>https://jumpstart.gg/wiki/doku.php?id=characters:abrams&amp;rev=1782550351&amp;do=diff</link>
+        <description>ABRAMS
+
+
+&lt;div data-jw-att=&quot;1&quot; data-jw-side=&quot;right&quot; data-jw-w=&quot;320px&quot; data-jw-type=&quot;image&quot; style=&quot;overflow:hidden;&quot;&gt;
+&lt;div class=&quot;js-att-image&quot; style=&quot;float:right;margin:0 0 12px 20px;width:320px;max-width:50%;&quot;&gt;&lt;img src=&quot;/wiki/lib/exe/fetch.php?media=characters%3Aabrams%3Aabrams_card.png&quot; alt=&quot;&quot; style=&quot;width:100%;height:auto;display:block;&quot;&gt;&lt;div class=&quot;js-video-caption&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p style=&quot;font-family:Forevs,serif;font-size:2.2rem;line-height:2.2;color:rgba(237,232,245,0.85);margin:0;&quot;&gt;Write y…</description>
+    </item>
+    <item rdf:about="https://jumpstart.gg/wiki/doku.php?id=characters:start&amp;rev=1781376796&amp;do=diff">
+        <dc:format>text/html</dc:format>
+        <dc:date>2026-06-13T18:53:16+00:00</dc:date>
+        <dc:creator>Anonymous (anonymous@undisclosed.example.com)</dc:creator>
+        <title>start</title>
+        <link>https://jumpstart.gg/wiki/doku.php?id=characters:start&amp;rev=1781376796&amp;do=diff</link>
+        <description>CHARACTERS
+
+
+&lt;!--
+  CHARACTER SELECT PAGE
+  Add one js-char-data div per hero.
+  Attributes:
+    data-name     = Hero display name
+    data-diff     = novice / intermediate / skilled / expert / master
+    data-tier     = S / A / B / C
+    data-move     = Move speed (e.g. 6.4)
+    data-stamina  = Stamina count (e.g. 3)
+    data-dashspd  = Dash speed (e.g. 14.3)
+    data-color    = Hex accent color
+    data-slug     = URL slug matching the _name.png filename prefix
+--&gt;
+&lt;head&gt;
+&lt;link rel=&quot;preload&quot; h…</description>
+    </item>
+</rdf:RDF>

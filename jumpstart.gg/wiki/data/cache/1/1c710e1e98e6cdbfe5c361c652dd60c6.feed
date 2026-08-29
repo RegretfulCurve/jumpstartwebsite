@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- generator="FeedCreator 1.8" -->
+<?xml-stylesheet href="https://jumpstart.gg/wiki/lib/exe/css.php?s=feed" type="text/css"?>
+<rdf:RDF
+    xmlns="http://purl.org/rss/1.0/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <channel rdf:about="https://jumpstart.gg/wiki/feed.php">
+        <title>JumpStart - universaltech</title>
+        <description></description>
+        <link>https://jumpstart.gg/wiki/</link>
+        <image rdf:resource="https://jumpstart.gg/wiki/lib/exe/fetch.php?media=wiki:logo.png" />
+       <dc:date>2026-08-14T07:10:50+00:00</dc:date>
+        <items>
+            <rdf:Seq>
+                <rdf:li rdf:resource="https://jumpstart.gg/wiki/doku.php?id=universaltech:start&amp;rev=1782111433&amp;do=diff"/>
+            </rdf:Seq>
+        </items>
+    </channel>
+    <image rdf:about="https://jumpstart.gg/wiki/lib/exe/fetch.php?media=wiki:logo.png">
+        <title>JumpStart</title>
+        <link>https://jumpstart.gg/wiki/</link>
+        <url>https://jumpstart.gg/wiki/lib/exe/fetch.php?media=wiki:logo.png</url>
+    </image>
+    <item rdf:about="https://jumpstart.gg/wiki/doku.php?id=universaltech:start&amp;rev=1782111433&amp;do=diff">
+        <dc:format>text/html</dc:format>
+        <dc:date>2026-06-22T06:57:13+00:00</dc:date>
+        <dc:creator>Anonymous (anonymous@undisclosed.example.com)</dc:creator>
+        <title>start</title>
+        <link>https://jumpstart.gg/wiki/doku.php?id=universaltech:start&amp;rev=1782111433&amp;do=diff</link>
+        <description>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;style&gt;
+body.mode_show #dokuwiki__site { display: none !important; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+.navbar.navbar-default { z-index: 10000 !important; }
+body:not(.mode_show) #ut-page { display: none !important; }
+
+#ut-page {
+  position: fixed;
+  top: 0;
+  left: 0; right: 0; bottom: 0;
+  z-index: 9000;
+  background: #0A0816;
+  display: flex;
+  overflow: hidden;
+  font-family: 'Forevs', sans-serif;
+  color: #EDE8…</description>
+    </item>
+</rdf:RDF>

@@ -1,0 +1,160 @@
+====== @@HERO NAME@@ ======
+
+<html>
+
+<!-- ═══════════════════════════════════════
+     HERO BANNER
+     Replace js-hero-banner-img style with:
+     background-image: url('/wiki/lib/exe/fetch.php?media=heroes:heroname_banner.jpg')
+════════════════════════════════════════ -->
+<div class="js-hero-banner">
+  <div class="js-hero-banner-lines"></div>
+  <div class="js-hero-banner-img" style="background-image: url('');"></div>
+  <div class="js-hero-banner-vig"></div>
+  <div class="js-hero-banner-line"></div>
+  <div class="js-hero-banner-id">
+
+    <!-- Replace img src with hero portrait -->
+    <div class="js-hero-portrait">
+      <img src="/wiki/lib/exe/fetch.php?media=heroes:heroname_portrait.png" alt="@@HERO NAME@@">
+    </div>
+
+    <div>
+      <span class="js-hero-eyebrow">Characters · Heroes</span>
+      <span class="js-hero-name">@@HERO NAME@@</span>
+      <div class="js-hero-tags">
+        <!-- Role: js-hero-tag-role -->
+        <!-- Type: js-hero-tag-type -->
+        <!-- Tier: js-hero-tag-tier-s / tier-a / tier-b / tier-c -->
+        <!-- Difficulty: js-hero-tag-diff -->
+        <span class="js-hero-tag js-hero-tag-role">Brawler</span>
+        <span class="js-hero-tag js-hero-tag-type">Tank</span>
+        <span class="js-hero-tag js-hero-tag-tier-s">S-Tier</span>
+        <span class="js-hero-tag js-hero-tag-diff">Hard</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     MOVEMENT STAT STRIP
+════════════════════════════════════════ -->
+<div class="js-hero-stat-strip">
+  <div class="js-hero-stat">
+    <span class="js-hero-stat-label">Move Speed</span>
+    <span class="js-hero-stat-value">0.0<span class="js-hero-stat-unit">m/s</span></span>
+  </div>
+  <div class="js-hero-stat">
+    <span class="js-hero-stat-label">Sprint Speed</span>
+    <span class="js-hero-stat-value">0.0<span class="js-hero-stat-unit">m/s</span></span>
+  </div>
+  <div class="js-hero-stat">
+    <span class="js-hero-stat-label">Dash Speed</span>
+    <span class="js-hero-stat-value">0.0<span class="js-hero-stat-unit">m/s</span></span>
+  </div>
+  <div class="js-hero-stat">
+    <span class="js-hero-stat-label">Stamina</span>
+    <span class="js-hero-stat-value">0</span>
+  </div>
+  <div class="js-hero-stat">
+    <span class="js-hero-stat-label">Stamina Bucket</span>
+    <span class="js-hero-stat-value">0</span>
+  </div>
+  <div class="js-hero-stat">
+    <span class="js-hero-stat-label">Stamina CD</span>
+    <span class="js-hero-stat-value">0.0<span class="js-hero-stat-unit">s</span></span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     PAGE BODY
+════════════════════════════════════════ -->
+<div class="js-hero-body">
+
+  <!-- Quote — delete if no quote -->
+  <div class="js-hero-quote">
+    <span class="js-hero-quote-mark">"</span>
+    <span class="js-hero-quote-text">Hero quote goes here.</span>
+  </div>
+
+</html>
+
+===== Overview =====
+
+Write a brief overview of the hero here. Describe their playstyle, strengths, and role in the game.
+
+<html>
+
+  <div class="js-hero-h2">Movement Tech</div>
+
+  <!-- ═══════════════════════════════════════
+       TECH ENTRY — duplicate this block for each technique
+       Tech Type: Universal Tech / Character Tech
+       Difficulty: js-tech-diff-beginner / intermediate / advanced / expert
+  ════════════════════════════════════════ -->
+  <div class="js-tech-entry">
+    <div class="js-tech-h3">Technique Name</div>
+    <div class="js-tech-inner">
+
+      <div class="js-tech-prose">
+        <p>Describe the technique here. Explain what it is, how it works mechanically, and why it matters for movement.</p>
+        <p>Add more paragraphs as needed. Reference abilities in <em>italics</em>, key terms in <strong>bold</strong>, and speed values in <code>code style</code>.</p>
+        <p>Link related techniques or wiki pages using normal wiki links.</p>
+      </div>
+
+      <div class="js-tech-side">
+        <div class="js-tech-video">
+          <div class="js-tech-video-wrap">
+            <!-- Replace src with your video path -->
+            <video autoplay muted loop playsinline>
+              <source src="/wiki/lib/exe/fetch.php?media=techniques:heroname_techname.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="js-tech-video-cap">Caption describing the clip</div>
+        </div>
+        <div class="js-tech-meta">
+          <div class="js-tech-meta-row">
+            <span class="js-tech-meta-key">Tech Type</span>
+            <span class="js-tech-meta-val js-tech-type-character">Character Tech</span>
+          </div>
+          <div class="js-tech-meta-row">
+            <span class="js-tech-meta-key">Difficulty</span>
+            <span class="js-tech-meta-val js-tech-diff-intermediate">Intermediate</span>
+          </div>
+          <div class="js-tech-meta-row">
+            <span class="js-tech-meta-key">Inputs</span>
+            <div class="js-tech-meta-val">
+              Ability Name <span class="js-tech-arrow">→</span><br>
+              (Cancel) <span class="js-tech-arrow">→</span><br>
+              (Jump / Slide)
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Add more js-tech-entry blocks above this line -->
+
+  <div class="js-hero-h2">Tips & Common Mistakes</div>
+
+  <div class="js-hero-callout">
+    <div class="js-hero-callout-bar tip"></div>
+    <div class="js-hero-callout-inner">
+      <span class="js-hero-callout-label">Tip</span>
+      <p class="js-hero-callout-text">Add a useful tip here.</p>
+    </div>
+  </div>
+
+  <div class="js-hero-callout">
+    <div class="js-hero-callout-bar warning"></div>
+    <div class="js-hero-callout-inner">
+      <span class="js-hero-callout-label">Common Mistake</span>
+      <p class="js-hero-callout-text">Describe a common mistake here.</p>
+    </div>
+  </div>
+
+</div><!-- end js-hero-body -->
+</html>

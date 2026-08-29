@@ -1,0 +1,1576 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
+
+@font-face {
+  font-family:'Forevs';
+  src:url('/wiki/lib/tpl/bootstrap3/fonts/ForevsDemo-Bold.otf') format('opentype');
+  font-weight:bold;
+  font-style:normal
+}
+@font-face {
+  font-family:'Forevs';
+  src:url('/wiki/lib/tpl/bootstrap3/fonts/ForevsDemo-Regular.otf') format('opentype');
+  font-weight:normal;
+  font-style:normal
+}
+html,body {
+  background:#0a0716 !important;
+  color:#EDE8F5 !important
+}
+body {
+  margin-top:70px !important
+}
+body[data-page-id^="user:"]:not(.mode_admin):not(.mode_plugin):not(.mode_profile) {
+  background:#0a0716 !important;
+  overflow-x:hidden !important
+}
+body[data-page-id^="user:"]:not(.mode_admin):not(.mode_plugin):not(.mode_profile) #dokuwiki__pageheader,body[data-page-id^="user:"]:not(.mode_admin):not(.mode_plugin):not(.mode_profile) .breadcrumbs,body[data-page-id^="user:"]:not(.mode_admin):not(.mode_plugin):not(.mode_profile) #dw__pagetools,body[data-page-id^="user:"]:not(.mode_admin):not(.mode_plugin):not(.mode_profile) .dw-page-icons,body[data-page-id^="user:"]:not(.mode_admin):not(.mode_plugin):not(.mode_profile) .docInfo,body[data-page-id^="user:"]:not(.mode_admin):not(.mode_plugin):not(.mode_profile) .small.text-right,body[data-page-id^="user:"]:not(.mode_admin):not(.mode_plugin):not(.mode_profile) #dw__footer,body[data-page-id^="user:"]:not(.mode_admin):not(.mode_plugin):not(.mode_profile) footer,body[data-page-id^="user:"]:not(.mode_admin):not(.mode_plugin):not(.mode_profile) footer#dw__footer {
+  display:none !important
+}
+body[data-page-id^="user:"]:not(.mode_admin):not(.mode_plugin):not(.mode_profile) main.dw-container,body[data-page-id^="user:"]:not(.mode_admin):not(.mode_plugin):not(.mode_profile) main.dw-container.pb-5 {
+  padding:0 !important;
+  margin:0 !important;
+  max-width:100% !important;
+  width:100% !important
+}
+body[data-page-id^="user:"]:not(.mode_admin):not(.mode_plugin):not(.mode_profile) .row {
+  margin:0 !important;
+  width:100% !important
+}
+body[data-page-id^="user:"]:not(.mode_admin):not(.mode_plugin):not(.mode_profile) article#dokuwiki__content,body[data-page-id^="user:"]:not(.mode_admin):not(.mode_plugin):not(.mode_profile) #dokuwiki__content {
+  width:100% !important;
+  max-width:100% !important;
+  padding:0 !important;
+  margin:0 !important;
+  float:none !important
+}
+body[data-page-id^="user:"]:not(.mode_admin):not(.mode_plugin):not(.mode_profile) .panel.panel-default,body[data-page-id^="user:"]:not(.mode_admin):not(.mode_plugin):not(.mode_profile) .panel-body,body[data-page-id^="user:"]:not(.mode_admin):not(.mode_plugin):not(.mode_profile) .px-3.py-2,body[data-page-id^="user:"]:not(.mode_admin):not(.mode_plugin):not(.mode_profile) .dokuwiki .page {
+  border:none !important;
+  box-shadow:none !important;
+  padding:0 !important;
+  margin:0 !important;
+  background:transparent !important;
+  width:100% !important;
+  max-width:100% !important
+}
+body[data-page-id^="user:"]:not(.mode_admin):not(.mode_plugin):not(.mode_profile) .col-sm-12,body[data-page-id^="user:"]:not(.mode_admin):not(.mode_plugin):not(.mode_profile) [class*="col-"] {
+  width:100% !important;
+  padding:0 !important;
+  float:none !important;
+  max-width:100% !important
+}
+body[data-page-id^="user:"]:not(.mode_admin):not(.mode_plugin):not(.mode_profile) header.dw-container {
+  margin:0 !important;
+  padding:0 !important
+}
+body.mode_show .breadcrumbs,body.mode_show .trace,body.mode_show #dokuwiki__pageheader,body.mode_show footer,body.mode_show #dw__footer,body.mode_show .docInfo,body.mode_show div.docInfo,body.mode_show .small.text-right,body.mode_show .dw-page-icons,body.mode_show ul.dw-page-icons,body.mode_show div.dw-page-icons,body.mode_show .pull-right.hidden-print,body.mode_show #dw__pagetools,body.mode_show aside#dw__pagetools,body.mode_show .secedit,body.mode_show .anchor,body.mode_show a.anchor {
+  display:none !important
+}
+body.mode_show .panel.panel-default,body.mode_show .panel-body,body.mode_show .px-3.py-2,body.mode_show .dokuwiki .page {
+  background:transparent !important;
+  border:none !important;
+  box-shadow:none !important;
+  padding:0 !important;
+  margin:0 !important
+}
+body.mode_show main.dw-container {
+  padding:0 !important
+}
+body.mode_show article#dokuwiki__content,body.mode_show #dokuwiki__content {
+  padding:0 !important;
+  margin:0 !important
+}
+body.mode_show #dokuwiki__content .col-sm-12,body.mode_show #dokuwiki__content [class*="col-"] {
+  padding:0 !important
+}
+body.mode_show #dokuwiki__content .row {
+  margin:0 !important
+}
+body.mode_show .dw-content {
+  padding:60px 15% 80px 15% !important;
+  max-width:100% !important;
+  box-sizing:border-box !important;
+  width:100% !important;
+  font-size:16px !important
+}
+body.mode_show .dw-content h1 {
+  font-family:'Forevs',serif !important;
+  font-size:48px !important;
+  line-height:1 !important;
+  font-weight:bold !important;
+  text-transform:uppercase !important;
+  letter-spacing:0.06em !important;
+  color:#EDE8F5 !important;
+  text-shadow:0 0 30px rgba(107,79,187,0.4) !important;
+  border-bottom:1px solid rgba(107,79,187,0.2) !important;
+  padding-bottom:10px !important;
+  margin:0 0 12px !important
+}
+body.mode_show .dw-content h2 {
+  font-family:'Forevs',serif !important;
+  font-size:32px !important;
+  font-weight:bold !important;
+  text-transform:uppercase !important;
+  letter-spacing:0.18em !important;
+  color:#B8ADDB !important;
+  border-bottom:1px solid rgba(107,79,187,0.15) !important;
+  padding-bottom:5px !important
+}
+body.mode_show .dw-content h3 {
+  font-family:'Forevs',serif !important;
+  font-size:26px !important;
+  font-weight:bold !important;
+  text-transform:uppercase !important;
+  letter-spacing:0.14em !important;
+  color:rgba(184,173,219,0.7) !important
+}
+body.mode_show .dw-content h4 {
+  font-family:'Forevs',serif !important;
+  font-size:30px !important;
+  color:rgba(184,173,219,0.6) !important;
+  text-transform:uppercase !important
+}
+body.mode_show .dw-content p {
+  font-family:'Forevs',serif !important;
+  font-size:16px !important;
+  line-height:1.8 !important;
+  color:rgba(237,232,245,0.85) !important
+}
+body.mode_show .dw-content a {
+  color:#B8ADDB !important
+}
+body.mode_show .dw-content a:hover {
+  color:#EDE8F5 !important
+}
+body.mode_show .dw-content .js-hero-quote-text {
+  font-size:28px !important;
+  font-family:'Forevs',serif !important;
+  color:rgba(184,173,219,0.8) !important;
+  font-style:italic !important
+}
+body.mode_show .dw-content .js-callout-text {
+  font-size:20px !important;
+  font-family:'Forevs',serif !important
+}
+body.mode_show .dw-content .js-callout-label {
+  font-size:22px !important;
+  font-family:'Forevs',serif !important
+}
+body.mode_show .dw-content .js-step-title {
+  font-size:22px !important;
+  font-family:'Forevs',serif !important
+}
+body.mode_show .dw-content .js-step-desc {
+  font-size:18px !important;
+  font-family:'Forevs',serif !important
+}
+body.mode_show .dw-content .js-collapsible-body,body.mode_show .dw-content .js-collapsible-body p {
+  font-size:34px !important;
+  font-family:'Forevs',serif !important
+}
+body.mode_show .dw-content .js-tab-panel,body.mode_show .dw-content .js-tab-panel p {
+  font-size:34px !important;
+  font-family:'Forevs',serif !important
+}
+body.mode_show .dw-content .js-related-card-name {
+  font-size:20px !important;
+  font-family:'Forevs',serif !important
+}
+body.mode_show .dw-content .js-related-card-desc {
+  font-size:16px !important;
+  font-family:'Forevs',serif !important
+}
+body.mode_show .dw-content .js-two-col-left,body.mode_show .dw-content .js-two-col-right {
+  font-size:20px !important;
+  font-family:'Forevs',serif !important
+}
+body.mode_show .dw-content .js-item-block-desc,body.mode_show .dw-content .js-ability-block-desc {
+  font-size:18px !important;
+  font-family:'Forevs',serif !important
+}
+body.mode_show .dw-content .js-tech-credit-name {
+  font-size:24px !important;
+  font-family:'Forevs',serif !important
+}
+html body.mode_show .dw-content [data-jw-att] p {
+  font-family:'Forevs',serif !important;
+  font-size:2.2rem !important;
+  line-height:2.2 !important;
+  color:rgba(237,232,245,0.85) !important;
+  margin:0 0 10px 0 !important
+}
+html body [data-jw-att] p {
+  font-family:'Forevs',serif !important;
+  font-size:2.2rem !important;
+  line-height:2.2 !important;
+  color:rgba(237,232,245,0.85) !important;
+  margin:0 0 10px 0 !important
+}
+/* ── ITEM BLOCK 2 & ABILITY BLOCK 2 — live page layout fixes ──
+   Bootstrap resets div display/flex so we must re-assert with high specificity */
+body.mode_show .dw-content .js-item-block2,
+body.mode_show .dw-content .js-ability-block2 {
+  display: block !important;
+  overflow: hidden !important;
+  border-radius: 8px !important;
+}
+body.mode_show .dw-content .js-ib-header,
+body.mode_show .dw-content .js-ab-header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+body.mode_show .dw-content .js-ib-meta,
+body.mode_show .dw-content .js-ab-pills {
+  display: flex !important;
+  flex-wrap: wrap !important;
+}
+body.mode_show .dw-content .js-ib-chips {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 8px !important;
+}
+body.mode_show .dw-content .js-ib-chip {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+body.mode_show .dw-content .js-ib-section {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+body.mode_show .dw-content .js-ab-grid {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 1px !important;
+}
+body.mode_show .dw-content .js-ab-stat {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+body.mode_show .dw-content .js-ab-stat-top {
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+}
+body.mode_show .dw-content .js-ab-upgrades {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 1px !important;
+}
+body.mode_show .dw-content .js-ab-upgrade {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+body.mode_show .dw-content .js-ab-pill {
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+}
+body.mode_show .dw-content .js-ib-badge {
+  display: block !important;
+  text-align: center !important;
+}
+body.mode_show .dw-content .js-ib-badge-val {
+  display: block !important;
+}
+body.mode_show .dw-content .js-ib-badge-label {
+  display: block !important;
+}
+
+/* Override the global p rule inside cards */
+body.mode_show .dw-content .js-item-block2 p,
+body.mode_show .dw-content .js-ability-block2 p {
+  font-size: 15px !important;
+  line-height: 1.65 !important;
+  margin: 0 !important;
+  padding: 9px 16px !important;
+  color: rgba(237,232,245,0.8) !important;
+}
+
+/* Item type accent colors */
+body.mode_show .dw-content .js-item-block2[data-type="weapon"] .js-ib-header {
+  background: rgba(200,168,75,0.12) !important;
+  border-bottom: 2px solid #c8a84b !important;
+}
+body.mode_show .dw-content .js-item-block2[data-type="weapon"] .js-ib-name {
+  color: #c8a84b !important;
+}
+body.mode_show .dw-content .js-item-block2[data-type="vitality"] .js-ib-header {
+  background: rgba(90,170,90,0.12) !important;
+  border-bottom: 2px solid #5aaa5a !important;
+}
+body.mode_show .dw-content .js-item-block2[data-type="vitality"] .js-ib-name {
+  color: #5aaa5a !important;
+}
+body.mode_show .dw-content .js-item-block2[data-type="spirit"] .js-ib-header {
+  background: rgba(192,96,192,0.12) !important;
+  border-bottom: 2px solid #c060c0 !important;
+}
+body.mode_show .dw-content .js-item-block2[data-type="spirit"] .js-ib-name {
+  color: #c060c0 !important;
+}
+
+/* ── DEEPER CARD ELEMENT FIXES ── */
+
+/* Meta row — cost | tier with separator */
+body.mode_show .dw-content .js-ib-meta {
+  gap: 0 !important;
+  padding: 7px 16px !important;
+  border-bottom: 1px solid rgba(107,79,187,0.15) !important;
+}
+body.mode_show .dw-content .js-ib-cost {
+  padding-right: 12px !important;
+  margin-right: 12px !important;
+  border-right: 1px solid rgba(107,79,187,0.25) !important;
+}
+
+/* Passive stat rows */
+body.mode_show .dw-content .js-ib-pstat {
+  display: block !important;
+  padding: 4px 16px !important;
+  font-size: 14px !important;
+}
+
+/* Stat chips — individual chip boxes */
+body.mode_show .dw-content .js-ib-chip {
+  background: rgba(14,10,32,0.7) !important;
+  border: 1px solid rgba(107,79,187,0.3) !important;
+  border-radius: 5px !important;
+  padding: 8px 12px !important;
+  min-width: 80px !important;
+}
+body.mode_show .dw-content .js-ib-chip-value {
+  display: block !important;
+  font-weight: bold !important;
+  font-size: 15px !important;
+  color: #EDE8F5 !important;
+  text-align: center !important;
+}
+body.mode_show .dw-content .js-ib-chip-label {
+  display: block !important;
+  font-size: 11px !important;
+  color: rgba(184,173,219,0.6) !important;
+  text-align: center !important;
+}
+body.mode_show .dw-content .js-ib-chip-cond {
+  display: block !important;
+  font-size: 10px !important;
+  color: rgba(107,79,187,0.8) !important;
+  font-style: italic !important;
+  text-align: center !important;
+}
+body.mode_show .dw-content .js-ib-chip-icon {
+  display: block !important;
+  text-align: center !important;
+  margin-bottom: 3px !important;
+}
+
+/* Duration row */
+body.mode_show .dw-content .js-ib-duration {
+  display: block !important;
+  padding: 7px 16px !important;
+  font-size: 13px !important;
+  color: rgba(184,173,219,0.65) !important;
+  border-top: 1px solid rgba(107,79,187,0.1) !important;
+}
+
+/* Section rows */
+body.mode_show .dw-content .js-ib-section-label {
+  font-size: 13px !important;
+  font-weight: bold !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+  color: #B8ADDB !important;
+}
+body.mode_show .dw-content .js-ib-cooldown {
+  font-size: 13px !important;
+  color: rgba(184,173,219,0.7) !important;
+  background: rgba(0,0,0,0.3) !important;
+  padding: 2px 8px !important;
+  border-radius: 3px !important;
+}
+
+/* Ability pills — individual pill boxes */
+body.mode_show .dw-content .js-ab-pill {
+  background: rgba(26,20,51,0.8) !important;
+  border: 1px solid rgba(107,79,187,0.35) !important;
+  border-radius: 4px !important;
+  padding: 5px 12px !important;
+}
+body.mode_show .dw-content .js-ab-pill-value {
+  font-weight: bold !important;
+  font-size: 14px !important;
+  color: #EDE8F5 !important;
+}
+body.mode_show .dw-content .js-ab-pills {
+  gap: 6px !important;
+  padding: 8px 16px !important;
+  border-bottom: 1px solid rgba(107,79,187,0.1) !important;
+}
+
+/* Ability name + cooldown */
+body.mode_show .dw-content .js-ab-name {
+  font-family: 'Forevs', serif !important;
+  font-size: 24px !important;
+  font-weight: bold !important;
+  color: #EDE8F5 !important;
+}
+body.mode_show .dw-content .js-ab-cooldown {
+  background: rgba(0,0,0,0.4) !important;
+  border: 1px solid rgba(107,79,187,0.3) !important;
+  border-radius: 4px !important;
+  padding: 4px 12px !important;
+  font-size: 13px !important;
+  color: rgba(184,173,219,0.8) !important;
+  white-space: nowrap !important;
+}
+
+/* Stat grid cells */
+body.mode_show .dw-content .js-ab-stat {
+  background: #1a1433 !important;
+  padding: 12px 16px !important;
+  gap: 3px !important;
+}
+body.mode_show .dw-content .js-ab-stat-hl {
+  background: rgba(107,79,187,0.25) !important;
+}
+body.mode_show .dw-content .js-ab-stat-value {
+  font-size: 22px !important;
+  font-weight: bold !important;
+  color: #EDE8F5 !important;
+  font-family: 'Forevs', serif !important;
+}
+body.mode_show .dw-content .js-ab-stat-label {
+  font-size: 12px !important;
+  color: rgba(184,173,219,0.6) !important;
+  text-align: center !important;
+}
+body.mode_show .dw-content .js-ab-stat-icon {
+  font-size: 18px !important;
+}
+
+/* Upgrade cells */
+body.mode_show .dw-content .js-ab-upgrade {
+  background: #160f2e !important;
+  padding: 12px 10px !important;
+  gap: 4px !important;
+}
+body.mode_show .dw-content .js-ab-upgrade-cost {
+  font-size: 13px !important;
+  font-weight: bold !important;
+  color: #9b7ee8 !important;
+}
+body.mode_show .dw-content .js-ab-upgrade-value {
+  font-size: 17px !important;
+  font-weight: bold !important;
+  color: #EDE8F5 !important;
+  text-align: center !important;
+  font-family: 'Forevs', serif !important;
+}
+body.mode_show .dw-content .js-ab-upgrade-label {
+  font-size: 11px !important;
+  color: rgba(184,173,219,0.55) !important;
+  text-align: center !important;
+}
+
+/* Ability desc */
+body.mode_show .dw-content .js-ab-desc {
+  font-size: 14px !important;
+  line-height: 1.65 !important;
+  color: rgba(237,232,245,0.85) !important;
+  padding: 10px 16px !important;
+  margin: 0 !important;
+}
+body.mode_show .dw-content .js-ab-altcast {
+  font-style: italic !important;
+  font-size: 13px !important;
+  color: rgba(184,173,219,0.5) !important;
+  padding: 6px 16px 10px !important;
+  margin: 0 !important;
+}
+
+/* ── CARD CONTAINER BACKGROUNDS ── */
+body.mode_show .dw-content .js-item-block2 {
+  background: #1a1433 !important;
+  border: 1px solid rgba(107,79,187,0.25) !important;
+  margin: 14px 0 !important;
+}
+body.mode_show .dw-content .js-ability-block2 {
+  background: #1c1230 !important;
+  border: 1px solid rgba(107,79,187,0.3) !important;
+  margin: 14px 0 !important;
+}
+
+/* Ability header background */
+body.mode_show .dw-content .js-ab-header {
+  background: rgba(107,79,187,0.12) !important;
+  border-bottom: 1px solid rgba(107,79,187,0.2) !important;
+  padding: 12px 16px !important;
+}
+
+/* Item section background */
+body.mode_show .dw-content .js-ib-section {
+  background: rgba(107,79,187,0.1) !important;
+  border-top: 1px solid rgba(107,79,187,0.2) !important;
+  border-bottom: 1px solid rgba(107,79,187,0.2) !important;
+  padding: 7px 16px !important;
+}
+
+/* Stat grid background */
+body.mode_show .dw-content .js-ab-grid {
+  background: rgba(107,79,187,0.15) !important;
+  border-top: 1px solid rgba(107,79,187,0.15) !important;
+}
+body.mode_show .dw-content .js-ab-stat {
+  background: #1a1433 !important;
+}
+body.mode_show .dw-content .js-ab-stat-hl {
+  background: rgba(107,79,187,0.25) !important;
+}
+
+/* Upgrades row background */
+body.mode_show .dw-content .js-ab-upgrades {
+  background: rgba(107,79,187,0.12) !important;
+  border-top: 1px solid rgba(107,79,187,0.15) !important;
+}
+body.mode_show .dw-content .js-ab-upgrade {
+  background: #160f2e !important;
+}
+
+/* Item chips container */
+body.mode_show .dw-content .js-ib-chips {
+  padding: 10px 16px !important;
+  background: transparent !important;
+}
+
+/* Item header — default weapon color, overridden per type above */
+body.mode_show .dw-content .js-ib-header {
+  padding: 12px 16px !important;
+  background: rgba(200,168,75,0.12) !important;
+  border-bottom: 2px solid #c8a84b !important;
+}
+body.mode_show .dw-content .js-ib-name {
+  font-family: 'Forevs', serif !important;
+  font-size: 20px !important;
+  font-weight: bold !important;
+  color: #c8a84b !important;
+}
+body.mode_show .dw-content .js-ib-badge {
+  background: rgba(0,0,0,0.45) !important;
+  border-radius: 5px !important;
+  padding: 5px 10px !important;
+  min-width: 75px !important;
+}
+
+/* ── FINAL POLISH ── */
+
+/* Item header — slightly brighter background */
+body.mode_show .dw-content .js-item-block2[data-type="weapon"] .js-ib-header {
+  background: rgba(200,168,75,0.18) !important;
+}
+body.mode_show .dw-content .js-item-block2[data-type="vitality"] .js-ib-header {
+  background: rgba(90,170,90,0.18) !important;
+}
+body.mode_show .dw-content .js-item-block2[data-type="spirit"] .js-ib-header {
+  background: rgba(192,96,192,0.18) !important;
+}
+
+/* Bigger item name */
+body.mode_show .dw-content .js-ib-name {
+  font-size: 24px !important;
+}
+
+/* Ability pills — show label below value */
+body.mode_show .dw-content .js-ab-pill {
+  flex-direction: column !important;
+  align-items: center !important;
+  min-width: 60px !important;
+  text-align: center !important;
+}
+body.mode_show .dw-content .js-ab-pill-value {
+  font-size: 15px !important;
+  font-weight: bold !important;
+}
+body.mode_show .dw-content .js-ab-pill-label {
+  display: block !important;
+  font-size: 10px !important;
+  color: rgba(184,173,219,0.5) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+}
+
+/* Stat grid — bigger values */
+body.mode_show .dw-content .js-ab-stat-value {
+  font-size: 26px !important;
+}
+body.mode_show .dw-content .js-ab-stat-icon {
+  font-size: 20px !important;
+}
+body.mode_show .dw-content .js-ab-stat-label {
+  font-size: 13px !important;
+  margin-top: 2px !important;
+}
+
+/* Upgrade values bigger */
+body.mode_show .dw-content .js-ab-upgrade-value {
+  font-size: 20px !important;
+}
+body.mode_show .dw-content .js-ab-upgrade-cost {
+  font-size: 14px !important;
+}
+
+/* Cost styling */
+body.mode_show .dw-content .js-ib-cost {
+  font-size: 17px !important;
+  color: #f0c060 !important;
+  font-weight: bold !important;
+}
+body.mode_show .dw-content .js-ib-tier-row {
+  font-size: 13px !important;
+  color: rgba(184,173,219,0.55) !important;
+}
+
+/* Passive stat lines */
+body.mode_show .dw-content .js-ib-pstat {
+  font-size: 15px !important;
+  color: rgba(237,232,245,0.85) !important;
+}
+
+/* Ability block name bigger */
+body.mode_show .dw-content .js-ab-name {
+  font-size: 28px !important;
+}
+
+/* ══════════════════════════════════════════════
+   PIXEL-PERFECT REFERENCE MATCH
+══════════════════════════════════════════════ */
+
+/* ── ABILITY BLOCK — match reference exactly ── */
+
+/* Overall card — very dark background */
+body.mode_show .dw-content .js-ability-block2 {
+  background: #19112e !important;
+  border: 1px solid rgba(107,79,187,0.4) !important;
+  border-radius: 6px !important;
+}
+
+/* Header — dark with large bold name */
+body.mode_show .dw-content .js-ab-header {
+  background: #19112e !important;
+  border-bottom: 1px solid rgba(107,79,187,0.3) !important;
+  padding: 16px 20px !important;
+  gap: 16px !important;
+}
+body.mode_show .dw-content .js-ab-name {
+  font-size: 32px !important;
+  font-weight: bold !important;
+  color: #f0e8d0 !important;
+  font-family: 'Forevs', serif !important;
+  letter-spacing: 0.02em !important;
+}
+body.mode_show .dw-content .js-ab-cooldown {
+  background: rgba(0,0,0,0.5) !important;
+  border: 1px solid rgba(107,79,187,0.4) !important;
+  border-radius: 4px !important;
+  padding: 5px 14px !important;
+  font-size: 15px !important;
+  color: rgba(237,232,245,0.9) !important;
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+}
+
+/* Pills — grey boxes with icon + value */
+body.mode_show .dw-content .js-ab-pills {
+  gap: 8px !important;
+  padding: 10px 20px !important;
+  background: rgba(0,0,0,0.2) !important;
+  border-bottom: 1px solid rgba(107,79,187,0.15) !important;
+  flex-wrap: wrap !important;
+}
+body.mode_show .dw-content .js-ab-pill {
+  background: rgba(50,40,75,0.7) !important;
+  border: 1px solid rgba(107,79,187,0.3) !important;
+  border-radius: 4px !important;
+  padding: 5px 14px !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 6px !important;
+  min-width: auto !important;
+}
+body.mode_show .dw-content .js-ab-pill-icon { font-size: 14px !important; }
+body.mode_show .dw-content .js-ab-pill-value {
+  font-size: 15px !important;
+  font-weight: bold !important;
+  color: #EDE8F5 !important;
+}
+
+/* Description */
+body.mode_show .dw-content .js-ab-desc {
+  padding: 14px 20px !important;
+  font-size: 16px !important;
+  line-height: 1.7 !important;
+  color: rgba(237,232,245,0.9) !important;
+  margin: 0 !important;
+  background: rgba(0,0,0,0.15) !important;
+}
+body.mode_show .dw-content .js-ab-altcast {
+  padding: 8px 20px 12px !important;
+  font-size: 14px !important;
+  color: rgba(184,173,219,0.5) !important;
+  font-style: italic !important;
+  margin: 0 !important;
+  background: rgba(0,0,0,0.15) !important;
+}
+
+/* Stat grid — 2 col, left highlighted purple, right dark grey */
+body.mode_show .dw-content .js-ab-grid {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  border-top: 1px solid rgba(107,79,187,0.2) !important;
+  background: rgba(107,79,187,0.15) !important;
+  gap: 1px !important;
+}
+body.mode_show .dw-content .js-ab-stat {
+  padding: 16px 20px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 4px !important;
+  min-height: 90px !important;
+  background: #2a1f52 !important;
+}
+body.mode_show .dw-content .js-ab-stat-hl {
+  background: rgba(107,79,187,0.45) !important;
+}
+body.mode_show .dw-content .js-ab-stat-top {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+body.mode_show .dw-content .js-ab-stat-icon { font-size: 22px !important; }
+body.mode_show .dw-content .js-ab-stat-value {
+  font-size: 32px !important;
+  font-weight: bold !important;
+  color: #EDE8F5 !important;
+  font-family: 'Forevs', serif !important;
+}
+body.mode_show .dw-content .js-ab-stat-label {
+  font-size: 13px !important;
+  color: rgba(184,173,219,0.65) !important;
+  text-align: center !important;
+  font-family: 'Forevs', serif !important;
+}
+
+/* Upgrades — pure black cells, ⚡ at top, big value, small label */
+body.mode_show .dw-content .js-ab-upgrades {
+  display: grid !important;
+  grid-template-columns: repeat(3,1fr) !important;
+  background: rgba(107,79,187,0.15) !important;
+  border-top: 1px solid rgba(107,79,187,0.2) !important;
+  gap: 1px !important;
+}
+body.mode_show .dw-content .js-ab-upgrade {
+  background: #0e0a1e !important;
+  padding: 16px 12px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 6px !important;
+  min-height: 110px !important;
+  justify-content: center !important;
+}
+body.mode_show .dw-content .js-ab-upgrade-cost {
+  font-size: 15px !important;
+  font-weight: bold !important;
+  color: #9b7ee8 !important;
+  letter-spacing: 0.06em !important;
+}
+body.mode_show .dw-content .js-ab-upgrade-value {
+  font-size: 26px !important;
+  font-weight: bold !important;
+  color: #EDE8F5 !important;
+  text-align: center !important;
+  font-family: 'Forevs', serif !important;
+  line-height: 1.2 !important;
+}
+body.mode_show .dw-content .js-ab-upgrade-label {
+  font-size: 13px !important;
+  color: rgba(184,173,219,0.55) !important;
+  text-align: center !important;
+  font-family: 'Forevs', serif !important;
+}
+
+/* ── ITEM BLOCK — match reference exactly ── */
+body.mode_show .dw-content .js-item-block2 {
+  background: #2a2218 !important;
+  border: 1px solid rgba(200,168,75,0.25) !important;
+  border-radius: 6px !important;
+}
+body.mode_show .dw-content .js-item-block2[data-type="vitality"] {
+  background: #1a2a1a !important;
+  border-color: rgba(90,170,90,0.25) !important;
+}
+body.mode_show .dw-content .js-item-block2[data-type="spirit"] {
+  background: #251525 !important;
+  border-color: rgba(192,96,192,0.25) !important;
+}
+
+/* Item header */
+body.mode_show .dw-content .js-item-block2 .js-ib-header {
+  padding: 14px 18px !important;
+}
+body.mode_show .dw-content .js-ib-name {
+  font-size: 26px !important;
+  font-weight: bold !important;
+  font-family: 'Forevs', serif !important;
+  letter-spacing: 0.03em !important;
+}
+body.mode_show .dw-content .js-ib-badge {
+  background: rgba(0,0,0,0.6) !important;
+  border: 1px solid rgba(255,255,255,0.1) !important;
+  border-radius: 4px !important;
+  padding: 6px 12px !important;
+  min-width: 80px !important;
+}
+body.mode_show .dw-content .js-ib-badge-val {
+  font-size: 18px !important;
+  font-weight: bold !important;
+  color: #EDE8F5 !important;
+}
+body.mode_show .dw-content .js-ib-badge-label {
+  font-size: 11px !important;
+  color: rgba(184,173,219,0.65) !important;
+}
+
+/* Meta row */
+body.mode_show .dw-content .js-ib-meta {
+  padding: 8px 18px !important;
+  background: rgba(0,0,0,0.2) !important;
+  border-bottom: 1px solid rgba(107,79,187,0.1) !important;
+  gap: 0 !important;
+  align-items: center !important;
+}
+body.mode_show .dw-content .js-ib-cost {
+  font-size: 18px !important;
+  color: #f0c060 !important;
+  font-weight: bold !important;
+  font-family: 'Forevs', serif !important;
+  border-right: 1px solid rgba(107,79,187,0.2) !important;
+  padding-right: 14px !important;
+  margin-right: 14px !important;
+}
+body.mode_show .dw-content .js-ib-tier-row {
+  font-size: 14px !important;
+  color: rgba(184,173,219,0.55) !important;
+}
+
+/* Passive stat lines */
+body.mode_show .dw-content .js-ib-pstat {
+  padding: 5px 18px !important;
+  font-size: 15px !important;
+  color: rgba(237,232,245,0.9) !important;
+  font-family: 'Forevs', serif !important;
+  border-bottom: 1px solid rgba(255,255,255,0.04) !important;
+}
+
+/* Section rows */
+body.mode_show .dw-content .js-ib-section {
+  padding: 8px 18px !important;
+  background: rgba(0,0,0,0.25) !important;
+  border-top: 1px solid rgba(107,79,187,0.15) !important;
+  border-bottom: 1px solid rgba(107,79,187,0.15) !important;
+}
+body.mode_show .dw-content .js-ib-section-label {
+  font-size: 13px !important;
+  font-weight: bold !important;
+  letter-spacing: 0.15em !important;
+  text-transform: uppercase !important;
+  color: rgba(184,173,219,0.75) !important;
+  font-style: italic !important;
+}
+body.mode_show .dw-content .js-ib-cooldown {
+  font-size: 13px !important;
+  color: rgba(184,173,219,0.75) !important;
+  background: rgba(0,0,0,0.4) !important;
+  padding: 3px 10px !important;
+  border-radius: 3px !important;
+  border: 1px solid rgba(107,79,187,0.25) !important;
+}
+
+/* Item desc */
+body.mode_show .dw-content .js-item-block2 p.js-ib-desc {
+  padding: 10px 18px !important;
+  font-size: 15px !important;
+  color: rgba(237,232,245,0.85) !important;
+  line-height: 1.65 !important;
+  margin: 0 !important;
+  font-family: 'Forevs', serif !important;
+  background: transparent !important;
+}
+
+/* Stat chips */
+body.mode_show .dw-content .js-ib-chips {
+  padding: 10px 18px !important;
+  gap: 8px !important;
+  background: rgba(0,0,0,0.1) !important;
+  border-top: 1px solid rgba(107,79,187,0.1) !important;
+}
+body.mode_show .dw-content .js-ib-chip {
+  background: rgba(0,0,0,0.35) !important;
+  border: 1px solid rgba(107,79,187,0.25) !important;
+  border-radius: 4px !important;
+  padding: 8px 14px !important;
+  min-width: 85px !important;
+  gap: 2px !important;
+}
+body.mode_show .dw-content .js-ib-chip-value {
+  font-size: 16px !important;
+  font-weight: bold !important;
+  color: #EDE8F5 !important;
+  font-family: 'Forevs', serif !important;
+}
+body.mode_show .dw-content .js-ib-chip-label {
+  font-size: 11px !important;
+  color: rgba(184,173,219,0.6) !important;
+}
+body.mode_show .dw-content .js-ib-chip-cond {
+  font-size: 10px !important;
+  color: rgba(107,79,187,0.85) !important;
+  font-style: italic !important;
+}
+
+/* Duration */
+body.mode_show .dw-content .js-ib-duration {
+  padding: 8px 18px !important;
+  font-size: 14px !important;
+  color: rgba(184,173,219,0.65) !important;
+  background: rgba(0,0,0,0.1) !important;
+  border-top: 1px solid rgba(107,79,187,0.08) !important;
+}
+
+/* ── BARLOW CONDENSED — card-specific font overrides ── */
+body.mode_show .dw-content .js-ability-block2,
+body.mode_show .dw-content .js-ability-block2 p,
+body.mode_show .dw-content .js-ability-block2 span,
+body.mode_show .dw-content .js-ability-block2 div,
+body.mode_show .dw-content .js-item-block2,
+body.mode_show .dw-content .js-item-block2 p,
+body.mode_show .dw-content .js-item-block2 span,
+body.mode_show .dw-content .js-item-block2 div {
+  font-family: 'Barlow Condensed', sans-serif !important;
+}
+
+/* Key text weights */
+body.mode_show .dw-content .js-ab-name { font-weight: 700 !important; }
+body.mode_show .dw-content .js-ab-stat-value { font-weight: 600 !important; }
+body.mode_show .dw-content .js-ab-upgrade-value { font-weight: 600 !important; }
+body.mode_show .dw-content .js-ab-pill-value { font-weight: 600 !important; }
+body.mode_show .dw-content .js-ab-stat-label { font-weight: 400 !important; }
+body.mode_show .dw-content .js-ab-upgrade-label { font-weight: 400 !important; }
+body.mode_show .dw-content .js-ab-upgrade-cost { font-weight: 600 !important; }
+body.mode_show .dw-content .js-ab-desc { font-weight: 400 !important; font-size: 17px !important; }
+body.mode_show .dw-content .js-ab-altcast { font-weight: 400 !important; font-style: italic !important; }
+
+body.mode_show .dw-content .js-ib-name { font-weight: 700 !important; }
+body.mode_show .dw-content .js-ib-cost { font-weight: 600 !important; }
+body.mode_show .dw-content .js-ib-chip-value { font-weight: 600 !important; }
+body.mode_show .dw-content .js-ib-pstat { font-weight: 500 !important; }
+body.mode_show .dw-content .js-ib-section-label { font-weight: 600 !important; }
+body.mode_show .dw-content .js-ib-desc { font-weight: 400 !important; font-size: 16px !important; }
+body.mode_show .dw-content .js-ib-badge-val { font-weight: 700 !important; }
+
+/* ── FINAL COLOUR CORRECTIONS ── */
+
+/* Item card body — much darker */
+body.mode_show .dw-content .js-item-block2 {
+  background: #1a150a !important;
+}
+body.mode_show .dw-content .js-item-block2[data-type="vitality"] {
+  background: #0e1a0e !important;
+}
+body.mode_show .dw-content .js-item-block2[data-type="spirit"] {
+  background: #160e1a !important;
+}
+body.mode_show .dw-content .js-item-block2[data-type="weapon"] .js-ib-header {
+  background: rgba(180,140,40,0.25) !important;
+}
+
+/* Ability stat grid — left cell strong purple, right cell dark grey */
+body.mode_show .dw-content .js-ab-stat {
+  background: #2d2045 !important;
+}
+body.mode_show .dw-content .js-ab-stat-hl {
+  background: rgba(107,79,187,0.55) !important;
+}
+
+/* Ability name — pure white */
+body.mode_show .dw-content .js-ab-name {
+  color: #ffffff !important;
+}
+
+/* Upgrade cells — make gap between them visible */
+body.mode_show .dw-content .js-ab-upgrades {
+  gap: 1px !important;
+  background: #3a2a60 !important;
+}
+body.mode_show .dw-content .js-ab-grid {
+  gap: 1px !important;
+  background: #3a2a60 !important;
+}
+
+/* ── LIVE PAGE ICON DISPLAY ── */
+body.mode_show .dw-content .js-ib-icon,
+body.mode_show .dw-content .js-ab-icon {
+  width: 52px !important;
+  height: 52px !important;
+  object-fit: contain !important;
+  border-radius: 4px !important;
+  flex-shrink: 0 !important;
+}
+
+/* ── FIX OVERSATURATED ITEM CARD COLORS ── */
+/* Vitality — much darker green, not bright */
+body.mode_show .dw-content .js-item-block2[data-type="vitality"] {
+  background: #0d1a0d !important;
+  border-color: rgba(90,170,90,0.3) !important;
+}
+body.mode_show .dw-content .js-item-block2[data-type="vitality"] .js-ib-header {
+  background: rgba(90,170,90,0.15) !important;
+  border-bottom-color: #5aaa5a !important;
+}
+
+/* Spirit — dark purple/magenta, not bright pink */
+body.mode_show .dw-content .js-item-block2[data-type="spirit"] {
+  background: #14091a !important;
+  border-color: rgba(160,80,180,0.3) !important;
+}
+body.mode_show .dw-content .js-item-block2[data-type="spirit"] .js-ib-header {
+  background: rgba(160,80,180,0.15) !important;
+  border-bottom-color: #a050b4 !important;
+}
+body.mode_show .dw-content .js-item-block2[data-type="spirit"] .js-ib-name {
+  color: #c878d8 !important;
+}
+
+/* Souls icon for cost */
+body.mode_show .dw-content .js-ib-cost::before {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: url('/wiki/lib/tpl/bootstrap3/images/icons/Souls.png') center/contain no-repeat;
+  vertical-align: middle;
+  margin-right: 3px;
+}
+
+/* ── ITEM HERO IMAGE LAYOUT — live page ── */
+body.mode_show .dw-content .js-ib-hero {
+  display: flex !important;
+  align-items: stretch !important;
+  border-bottom: 2px solid #c8a84b !important;
+  min-height: 120px !important;
+}
+body.mode_show .dw-content .js-item-block2[data-type="vitality"] .js-ib-hero {
+  border-bottom-color: #5aaa5a !important;
+}
+body.mode_show .dw-content .js-item-block2[data-type="spirit"] .js-ib-hero {
+  border-bottom-color: #c878d8 !important;
+}
+body.mode_show .dw-content .js-ib-hero-img-wrap {
+  padding: 14px !important;
+  background: rgba(0,0,0,0.35) !important;
+  border-right: 1px solid rgba(107,79,187,0.2) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-width: 110px !important;
+}
+body.mode_show .dw-content .js-ib-icon {
+  width: 80px !important;
+  height: 80px !important;
+  object-fit: contain !important;
+  border-radius: 5px !important;
+  display: block !important;
+}
+body.mode_show .dw-content .js-ib-hero-info {
+  flex: 1 !important;
+  padding: 14px 18px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+  justify-content: center !important;
+}
+
+/* Ability icon — left side of header, larger */
+body.mode_show .dw-content .js-ab-icon {
+  width: 52px !important;
+  height: 52px !important;
+  object-fit: contain !important;
+  border-radius: 4px !important;
+  flex-shrink: 0 !important;
+  margin-right: 4px !important;
+}
+
+/* ══════════════════════════════════════════════
+   ITEM BLOCK — DEADLOCK CARD LAYOUT (live page)
+══════════════════════════════════════════════ */
+
+/* Name bar — full width colored header */
+body.mode_show .dw-content .js-ib-namebar {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 10px 16px !important;
+  gap: 12px !important;
+}
+body.mode_show .dw-content .js-item-block2[data-type="weapon"] .js-ib-namebar {
+  background: rgba(180,130,30,0.75) !important;
+}
+body.mode_show .dw-content .js-item-block2[data-type="vitality"] .js-ib-namebar {
+  background: rgba(50,130,50,0.75) !important;
+}
+body.mode_show .dw-content .js-item-block2[data-type="spirit"] .js-ib-namebar {
+  background: rgba(140,50,170,0.75) !important;
+}
+body.mode_show .dw-content .js-ib-name {
+  font-family: 'Barlow Condensed', sans-serif !important;
+  font-size: 26px !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  letter-spacing: 0.02em !important;
+}
+
+/* Large image area */
+body.mode_show .dw-content .js-ib-imgwrap {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: rgba(0,0,0,0.4) !important;
+  padding: 16px !important;
+  border-bottom: 1px solid rgba(107,79,187,0.2) !important;
+}
+body.mode_show .dw-content .js-ib-icon {
+  width: 140px !important;
+  height: 140px !important;
+  object-fit: contain !important;
+  border-radius: 6px !important;
+  display: block !important;
+}
+
+/* Badge — top right of namebar */
+body.mode_show .dw-content .js-ib-badge {
+  background: rgba(0,0,0,0.5) !important;
+  border: 1px solid rgba(255,255,255,0.15) !important;
+  border-radius: 4px !important;
+  padding: 4px 10px !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+}
+body.mode_show .dw-content .js-ib-badge-val {
+  display: block !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  color: #EDE8F5 !important;
+  font-family: 'Barlow Condensed', sans-serif !important;
+}
+body.mode_show .dw-content .js-ib-badge-label {
+  display: block !important;
+  font-size: 10px !important;
+  color: rgba(237,232,245,0.65) !important;
+  font-family: 'Barlow Condensed', sans-serif !important;
+}
+
+/* ══════════════════════════════════════════════
+   ITEM & ABILITY CARDS — VERTICAL/PORTRAIT FORMAT
+   Best used inside two-column blocks
+══════════════════════════════════════════════ */
+
+/* Constrain card width to match in-game portrait format */
+body.mode_show .dw-content .js-item-block2 {
+  max-width: 340px !important;
+  width: 100% !important;
+  margin: 14px auto !important;
+}
+body.mode_show .dw-content .js-ability-block2 {
+  max-width: 480px !important;
+  width: 100% !important;
+  margin: 14px auto !important;
+}
+
+/* Inside two-column, fill the column naturally */
+body.mode_show .dw-content .js-two-col-left .js-item-block2,
+body.mode_show .dw-content .js-two-col-right .js-item-block2,
+body.mode_show .dw-content .js-two-col-left .js-ability-block2,
+body.mode_show .dw-content .js-two-col-right .js-ability-block2 {
+  max-width: 100% !important;
+  margin: 0 !important;
+}
+
+/* Item card — portrait proportions */
+body.mode_show .dw-content .js-ib-imgwrap {
+  padding: 20px !important;
+}
+body.mode_show .dw-content .js-ib-icon {
+  width: 180px !important;
+  height: 180px !important;
+}
+
+/* Namebar — slightly larger text for portrait */
+body.mode_show .dw-content .js-ib-name {
+  font-size: 22px !important;
+}
+
+/* ── FINAL CARD POLISH ── */
+
+/* Item card body — warm tinted backgrounds matching type */
+body.mode_show .dw-content .js-item-block2[data-type="weapon"] {
+  background: #1e1608 !important;
+}
+body.mode_show .dw-content .js-item-block2[data-type="vitality"] {
+  background: #0d180d !important;
+}
+body.mode_show .dw-content .js-item-block2[data-type="spirit"] {
+  background: #150d1e !important;
+}
+
+/* Image — prevent DokuWiki alt text rendering */
+body.mode_show .dw-content .js-ib-icon {
+  display: block !important;
+  font-size: 0 !important; /* hide alt text */
+  color: transparent !important;
+}
+
+/* Ability stat grid — stronger left highlight */
+body.mode_show .dw-content .js-ab-stat-hl {
+  background: #5b3fa0 !important;
+}
+body.mode_show .dw-content .js-ab-stat {
+  background: #2a1f4a !important;
+}
+
+/* Upgrade cells word wrap */
+body.mode_show .dw-content .js-ab-upgrade-value {
+  word-break: break-word !important;
+  hyphens: auto !important;
+}
+
+/* Item image — remove any browser-generated caption */
+body.mode_show .dw-content .js-ib-imgwrap img::after {
+  display: none !important;
+  content: none !important;
+}
+body.mode_show .dw-content .js-ib-imgwrap figure,
+body.mode_show .dw-content .js-ib-imgwrap figcaption {
+  display: none !important;
+}
+
+/* ── PORTRAIT FORMAT — cards are narrow and centered ── */
+
+/* Override the 100% width inside two-column */
+body.mode_show .dw-content .js-two-col-left .js-item-block2,
+body.mode_show .dw-content .js-two-col-right .js-item-block2 {
+  max-width: 300px !important;
+  margin: 0 auto !important;
+  width: 100% !important;
+}
+body.mode_show .dw-content .js-two-col-left .js-ability-block2,
+body.mode_show .dw-content .js-two-col-right .js-ability-block2 {
+  max-width: 100% !important;
+  margin: 0 !important;
+}
+
+/* Standalone — portrait centered */
+body.mode_show .dw-content > .js-item-block2 {
+  max-width: 300px !important;
+  margin: 14px auto !important;
+}
+
+/* Image div — background-image approach, no alt text */
+body.mode_show .dw-content .js-ib-icon {
+  width: 160px !important;
+  height: 160px !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  display: block !important;
+  margin: 0 auto !important;
+  font-size: 0 !important;
+  color: transparent !important;
+}
+body.mode_show .dw-content .js-ab-icon {
+  width: 48px !important;
+  height: 48px !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  display: block !important;
+  flex-shrink: 0 !important;
+}
+
+/* Two-column columns should be side by side for cards */
+body.mode_show .dw-content .js-two-col:has(.js-item-block2),
+body.mode_show .dw-content .js-two-col:has(.js-ability-block2) {
+  align-items: flex-start !important;
+  gap: 16px !important;
+}
+
+/* ── INLINE ICONS — live page ── */
+body.mode_show .dw-content .js-inline-icon {
+  display: inline-block !important;
+  vertical-align: middle !important;
+  margin: 0 2px !important;
+}
+/* URL-based icons (souls, spirit) */
+body.mode_show .dw-content .js-inline-icon[data-icon="souls"],
+body.mode_show .dw-content .js-inline-icon[data-icon="spirit"] {
+  width: 18px !important;
+  height: 18px !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+}
+
+/* ── STAT ICONS ON LIVE PAGE — applied via jumpstart-live.js data-src ── */
+body.mode_show .dw-content .js-ib-chip-icon,
+body.mode_show .dw-content .js-ab-stat-icon {
+  display: inline-block !important;
+  width: 20px !important;
+  height: 20px !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  vertical-align: middle !important;
+  flex-shrink: 0 !important;
+}
+body.mode_show .dw-content .js-ab-stat-icon {
+  width: 24px !important;
+  height: 24px !important;
+  margin-right: 4px !important;
+}
+body.mode_show .dw-content .js-inline-icon[data-src] {
+  display: inline-block !important;
+  width: 18px !important;
+  height: 18px !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  vertical-align: middle !important;
+  margin: 0 2px !important;
+}
+
+/* ── ITEM COST TABLE — live page (matches Headhunter reference) ── */
+body.mode_show .dw-content .js-ib-costtable {
+  padding: 10px 16px !important;
+  background: rgba(0,0,0,0.2) !important;
+  border-bottom: 1px solid rgba(107,79,187,0.12) !important;
+}
+body.mode_show .dw-content .js-ib-costrow {
+  display: flex !important;
+  align-items: center !important;
+  gap: 16px !important;
+  padding: 3px 0 !important;
+}
+body.mode_show .dw-content .js-ib-costlabel {
+  color: rgba(184,173,219,0.5) !important;
+  font-size: 13px !important;
+  width: 36px !important;
+  flex-shrink: 0 !important;
+  font-family: 'Barlow Condensed', sans-serif !important;
+}
+body.mode_show .dw-content .js-ib-tier {
+  color: rgba(237,232,245,0.7) !important;
+  font-family: 'Barlow Condensed', sans-serif !important;
+  font-size: 15px !important;
+}
+/* Remove old meta row styles that conflict */
+body.mode_show .dw-content .js-ib-meta { display: none !important; }
+
+/* ══════════════════════════════════════════════
+   ITEM & ABILITY CARDS — LIVE PAGE (final reference match)
+══════════════════════════════════════════════ */
+
+/* Item chip grid — 2 col like game */
+body.mode_show .dw-content .js-ib-chips-grid {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 1px !important;
+  background: rgba(107,79,187,0.15) !important;
+  border-top: 1px solid rgba(107,79,187,0.12) !important;
+}
+body.mode_show .dw-content .js-ib-chip-card {
+  background: #1a1230 !important;
+  padding: 10px 8px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 3px !important;
+  min-height: 72px !important;
+  justify-content: center !important;
+}
+body.mode_show .dw-content .js-ib-chip-icon {
+  display: block !important;
+  width: 20px !important; height: 20px !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  margin-bottom: 3px !important;
+}
+body.mode_show .dw-content .js-ib-chip-val {
+  font-size: 18px !important; font-weight: 700 !important;
+  color: #EDE8F5 !important; text-align: center !important;
+  font-family: 'Barlow Condensed', sans-serif !important;
+  display: block !important;
+}
+body.mode_show .dw-content .js-ib-chip-lbl {
+  font-size: 11px !important; color: rgba(184,173,219,0.6) !important;
+  text-align: center !important;
+  font-family: 'Barlow Condensed', sans-serif !important;
+  display: block !important;
+}
+body.mode_show .dw-content .js-ib-chip-cond {
+  font-size: 10px !important; color: rgba(107,79,187,0.8) !important;
+  font-style: italic !important; display: block !important;
+}
+
+/* Ability stat grid — live page */
+body.mode_show .dw-content .js-ab-grid {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 1px !important;
+  background: rgba(107,79,187,0.15) !important;
+  border-top: 1px solid rgba(107,79,187,0.12) !important;
+}
+body.mode_show .dw-content .js-ab-grid-cell {
+  background: #1e1535 !important;
+  padding: 14px 12px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 3px !important;
+  min-height: 80px !important;
+  justify-content: center !important;
+}
+body.mode_show .dw-content .js-ab-cell-hl {
+  background: rgba(107,79,187,0.45) !important;
+}
+body.mode_show .dw-content .js-ab-grid-icon {
+  display: block !important;
+  width: 22px !important; height: 22px !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  margin-bottom: 3px !important;
+}
+body.mode_show .dw-content .js-ab-grid-val {
+  font-size: 28px !important; font-weight: 700 !important;
+  color: #fff !important; line-height: 1 !important;
+  font-family: 'Barlow Condensed', sans-serif !important;
+  display: block !important;
+}
+body.mode_show .dw-content .js-ab-grid-lbl {
+  font-size: 12px !important; color: rgba(184,173,219,0.65) !important;
+  text-align: center !important;
+  font-family: 'Barlow Condensed', sans-serif !important;
+  display: block !important;
+}
+
+/* Upgrades */
+body.mode_show .dw-content .js-ab-upgrades {
+  display: grid !important;
+  grid-template-columns: repeat(3,1fr) !important;
+  gap: 1px !important;
+  background: rgba(107,79,187,0.12) !important;
+  border-top: 1px solid rgba(107,79,187,0.12) !important;
+}
+body.mode_show .dw-content .js-ab-upgrade {
+  background: #0e0b1e !important;
+  padding: 12px 8px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 4px !important;
+  min-height: 80px !important;
+  justify-content: center !important;
+}
+body.mode_show .dw-content .js-ab-upgrade-cost {
+  font-size: 15px !important; font-weight: 700 !important;
+  color: #9b7ee8 !important;
+  font-family: 'Barlow Condensed', sans-serif !important;
+  display: block !important;
+}
+body.mode_show .dw-content .js-ab-upgrade-value {
+  font-size: 22px !important; font-weight: 700 !important;
+  color: #fff !important; text-align: center !important;
+  font-family: 'Barlow Condensed', sans-serif !important;
+  line-height: 1.1 !important; display: block !important;
+}
+body.mode_show .dw-content .js-ab-upgrade-label {
+  font-size: 11px !important; color: rgba(184,173,219,0.55) !important;
+  text-align: center !important;
+  font-family: 'Barlow Condensed', sans-serif !important;
+  display: block !important;
+}
+
+/* ── ITEM CARD LIVE PAGE — game-accurate backgrounds ── */
+body.mode_show .dw-content .js-item-block2[data-type="weapon"] { background: #2a1f0f !important; }
+body.mode_show .dw-content .js-item-block2[data-type="vitality"] { background: #0f1f0f !important; }
+body.mode_show .dw-content .js-item-block2[data-type="spirit"] { background: #1a0f2a !important; }
+
+body.mode_show .dw-content .js-item-block2[data-type="weapon"] .js-ib-namebar { background: #c8922a !important; }
+body.mode_show .dw-content .js-item-block2[data-type="vitality"] .js-ib-namebar { background: #3a9a3a !important; }
+body.mode_show .dw-content .js-item-block2[data-type="spirit"] .js-ib-namebar { background: #c040c0 !important; }
+
+/* Cost in green like the game */
+body.mode_show .dw-content .js-ib-cost { color: #6abf6a !important; font-size: 16px !important; font-weight: 700 !important; }
+
+/* Passive stat lines */
+body.mode_show .dw-content .js-ib-pstat { color: rgba(220,210,185,0.92) !important; font-size: 14px !important; padding: 4px 14px !important; }
+
+/* Section labels */
+body.mode_show .dw-content .js-ib-section { background: rgba(0,0,0,0.3) !important; border-color: rgba(0,0,0,0.3) !important; }
+body.mode_show .dw-content .js-ib-section-label { color: rgba(200,185,150,0.55) !important; font-style: italic !important; text-transform: none !important; letter-spacing: 0.05em !important; }
+body.mode_show .dw-content .js-ib-section-active .js-ib-section-label { font-style: normal !important; font-weight: 700 !important; color: rgba(220,210,185,0.95) !important; text-transform: uppercase !important; letter-spacing: 0.1em !important; }
+
+/* Ability block */
+body.mode_show .dw-content .js-ability-block2 { background: #1a1228 !important; }
+body.mode_show .dw-content .js-ab-name { color: #f0e8cc !important; font-size: 28px !important; }
+body.mode_show .dw-content .js-ab-desc { color: rgba(237,232,245,0.92) !important; font-size: 15px !important; line-height: 1.7 !important; }
+
+/* Duration */
+body.mode_show .dw-content .js-ib-duration { color: rgba(200,185,150,0.7) !important; font-size: 13px !important; border-top: 1px solid rgba(0,0,0,0.2) !important; padding: 6px 14px !important; }
+
+/* ── INLINE ICONS — img-based, live page ── */
+body.mode_show .dw-content img.js-inline-icon {
+  display: inline !important;
+  width: 18px !important;
+  height: 18px !important;
+  vertical-align: middle !important;
+  margin: 0 2px !important;
+  object-fit: contain !important;
+}
+
+/* ── INLINE ICONS — live page (class-based, applied by jumpstart-live.js) ── */
+body.mode_show .dw-content span.js-inline-icon {
+  display: inline-block !important;
+  width: 20px !important;
+  height: 20px !important;
+  vertical-align: middle !important;
+  margin: 0 1px !important;
+  font-size: 0 !important;
+  line-height: 20px !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+}
+
+/* Colored text in desc fields — preserve foreColor spans */
+body.mode_show .dw-content .js-ab-desc span[style*="color"],
+body.mode_show .dw-content .js-ib-desc-text span[style*="color"],
+body.mode_show .dw-content .js-ib-desc span[style*="color"] {
+  font-weight: inherit !important;
+}

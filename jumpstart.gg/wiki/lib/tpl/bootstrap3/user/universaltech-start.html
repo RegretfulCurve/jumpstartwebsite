@@ -1,0 +1,744 @@
+~~NOCACHE~~
+<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+/* ===== UNIVERSAL TECH PAGE ===== */
+#dokuwiki__site { display: none !important; }
+
+#ut-page {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #0A0816;
+  display: flex;
+  overflow: hidden;
+  font-family: 'Forevs', sans-serif;
+}
+
+/* ===== VIDEO BACKGROUND ===== */
+#ut-video-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+#ut-video-bg video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.35;
+}
+#ut-video-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(10,8,22,0.85) 0%, rgba(10,8,22,0.4) 50%, rgba(10,8,22,0.1) 100%);
+}
+
+/* ===== SIDEBAR ===== */
+#ut-sidebar {
+  position: relative;
+  z-index: 10;
+  width: 340px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 28px 0 28px 28px;
+  gap: 0;
+  overflow: hidden;
+}
+
+#ut-sidebar-header {
+  padding: 0 20px 20px 0;
+  flex-shrink: 0;
+}
+
+#ut-logo {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #6B4FBB;
+  margin-bottom: 6px;
+}
+
+#ut-sidebar-header h1 {
+  font-size: 26px;
+  color: #EDE8F5;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  line-height: 1;
+  margin-bottom: 14px;
+}
+
+#ut-search {
+  width: 100%;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(108,79,187,0.4);
+  border-radius: 10px;
+  padding: 9px 14px;
+  color: #EDE8F5;
+  font-size: 13px;
+  font-family: 'Forevs', sans-serif;
+  outline: none;
+  transition: border-color 0.15s;
+}
+#ut-search::placeholder { color: rgba(108,79,187,0.6); }
+#ut-search:focus { border-color: rgba(184,173,219,0.6); }
+
+/* ===== TILE LIST ===== */
+#ut-tile-list {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-bottom: 20px;
+}
+#ut-tile-list::-webkit-scrollbar { width: 3px; }
+#ut-tile-list::-webkit-scrollbar-track { background: transparent; }
+#ut-tile-list::-webkit-scrollbar-thumb { background: #3D2B7A; border-radius: 2px; }
+
+/* ===== CATEGORY TILE ===== */
+.ut-cat-wrap {
+  flex-shrink: 0;
+  transition: margin 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+
+.ut-cat-tile {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.25s cubic-bezier(0.4,0,0.2,1), opacity 0.25s, height 0.3s cubic-bezier(0.4,0,0.2,1);
+  height: 72px;
+  border: 1px solid rgba(108,79,187,0.25);
+  user-select: none;
+}
+
+.ut-cat-tile.active {
+  border-color: rgba(184,173,219,0.5);
+  height: 72px;
+}
+
+.ut-cat-tile.sibling-shrink {
+  height: 52px;
+  opacity: 0.7;
+}
+
+.ut-cat-tile-bg {
+  position: absolute;
+  inset: 0;
+  opacity: 0.18;
+  transition: opacity 0.2s;
+}
+.ut-cat-tile:hover .ut-cat-tile-bg { opacity: 0.28; }
+.ut-cat-tile.active .ut-cat-tile-bg { opacity: 0.32; }
+
+.ut-cat-tile-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, rgba(10,8,22,0.72) 0%, rgba(10,8,22,0.3) 100%);
+}
+.ut-cat-tile.active .ut-cat-tile-gradient {
+  background: linear-gradient(105deg, rgba(61,43,122,0.6) 0%, rgba(26,20,51,0.3) 100%);
+}
+
+.ut-cat-tile-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  height: 100%;
+  padding: 0 18px;
+  transition: padding 0.25s;
+}
+
+.ut-cat-icon {
+  font-size: 22px;
+  color: #9D85DB;
+  flex-shrink: 0;
+  transition: font-size 0.25s, color 0.2s;
+}
+.ut-cat-tile.active .ut-cat-icon { color: #C8BFED; font-size: 24px; }
+.ut-cat-tile.sibling-shrink .ut-cat-icon { font-size: 17px; }
+
+.ut-cat-text { flex: 1; min-width: 0; }
+.ut-cat-label {
+  font-size: 15px;
+  font-weight: 600;
+  color: #C8BFED;
+  letter-spacing: 0.01em;
+  transition: font-size 0.25s, color 0.2s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ut-cat-tile.active .ut-cat-label { color: #EDE8F5; font-size: 16px; }
+.ut-cat-tile.sibling-shrink .ut-cat-label { font-size: 13px; }
+
+.ut-cat-count {
+  font-size: 11px;
+  color: #6B4FBB;
+  margin-top: 2px;
+  transition: opacity 0.2s;
+}
+.ut-cat-tile.sibling-shrink .ut-cat-count { opacity: 0; }
+
+.ut-cat-chevron {
+  font-size: 14px;
+  color: #6B4FBB;
+  transition: transform 0.25s, color 0.2s;
+  flex-shrink: 0;
+}
+.ut-cat-tile.active .ut-cat-chevron { transform: rotate(90deg); color: #9D85DB; }
+
+/* ===== SUB-TILES ===== */
+.ut-sub-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.35s cubic-bezier(0.4,0,0.2,1), margin-top 0.25s;
+  margin-top: 0;
+}
+.ut-sub-list.open {
+  max-height: 600px;
+  margin-top: 6px;
+}
+
+.ut-sub-tile {
+  border-radius: 10px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 16px 0 24px;
+  cursor: pointer;
+  background: rgba(61,43,122,0.22);
+  border: 1px solid rgba(108,79,187,0.2);
+  transition: background 0.15s, border-color 0.15s, transform 0.15s;
+  transform: translateX(-20px);
+  opacity: 0;
+  animation: none;
+}
+.ut-sub-list.open .ut-sub-tile {
+  animation: subSlideIn 0.3s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+.ut-sub-list.open .ut-sub-tile:nth-child(1) { animation-delay: 0.04s; }
+.ut-sub-list.open .ut-sub-tile:nth-child(2) { animation-delay: 0.09s; }
+.ut-sub-list.open .ut-sub-tile:nth-child(3) { animation-delay: 0.14s; }
+.ut-sub-list.open .ut-sub-tile:nth-child(4) { animation-delay: 0.19s; }
+.ut-sub-list.open .ut-sub-tile:nth-child(5) { animation-delay: 0.24s; }
+.ut-sub-list.open .ut-sub-tile:nth-child(6) { animation-delay: 0.29s; }
+@keyframes subSlideIn {
+  to { transform: translateX(0); opacity: 1; }
+}
+
+.ut-sub-tile:hover {
+  background: rgba(108,79,187,0.3);
+  border-color: rgba(184,173,219,0.35);
+  transform: translateX(3px) !important;
+}
+.ut-sub-tile.active {
+  background: rgba(108,79,187,0.38);
+  border-color: rgba(184,173,219,0.55);
+  transform: translateX(3px) !important;
+}
+
+.ut-sub-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #6B4FBB;
+  flex-shrink: 0;
+  transition: background 0.15s;
+}
+.ut-sub-tile.active .ut-sub-dot,
+.ut-sub-tile:hover .ut-sub-dot { background: #B8ADDB; }
+
+.ut-sub-label {
+  font-size: 13px;
+  color: #9D85DB;
+  flex: 1;
+  transition: color 0.15s;
+}
+.ut-sub-tile.active .ut-sub-label,
+.ut-sub-tile:hover .ut-sub-label { color: #EDE8F5; }
+
+.ut-sub-arrow {
+  font-size: 12px;
+  color: #6B4FBB;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+.ut-sub-tile:hover .ut-sub-arrow,
+.ut-sub-tile.active .ut-sub-arrow { opacity: 1; }
+
+/* ===== MAIN AREA ===== */
+#ut-main {
+  position: relative;
+  z-index: 5;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 0 60px 60px 40px;
+  pointer-events: none;
+}
+
+/* splash state */
+#ut-splash {
+  transition: opacity 0.3s, transform 0.3s;
+}
+#ut-splash.hidden { opacity: 0; transform: translateY(10px); pointer-events: none; }
+
+#ut-splash-tag {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #6B4FBB;
+  margin-bottom: 12px;
+}
+#ut-splash-title {
+  font-size: 64px;
+  font-weight: 700;
+  color: #EDE8F5;
+  line-height: 1;
+  letter-spacing: -1px;
+  margin-bottom: 16px;
+}
+#ut-splash-title em { color: #6B4FBB; font-style: normal; }
+#ut-splash-desc {
+  font-size: 15px;
+  color: #9D85DB;
+  max-width: 420px;
+  line-height: 1.6;
+  margin-bottom: 28px;
+}
+#ut-splash-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  pointer-events: all;
+}
+.ut-splash-pill {
+  background: rgba(61,43,122,0.4);
+  border: 1px solid rgba(108,79,187,0.45);
+  border-radius: 20px;
+  padding: 6px 16px;
+  font-size: 12px;
+  color: #B8ADDB;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: 'Forevs', sans-serif;
+}
+.ut-splash-pill:hover {
+  background: rgba(108,79,187,0.45);
+  color: #EDE8F5;
+  border-color: rgba(184,173,219,0.6);
+}
+
+/* content state */
+#ut-content {
+  position: absolute;
+  bottom: 60px;
+  left: 40px;
+  right: 60px;
+  transition: opacity 0.3s, transform 0.3s;
+  pointer-events: all;
+}
+#ut-content.hidden { opacity: 0; transform: translateY(10px); pointer-events: none; }
+
+#ut-breadcrumb {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #6B4FBB;
+  margin-bottom: 10px;
+}
+#ut-content-title {
+  font-size: 48px;
+  font-weight: 700;
+  color: #EDE8F5;
+  letter-spacing: -0.5px;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+#ut-content-desc {
+  font-size: 14px;
+  color: #9D85DB;
+  max-width: 500px;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+#ut-card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.ut-guide-card {
+  background: rgba(26,20,51,0.65);
+  border: 1px solid rgba(108,79,187,0.35);
+  border-radius: 12px;
+  padding: 14px 18px;
+  cursor: pointer;
+  transition: all 0.15s;
+  backdrop-filter: blur(6px);
+  text-decoration: none;
+  display: block;
+  min-width: 160px;
+}
+.ut-guide-card:hover {
+  background: rgba(61,43,122,0.55);
+  border-color: rgba(184,173,219,0.5);
+  transform: translateY(-2px);
+}
+.ut-guide-card-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #C8BFED;
+  margin-bottom: 3px;
+}
+.ut-guide-card-meta {
+  font-size: 11px;
+  color: #6B4FBB;
+}
+
+#ut-open-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(108,79,187,0.3);
+  border: 1px solid rgba(108,79,187,0.55);
+  border-radius: 10px;
+  padding: 10px 20px;
+  color: #B8ADDB;
+  font-size: 13px;
+  font-family: 'Forevs', sans-serif;
+  cursor: pointer;
+  transition: all 0.15s;
+  text-decoration: none;
+}
+#ut-open-btn:hover {
+  background: rgba(108,79,187,0.55);
+  color: #EDE8F5;
+  border-color: rgba(184,173,219,0.6);
+}
+
+/* ===== CATEGORY TILE ACCENT COLORS ===== */
+.ut-accent-movement .ut-cat-tile-bg { background: linear-gradient(135deg, #3D2B7A, #1A1433); }
+.ut-accent-combat .ut-cat-tile-bg { background: linear-gradient(135deg, #7A2B4A, #3A1020); }
+.ut-accent-items .ut-cat-tile-bg { background: linear-gradient(135deg, #2B5A7A, #0F2535); }
+.ut-accent-map .ut-cat-tile-bg { background: linear-gradient(135deg, #2B7A4A, #0F3520); }
+.ut-accent-mechanics .ut-cat-tile-bg { background: linear-gradient(135deg, #7A5A2B, #352510); }
+.ut-accent-abilities .ut-cat-tile-bg { background: linear-gradient(135deg, #5A2B7A, #251035); }
+
+</style>
+</head>
+<body>
+
+<div id="ut-page">
+
+  <!-- VIDEO BACKGROUND -->
+  <div id="ut-video-bg">
+    <video autoplay muted loop playsinline id="ut-video">
+      <source src="/wiki/lib/tpl/bootstrap3/videos/gameplay1.mp4" type="video/mp4">
+      <source src="/wiki/lib/tpl/bootstrap3/videos/gameplay2.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <!-- SIDEBAR -->
+  <div id="ut-sidebar">
+    <div id="ut-sidebar-header">
+      <div id="ut-logo">JumpStart Wiki</div>
+      <h1>Universal Tech</h1>
+      <input type="text" id="ut-search" placeholder="Search tech..." autocomplete="off" />
+    </div>
+    <div id="ut-tile-list"></div>
+  </div>
+
+  <!-- MAIN AREA -->
+  <div id="ut-main">
+
+    <div id="ut-splash">
+      <div id="ut-splash-tag">JumpStart Wiki · Universal Tech</div>
+      <div id="ut-splash-title">Master the<br><em>Fundamentals</em></div>
+      <div id="ut-splash-desc">Techniques and mechanics that apply to every hero. Pick a category to explore.</div>
+      <div id="ut-splash-pills" id="quickPills"></div>
+    </div>
+
+    <div id="ut-content" class="hidden">
+      <div id="ut-breadcrumb"></div>
+      <div id="ut-content-title"></div>
+      <div id="ut-content-desc"></div>
+      <div id="ut-card-grid"></div>
+      <a id="ut-open-btn" href="#">
+        <i class="ti ti-external-link"></i>
+        <span id="ut-btn-label">Open wiki page</span>
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function(){
+
+const CATS = [
+  {
+    id: 'movement', icon: 'ti-run', label: 'Movement', accent: 'movement',
+    desc: 'Core locomotion mechanics — how you move, fly, and traverse the map at speed.',
+    wikiId: 'universaltech:movement',
+    subs: [
+      { id: 'bunnyhop', label: 'Bunny Hop', desc: 'Speed maintenance between jumps.', wikiId: 'universaltech:movement:bunnyhop' },
+      { id: 'airstrafing', label: 'Air Strafing', desc: 'Directional control while airborne.', wikiId: 'universaltech:movement:airstrafing' },
+      { id: 'walljump', label: 'Wall Jump', desc: 'Bouncing off geometry for height or distance.', wikiId: 'universaltech:movement:walljump' },
+      { id: 'slidehop', label: 'Slide Hop', desc: 'Chaining slides and hops for momentum.', wikiId: 'universaltech:movement:slidehop' },
+      { id: 'zipline', label: 'Zipline Tech', desc: 'Advanced entry, exit, and speed tricks.', wikiId: 'universaltech:movement:zipline' },
+    ]
+  },
+  {
+    id: 'combat', icon: 'ti-crosshair', label: 'Combat', accent: 'combat',
+    desc: 'Engagement techniques — positioning, timing, burst windows, and aim mechanics.',
+    wikiId: 'universaltech:combat',
+    subs: [
+      { id: 'peekshoot', label: 'Peek Shooting', desc: 'Minimize exposure while landing shots.', wikiId: 'universaltech:combat:peekshoot' },
+      { id: 'jumpshoot', label: 'Jump Shooting', desc: 'Accuracy and timing when airborne.', wikiId: 'universaltech:combat:jumpshoot' },
+      { id: 'slideshoot', label: 'Slide Shooting', desc: 'Aim control through slide animations.', wikiId: 'universaltech:combat:slideshoot' },
+      { id: 'reloadcancel', label: 'Reload Cancel', desc: 'Safely cutting reload animations short.', wikiId: 'universaltech:combat:reloadcancel' },
+    ]
+  },
+  {
+    id: 'items', icon: 'ti-package', label: 'Item Tech', accent: 'items',
+    desc: 'Hidden mechanics and advanced interactions with universal items.',
+    wikiId: 'universaltech:items',
+    subs: [
+      { id: 'warpstone', label: 'Warp Stone', desc: 'Positioning tricks and cancel windows.', wikiId: 'universaltech:items:warpstone' },
+      { id: 'cloakmantle', label: 'Cloak + Mantle', desc: 'Invisibility combined with mobility items.', wikiId: 'universaltech:items:cloakmantle' },
+      { id: 'coldfront', label: 'Cold Front', desc: 'Slow tech and zone control setups.', wikiId: 'universaltech:items:coldfront' },
+      { id: 'magiccarpet', label: 'Magic Carpet', desc: 'Hover positioning and edge-case uses.', wikiId: 'universaltech:items:magiccarpet' },
+    ]
+  },
+  {
+    id: 'map', icon: 'ti-map', label: 'Map Tech', accent: 'map',
+    desc: 'Geometry exploits, map-specific routes, and positional advantages.',
+    wikiId: 'universaltech:map',
+    subs: [
+      { id: 'roofjumps', label: 'Roof Jumps', desc: 'Common roof access points across all lanes.', wikiId: 'universaltech:map:roofjumps' },
+      { id: 'shortcuts', label: 'Shortcuts', desc: 'Fast-path routes used in high-level play.', wikiId: 'universaltech:map:shortcuts' },
+      { id: 'oob', label: 'Out-of-Bounds Tech', desc: 'Legal geometry clips and unintended spots.', wikiId: 'universaltech:map:oob' },
+    ]
+  },
+  {
+    id: 'mechanics', icon: 'ti-settings', label: 'Game Mechanics', accent: 'mechanics',
+    desc: 'Engine and system-level behaviour that affects every hero equally.',
+    wikiId: 'universaltech:mechanics',
+    subs: [
+      { id: 'animation', label: 'Animation Cancels', desc: 'Breaking animations to act faster.', wikiId: 'universaltech:mechanics:animation' },
+      { id: 'momentum', label: 'Momentum Preservation', desc: 'How the engine stores and bleeds speed.', wikiId: 'universaltech:mechanics:momentum' },
+      { id: 'phasing', label: 'Phasing Windows', desc: 'Invincibility and i-frame timing.', wikiId: 'universaltech:mechanics:phasing' },
+    ]
+  },
+  {
+    id: 'abilities', icon: 'ti-bolt', label: 'Ability Tech', accent: 'abilities',
+    desc: 'Universal interactions between abilities, items, and game systems.',
+    wikiId: 'universaltech:abilities',
+    subs: [
+      { id: 'quickcast', label: 'Quick Cast', desc: 'Instant ability activation setups.', wikiId: 'universaltech:abilities:quickcast' },
+      { id: 'buffstack', label: 'Buff Stacking', desc: 'Layering buffs for maximum burst.', wikiId: 'universaltech:abilities:buffstack' },
+      { id: 'canceltech', label: 'Cancel Tech', desc: 'Cancelling abilities for free casts.', wikiId: 'universaltech:abilities:canceltech' },
+    ]
+  },
+];
+
+let activeCatId = null;
+let activeSubId = null;
+
+const tileList = document.getElementById('ut-tile-list');
+const searchInput = document.getElementById('ut-search');
+const splash = document.getElementById('ut-splash');
+const content = document.getElementById('ut-content');
+const splashPills = document.getElementById('ut-splash-pills');
+
+// Build splash pills
+CATS.forEach(cat => {
+  const pill = document.createElement('button');
+  pill.className = 'ut-splash-pill';
+  pill.textContent = cat.label;
+  pill.addEventListener('click', () => selectCat(cat.id));
+  splashPills.appendChild(pill);
+});
+
+function buildTiles(filter) {
+  tileList.innerHTML = '';
+  const q = filter ? filter.toLowerCase() : '';
+
+  CATS.forEach(cat => {
+    const matchCat = !q || cat.label.toLowerCase().includes(q);
+    const matchSubs = cat.subs.filter(s => !q || s.label.toLowerCase().includes(q) || matchCat);
+    if (q && matchSubs.length === 0) return;
+
+    const isActive = activeCatId === cat.id;
+
+    const wrap = document.createElement('div');
+    wrap.className = `ut-cat-wrap ut-accent-${cat.accent}`;
+    if (!isActive && activeCatId !== null) wrap.classList.add('has-active');
+
+    // Category tile
+    const tile = document.createElement('div');
+    tile.className = 'ut-cat-tile' + (isActive ? ' active' : '') + (activeCatId && !isActive ? ' sibling-shrink' : '');
+    tile.innerHTML = `
+      <div class="ut-cat-tile-bg"></div>
+      <div class="ut-cat-tile-gradient"></div>
+      <div class="ut-cat-tile-content">
+        <i class="ti ${cat.icon} ut-cat-icon" aria-hidden="true"></i>
+        <div class="ut-cat-text">
+          <div class="ut-cat-label">${cat.label}</div>
+          <div class="ut-cat-count">${cat.subs.length} techniques</div>
+        </div>
+        <i class="ti ti-chevron-right ut-cat-chevron" aria-hidden="true"></i>
+      </div>
+    `;
+    tile.addEventListener('click', () => selectCat(cat.id));
+
+    // Sub list
+    const subList = document.createElement('div');
+    subList.className = 'ut-sub-list' + (isActive ? ' open' : '');
+
+    const visibleSubs = q ? matchSubs : cat.subs;
+    visibleSubs.forEach(sub => {
+      const isActiveSub = activeSubId === sub.id;
+      const subTile = document.createElement('div');
+      subTile.className = 'ut-sub-tile' + (isActiveSub ? ' active' : '');
+      subTile.innerHTML = `
+        <span class="ut-sub-dot"></span>
+        <span class="ut-sub-label">${sub.label}</span>
+        <i class="ti ti-arrow-right ut-sub-arrow" aria-hidden="true"></i>
+      `;
+      subTile.addEventListener('click', (e) => { e.stopPropagation(); selectSub(cat.id, sub.id); });
+      subList.appendChild(subTile);
+    });
+
+    wrap.appendChild(tile);
+    wrap.appendChild(subList);
+    tileList.appendChild(wrap);
+  });
+}
+
+function selectCat(catId) {
+  if (activeCatId === catId) {
+    // deselect
+    activeCatId = null;
+    activeSubId = null;
+    showSplash();
+  } else {
+    activeCatId = catId;
+    activeSubId = null;
+    showCat(catId);
+  }
+  buildTiles(searchInput.value);
+  scrollActiveTileIntoView();
+}
+
+function selectSub(catId, subId) {
+  activeCatId = catId;
+  activeSubId = subId;
+  showSub(catId, subId);
+  buildTiles(searchInput.value);
+}
+
+function showSplash() {
+  splash.classList.remove('hidden');
+  content.classList.add('hidden');
+}
+
+function showCat(catId) {
+  const cat = CATS.find(c => c.id === catId);
+  splash.classList.add('hidden');
+  content.classList.remove('hidden');
+
+  document.getElementById('ut-breadcrumb').textContent = 'Universal Tech';
+  document.getElementById('ut-content-title').textContent = cat.label;
+  document.getElementById('ut-content-desc').textContent = cat.desc;
+
+  const grid = document.getElementById('ut-card-grid');
+  grid.innerHTML = '';
+  cat.subs.forEach(sub => {
+    const card = document.createElement('a');
+    card.className = 'ut-guide-card';
+    card.href = `/wiki/doku.php?id=${sub.wikiId}`;
+    card.innerHTML = `<div class="ut-guide-card-name">${sub.label}</div><div class="ut-guide-card-meta">${sub.desc}</div>`;
+    card.addEventListener('click', (e) => { e.preventDefault(); selectSub(catId, sub.id); });
+    grid.appendChild(card);
+  });
+
+  const btn = document.getElementById('ut-open-btn');
+  btn.href = `/wiki/doku.php?id=${cat.wikiId}`;
+  document.getElementById('ut-btn-label').textContent = `Open ${cat.label} overview`;
+}
+
+function showSub(catId, subId) {
+  const cat = CATS.find(c => c.id === catId);
+  const sub = cat.subs.find(s => s.id === subId);
+  splash.classList.add('hidden');
+  content.classList.remove('hidden');
+
+  document.getElementById('ut-breadcrumb').textContent = `Universal Tech › ${cat.label}`;
+  document.getElementById('ut-content-title').textContent = sub.label;
+  document.getElementById('ut-content-desc').textContent = sub.desc;
+
+  const grid = document.getElementById('ut-card-grid');
+  grid.innerHTML = '';
+  ['Overview', 'Basic Setup', 'Intermediate', 'Advanced', 'Video Examples', 'Common Mistakes'].forEach(section => {
+    const card = document.createElement('a');
+    card.className = 'ut-guide-card';
+    card.href = `/wiki/doku.php?id=${sub.wikiId}`;
+    card.innerHTML = `<div class="ut-guide-card-name">${section}</div><div class="ut-guide-card-meta">Guide section</div>`;
+    grid.appendChild(card);
+  });
+
+  const btn = document.getElementById('ut-open-btn');
+  btn.href = `/wiki/doku.php?id=${sub.wikiId}`;
+  document.getElementById('ut-btn-label').textContent = `Open ${sub.label} wiki page`;
+}
+
+function scrollActiveTileIntoView() {
+  setTimeout(() => {
+    const tiles = tileList.querySelectorAll('.ut-cat-tile.active');
+    if (tiles.length) tiles[0].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }, 50);
+}
+
+// Cycle through video sources if multiple exist
+const video = document.getElementById('ut-video');
+const sources = [
+  '/wiki/lib/tpl/bootstrap3/videos/gameplay1.mp4',
+  '/wiki/lib/tpl/bootstrap3/videos/gameplay2.mp4',
+  '/wiki/lib/tpl/bootstrap3/videos/gameplay3.mp4',
+  '/wiki/lib/tpl/bootstrap3/videos/gameplay4.mp4',
+];
+let vidIdx = 0;
+video.addEventListener('ended', () => {
+  vidIdx = (vidIdx + 1) % sources.length;
+  video.src = sources[vidIdx];
+  video.play();
+});
+
+searchInput.addEventListener('input', () => buildTiles(searchInput.value));
+
+// Initial render
+buildTiles();
+
+})();
+</script>
+</body>
+</html>
+</html>

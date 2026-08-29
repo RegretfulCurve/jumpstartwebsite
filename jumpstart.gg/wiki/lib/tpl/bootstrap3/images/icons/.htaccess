@@ -1,0 +1,4 @@
+AddType image/webp .webp
+<FilesMatch "\.webp$">
+    Header set Content-Type "image/webp"
+</FilesMatch>

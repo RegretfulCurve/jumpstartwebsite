@@ -1,0 +1,17 @@
+@font-face {
+    font-family: 'Forevs';
+    src: url('../../fonts/ForevsDemo-Light.otf') format('opentype');
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: 'Forevs';
+    src: url('../../fonts/ForevsDemo-Medium.otf') format('opentype');
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'Forevs';
+    src: url('../../fonts/ForevsDemo-Black.otf') format('opentype');
+    font-weight: 900;
+}

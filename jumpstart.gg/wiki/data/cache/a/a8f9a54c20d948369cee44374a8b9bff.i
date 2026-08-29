@@ -1,0 +1,1579 @@
+a:10:{i:0;a:3:{i:0;s:14:"document_start";i:1;a:0:{}i:2;i:0;}i:1;a:3:{i:0;s:6:"p_open";i:1;a:0:{}i:2;i:0;}i:2;a:3:{i:0;s:7:"nocache";i:1;a:0:{}i:2;i:1;}i:3;a:3:{i:0;s:5:"cdata";i:1;a:1:{i:0;s:1:"
+";}i:2;i:12;}i:4;a:3:{i:0;s:6:"plugin";i:1;a:4:{i:0;s:17:"confightmlok_html";i:1;a:2:{i:0;i:1;i:1;s:6:"<html>";}i:2;i:1;i:3;s:6:"<html>";}i:2;i:13;}i:5;a:3:{i:0;s:6:"plugin";i:1;a:4:{i:0;s:17:"confightmlok_html";i:1;a:2:{i:0;i:3;i:1;s:29872:"
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+body.mode_show #dokuwiki__site { display: none !important; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+.navbar.navbar-default { z-index: 10000 !important; }
+body:not(.mode_show) #ut-page { display: none !important; }
+
+#ut-page {
+  position: fixed;
+  top: 0;
+  left: 0; right: 0; bottom: 0;
+  z-index: 9000;
+  background: #0A0816;
+  display: flex;
+  overflow: hidden;
+  font-family: 'Forevs', sans-serif;
+  color: #EDE8F5;
+}
+
+/* VIDEO BG */
+#ut-video-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+#ut-video-bg video {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  opacity: 0.55;
+}
+#ut-video-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(10,8,22,0.95) 20%, rgba(10,8,22,0.55) 55%, rgba(10,8,22,0.1) 100%);
+}
+
+/* LEFT */
+#ut-left {
+  position: relative;
+  z-index: 10;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 0 64px 64px;
+  pointer-events: none;
+}
+
+#ut-splash, #ut-content {
+  transition: opacity 0.35s, transform 0.35s;
+}
+#ut-splash.hidden, #ut-content.hidden {
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  position: absolute;
+}
+#ut-content { pointer-events: all; }
+
+.ut-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #6B4FBB;
+  margin-bottom: 12px;
+}
+#ut-splash-title {
+  font-size: 72px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -1.5px;
+  margin-bottom: 18px;
+  color: #EDE8F5;
+}
+#ut-splash-title em { color: #6B4FBB; font-style: normal; }
+#ut-splash-desc {
+  font-size: 15px;
+  color: #9D85DB;
+  max-width: 400px;
+  line-height: 1.65;
+}
+
+/* content state */
+#ut-breadcrumb {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #6B4FBB;
+  margin-bottom: 10px;
+}
+#ut-content-title {
+  font-size: 56px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  line-height: 1;
+  margin-bottom: 12px;
+  color: #EDE8F5;
+}
+#ut-content-desc {
+  font-size: 14px;
+  color: #9D85DB;
+  max-width: 420px;
+  line-height: 1.65;
+  margin-bottom: 24px;
+}
+#ut-card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 22px;
+  pointer-events: all;
+}
+.ut-guide-card {
+  background: rgba(18,15,41,0.7);
+  border: 1px solid rgba(108,79,187,0.3);
+  border-radius: 10px;
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: all 0.15s;
+  text-decoration: none;
+  display: block;
+}
+.ut-guide-card:hover {
+  background: rgba(61,43,122,0.5);
+  border-color: rgba(184,173,219,0.45);
+  transform: translateY(-2px);
+}
+.ut-guide-card-name { font-size: 13px; font-weight: 600; color: #C8BFED; margin-bottom: 3px; }
+.ut-guide-card-meta { font-size: 11px; color: #6B4FBB; }
+
+#ut-open-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(108,79,187,0.28);
+  border: 1px solid rgba(108,79,187,0.5);
+  border-radius: 10px;
+  padding: 10px 20px;
+  color: #B8ADDB;
+  font-size: 13px;
+  font-family: 'Forevs', sans-serif;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.15s;
+  pointer-events: all;
+}
+#ut-open-btn:hover {
+  background: rgba(108,79,187,0.5);
+  color: #EDE8F5;
+  border-color: rgba(184,173,219,0.6);
+}
+
+/* RIGHT — osu carousel */
+#ut-carousel-wrap {
+  position: relative;
+  z-index: 10;
+  width: 500px;
+  flex-shrink: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  user-select: none;
+}
+
+#ut-carousel {
+  position: absolute;
+  right: 0;
+  width: 100%;
+}
+
+/* tiles */
+.ut-item {
+  position: absolute;
+  right: 0;
+  border-radius: 16px 0 0 16px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid rgba(108,79,187,0.2);
+  border-right: none;
+  will-change: transform, top, height, width, opacity;
+  transition:
+    width 0.22s cubic-bezier(0.4,0,0.2,1),
+    height 0.22s cubic-bezier(0.4,0,0.2,1),
+    opacity 0.22s;
+}
+
+.ut-item.is-cat        { width: 420px; height: 80px; }
+.ut-item.is-sub        { width: 370px; height: 60px; }
+.ut-item.is-cat.selected { width: 480px; height: 96px; }
+.ut-item.is-sub.selected { width: 440px; height: 72px; }
+
+.ut-item-bg {
+  position: absolute; inset: 0;
+  opacity: 0.2;
+  transition: opacity 0.2s;
+}
+.ut-item:hover .ut-item-bg { opacity: 0.3; }
+.ut-item.selected .ut-item-bg { opacity: 0.38; }
+
+.ut-item-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(90deg, rgba(10,8,22,0.85) 0%, rgba(10,8,22,0.25) 100%);
+}
+
+.ut-item-inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 22px;
+  width: 100%;
+  height: 100%;
+}
+
+.ut-item-icon {
+  font-size: 22px;
+  color: #9D85DB;
+  flex-shrink: 0;
+  transition: color 0.2s, font-size 0.2s;
+}
+.ut-item.selected .ut-item-icon  { color: #C8BFED; font-size: 24px; }
+.ut-item.is-sub .ut-item-icon    { font-size: 15px; color: #6B4FBB; }
+.ut-item.is-sub.selected .ut-item-icon { font-size: 17px; color: #9D85DB; }
+
+.ut-item-text { flex: 1; min-width: 0; }
+.ut-item-label {
+  font-size: 15px;
+  font-weight: 600;
+  color: #C8BFED;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.2s, font-size 0.2s;
+}
+.ut-item.selected .ut-item-label     { color: #EDE8F5; font-size: 17px; }
+.ut-item.is-sub .ut-item-label       { font-size: 13px; color: #9D85DB; font-weight: 500; }
+.ut-item.is-sub.selected .ut-item-label { color: #C8BFED; font-size: 14px; }
+
+.ut-item-sub-count {
+  font-size: 11px;
+  color: #6B4FBB;
+  margin-top: 3px;
+}
+
+.ut-item-accent-bar {
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  border-radius: 16px 0 0 16px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.ut-item.selected .ut-item-accent-bar { opacity: 1; }
+
+/* accent colors */
+.ut-acc-movement .ut-item-bg  { background: linear-gradient(90deg,#3D2B7A,#6B4FBB); }
+.ut-acc-movement .ut-item-accent-bar { background: #9D85DB; }
+.ut-acc-combat .ut-item-bg    { background: linear-gradient(90deg,#7A2B4A,#BB4F7A); }
+.ut-acc-combat .ut-item-accent-bar   { background: #DB85AD; }
+.ut-acc-items .ut-item-bg     { background: linear-gradient(90deg,#1E5A7A,#2B8FBB); }
+.ut-acc-items .ut-item-accent-bar    { background: #85CADB; }
+.ut-acc-map .ut-item-bg       { background: linear-gradient(90deg,#1E7A4A,#2BBB6F); }
+.ut-acc-map .ut-item-accent-bar      { background: #85DBA8; }
+.ut-acc-mechanics .ut-item-bg { background: linear-gradient(90deg,#7A5A1E,#BB8F2B); }
+.ut-acc-mechanics .ut-item-accent-bar{ background: #DBC085; }
+.ut-acc-abilities .ut-item-bg { background: linear-gradient(90deg,#5A1E7A,#8F2BBB); }
+.ut-acc-abilities .ut-item-accent-bar{ background: #C085DB; }
+
+/* search */
+#ut-search-wrap {
+  position: absolute;
+  top: 24px; right: 0;
+  width: 440px;
+  z-index: 20;
+}
+#ut-search {
+  width: 100%;
+  background: rgba(10,8,22,0.8);
+  border: 1px solid rgba(108,79,187,0.4);
+  border-right: none;
+  border-radius: 10px 0 0 10px;
+  padding: 10px 16px;
+  color: #EDE8F5;
+  font-size: 13px;
+  font-family: 'Forevs', sans-serif;
+  outline: none;
+  transition: border-color 0.15s;
+}
+#ut-search::placeholder { color: rgba(108,79,187,0.55); }
+#ut-search:focus { border-color: rgba(184,173,219,0.55); }
+</style>
+</head>
+<body>
+<div id="ut-page">
+
+  <div id="ut-video-bg">
+    <video autoplay muted loop playsinline id="ut-video">
+      <source src="/wiki/lib/exe/fetch.php?media=0%3Awiki1.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <div id="ut-left">
+    <div id="ut-splash">
+      <div class="ut-eyebrow">JumpStart Wiki</div>
+      <div id="ut-splash-title">Master the<br><em>Fundamentals</em></div>
+      <div id="ut-splash-desc">Mechanics and techniques that apply to every hero in Deadlock. Pick a category to explore.</div>
+    </div>
+    <div id="ut-content" class="hidden">
+      <div id="ut-breadcrumb"></div>
+      <div id="ut-content-title"></div>
+      <div id="ut-content-desc"></div>
+      <div id="ut-card-grid"></div>
+      <a id="ut-open-btn" href="#"><i class="ti ti-external-link"></i><span id="ut-btn-label">Open wiki page</span></a>
+    </div>
+  </div>
+
+  <div id="ut-carousel-wrap">
+    <div id="ut-search-wrap">
+      <input type="text" id="ut-search" placeholder="Search tech..." autocomplete="off" />
+    </div>
+    <div id="ut-carousel"></div>
+  </div>
+
+</div>
+<script>
+(function(){
+
+const CATS = [
+  { id:'movement', icon:'ti-run', label:'Movement', acc:'movement',
+    desc:'Core ground movement — walking, sprinting, crouching, sliding, jumping, and stamina management.',
+    wikiId:'universaltech:movement',
+    subs:[
+      {id:'walking',   label:'Walking',   desc:'Base movement speed and mechanics.', wikiId:'universaltech:movement:walking'},
+      {id:'sprinting', label:'Sprinting', desc:'Sprint mechanics and speed thresholds.', wikiId:'universaltech:movement:sprinting'},
+      {id:'crouching', label:'Crouching', desc:'Crouch movement and hitbox changes.', wikiId:'universaltech:movement:crouching'},
+      {id:'sliding',   label:'Sliding',   desc:'Slide mechanics, speed, and timing.', wikiId:'universaltech:movement:sliding'},
+      {id:'stamina',   label:'Stamina',   desc:'Stamina system, regeneration, and management.', wikiId:'universaltech:movement:stamina'},
+      {id:'jumping',   label:'Jumping',   desc:'Jump mechanics, height, and timing.', wikiId:'universaltech:movement:jumping'},
+    ]},
+  { id:'dashing', icon:'ti-player-skip-forward', label:'Dashing', acc:'combat',
+    desc:'Dash techs — directional dashes, aerial dash combos, and advanced dash cancels.',
+    wikiId:'universaltech:dashing',
+    subs:[
+      {id:'strafedash', label:'Strafe Dashing',         desc:'Dashing at angles for lateral speed.', wikiId:'universaltech:dashing:strafedash'},
+      {id:'dashjump',   label:'Dash Jumping',           desc:'Combining a dash into a jump for distance.', wikiId:'universaltech:dashing:dashjump'},
+      {id:'dashslide',  label:'Dash Sliding',           desc:'Cancelling a dash into a slide.', wikiId:'universaltech:dashing:dashslide'},
+      {id:'iad',        label:'Instant Air Dash (I.A.D)',desc:'Minimal-height air dash for fast horizontal movement.', wikiId:'universaltech:dashing:iad'},
+      {id:'wallstrafe', label:'Wall Strafe',            desc:'Dashing along walls for momentum.', wikiId:'universaltech:dashing:wallstrafe'},
+    ]},
+  { id:'mantling', icon:'ti-arrow-bar-up', label:'Mantling', acc:'map',
+    desc:'Mantle techs — advanced ledge grabs, super glides, and mantle-based launches.',
+    wikiId:'universaltech:mantling',
+    subs:[
+      {id:'mantleslide',  label:'Mantle Slide',      desc:'Sliding immediately out of a mantle.', wikiId:'universaltech:mantling:mantleslide'},
+      {id:'superglide',   label:'Super Glide',       desc:'Gaining extra airtime off a mantle.', wikiId:'universaltech:mantling:superglide'},
+      {id:'glidewj',      label:'Glide Wall Jump',   desc:'Wall jumping during a glide for height.', wikiId:'universaltech:mantling:glidewj'},
+      {id:'mantlestrafe', label:'Mantle Strafe',     desc:'Angling movement during mantle animation.', wikiId:'universaltech:mantling:mantlestrafe'},
+      {id:'fakemantle',   label:'Fake Mantle',       desc:'Cancelling the mantle animation early.', wikiId:'universaltech:mantling:fakemantle'},
+      {id:'mantlelaunch', label:'Mantle Launch',     desc:'Using mantle momentum to launch far.', wikiId:'universaltech:mantling:mantlelaunch'},
+    ]},
+  { id:'ziplines', icon:'ti-line-dashed', label:'Ziplines', acc:'items',
+    desc:'Zipline techs — momentum conservation, cancels, jumps, and launch techniques.',
+    wikiId:'universaltech:ziplines',
+    subs:[
+      {id:'zmc',     label:'Zipline Momentum Conservation (Z.M.C)', desc:'Keeping speed when leaving a zipline.', wikiId:'universaltech:ziplines:zmc'},
+      {id:'zipcancel',label:'Zip Cancel', desc:'Cancelling off a zipline at the right moment.', wikiId:'universaltech:ziplines:zipcancel'},
+      {id:'zipjump', label:'Zip Jump',   desc:'Jumping from a zipline with extra height.', wikiId:'universaltech:ziplines:zipjump'},
+      {id:'zipdash', label:'Zip Dash',   desc:'Dashing on or off a zipline.', wikiId:'universaltech:ziplines:zipdash'},
+      {id:'ziplaunch',label:'Zip Launch',desc:'Using zipline exit for maximum launch speed.', wikiId:'universaltech:ziplines:ziplaunch'},
+    ]},
+  { id:'ropes', icon:'ti-minus-vertical', label:'Ropes', acc:'mechanics',
+    desc:'Rope techs — cancels, launches, and wall jumps off rope anchors.',
+    wikiId:'universaltech:ropes',
+    subs:[
+      {id:'ropecancel', label:'Rope Cancel',    desc:'Cancelling rope grab for momentum burst.', wikiId:'universaltech:ropes:ropecancel'},
+      {id:'ropelaunch', label:'Rope Launch',    desc:'Using rope to catapult in a direction.', wikiId:'universaltech:ropes:ropelaunch'},
+      {id:'ropewj',     label:'Rope Wall Jump', desc:'Wall jumping off a rope attachment point.', wikiId:'universaltech:ropes:ropewj'},
+    ]},
+  { id:'vent', icon:'ti-wind', label:'Vent', acc:'abilities',
+    desc:'Vent interactions — boost techs and stun mechanics.',
+    wikiId:'universaltech:vent',
+    subs:[
+      {id:'ventboost', label:'Vent Boost', desc:'Using vents for extra upward velocity.', wikiId:'universaltech:vent:ventboost'},
+      {id:'ventstun',  label:'Vent Stun',  desc:'Vent stun timing and counterplay.', wikiId:'universaltech:vent:ventstun'},
+    ]},
+  { id:'melee', icon:'ti-sword', label:'Melee', acc:'combat',
+    desc:'Melee techs — light, heavy, parry, cancels, and advanced melee interactions.',
+    wikiId:'universaltech:melee',
+    subs:[
+      {id:'lightmelee', label:'Light Melee',               desc:'Light melee timing and combo use.', wikiId:'universaltech:melee:lightmelee'},
+      {id:'heavymelee', label:'Heavy Melee',               desc:'Heavy melee range, knockback, and setup.', wikiId:'universaltech:melee:heavymelee'},
+      {id:'parry',      label:'Parry',                     desc:'Parry window, animation, and rewards.', wikiId:'universaltech:melee:parry'},
+      {id:'hmc',        label:'Heavy Melee Cancel (H.M.C)',desc:'Cancelling heavy melee for free movement.', wikiId:'universaltech:melee:hmc'},
+      {id:'hiddenmelee',label:'Hidden Melee',              desc:'Concealed melee animations and setups.', wikiId:'universaltech:melee:hiddenmelee'},
+      {id:'feign',      label:'Feign',                     desc:'Feinting melee to bait parry responses.', wikiId:'universaltech:melee:feign'},
+    ]},
+  { id:'walljump', icon:'ti-arrow-bounce', label:'Wall Jumping', acc:'movement',
+    desc:'Wall jump techs — directional control, corner and edge boosts, surf, and fatigue management.',
+    wikiId:'universaltech:walljump',
+    subs:[
+      {id:'wjd',       label:'Wall Jump Direction (W.J.D)', desc:'Controlling angle and direction off walls.', wikiId:'universaltech:walljump:wjd'},
+      {id:'cornerboost',label:'Corner Boost',              desc:'Using corners for extra launch speed.', wikiId:'universaltech:walljump:cornerboost'},
+      {id:'edgeboost',  label:'Edge Boost',                desc:'Boosting off ledge geometry.', wikiId:'universaltech:walljump:edgeboost'},
+      {id:'refundwj',   label:'Refund Window',             desc:'Timing wall jumps to recover stamina.', wikiId:'universaltech:walljump:refundwj'},
+      {id:'wjfatigue',  label:'Wall Jump Fatigue',         desc:'Managing wall jump degradation over time.', wikiId:'universaltech:walljump:wjfatigue'},
+      {id:'wallsurf',   label:'Wall Surf',                 desc:'Riding wall surfaces for sustained speed.', wikiId:'universaltech:walljump:wallsurf'},
+    ]},
+  { id:'strafing', icon:'ti-arrows-left-right', label:'Strafing', acc:'movement',
+    desc:'Advanced strafe techs — air strafing, bunnyhopping, and slide bunnyhopping.',
+    wikiId:'universaltech:strafing',
+    subs:[
+      {id:'airstrafe',   label:'Air Strafing',      desc:'Directional air control for speed and evasion.', wikiId:'universaltech:strafing:airstrafe'},
+      {id:'bunnyhop',    label:'Bunnyhopping',       desc:'Chaining jumps to maintain and build speed.', wikiId:'universaltech:strafing:bunnyhop'},
+      {id:'slidebhop',   label:'Slide Bunnyhopping', desc:'Combining slides and hops for max momentum.', wikiId:'universaltech:strafing:slidebhop'},
+    ]},
+  { id:'itemtech', icon:'ti-package', label:'Item Tech', acc:'items',
+    desc:'Universal item interactions and advanced tech with purchasable items.',
+    wikiId:'universaltech:itemtech',
+    subs:[
+      {id:'majesticleap',  label:'Majestic Leap',    desc:'Launch techs and landing timing.', wikiId:'universaltech:itemtech:majesticleap'},
+      {id:'warpstone',     label:'Warp Stone',        desc:'Positioning tricks and cancel windows.', wikiId:'universaltech:itemtech:warpstone'},
+      {id:'rescuebeam',    label:'Rescue Beam',       desc:'Beam pull interactions and edge cases.', wikiId:'universaltech:itemtech:rescuebeam'},
+      {id:'magiccarpet',   label:'Magic Carpet',      desc:'Hover positioning and advanced uses.', wikiId:'universaltech:itemtech:magiccarpet'},
+      {id:'slowinghex',    label:'Slowing Hex',       desc:'Slow application timing and combos.', wikiId:'universaltech:itemtech:slowinghex'},
+      {id:'staminamaster', label:'Stamina Mastery',   desc:'Maximising stamina regen and usage.', wikiId:'universaltech:itemtech:staminamaster'},
+      {id:'capacitor',     label:'Capacitor',         desc:'Charge timing and burst application.', wikiId:'universaltech:itemtech:capacitor'},
+    ]},
+];
+
+const VIDS = [
+  '/wiki/lib/exe/fetch.php?media=0%3Awiki1.mp4',
+  '/wiki/lib/exe/fetch.php?media=0%3Awiki2.mp4',
+  '/wiki/lib/exe/fetch.php?media=0%3Awiki3.mp4',
+  '/wiki/lib/exe/fetch.php?media=0%3Awiki4.mp4',
+];
+let vi = 0;
+const video = document.getElementById('ut-video');
+video.addEventListener('ended', () => {
+  vi = (vi + 1) % VIDS.length;
+  video.src = VIDS[vi];
+  video.play();
+});
+
+// ── STATE ──────────────────────────────────────────────
+let activeCatId = null;
+let activeSubId = null;
+let filter = '';
+
+// ── LAYOUT CONSTANTS ────────────────────────────────────
+const CAT_H     = 80;
+const CAT_H_SEL = 96;
+const SUB_H     = 60;
+const SUB_H_SEL = 72;
+const GAP       = 7;
+
+// scrollY = offset into virtual list (px). Center of viewport = scrollY.
+let scrollY   = 0;
+let velocity  = 0;
+let rafId     = null;
+let isDragging = false;
+let lastDragY  = 0;
+let lastDragT  = 0;
+
+// ── FLAT ITEM LIST ──────────────────────────────────────
+function buildItemList() {
+  const items = [];
+  const q = filter.toLowerCase();
+  CATS.forEach(cat => {
+    const subMatch = cat.subs.filter(s =>
+      !q || s.label.toLowerCase().includes(q) || cat.label.toLowerCase().includes(q)
+    );
+    if (q && subMatch.length === 0 && !cat.label.toLowerCase().includes(q)) return;
+    items.push({ type:'cat', cat, sub:null });
+    if (activeCatId === cat.id) {
+      (q ? subMatch : cat.subs).forEach(sub => items.push({ type:'sub', cat, sub }));
+    }
+  });
+  return items;
+}
+
+// ── POSITIONS ───────────────────────────────────────────
+function computePositions(items) {
+  let y = 0;
+  return items.map(item => {
+    const isSel = item.type === 'cat'
+      ? activeCatId === item.cat.id && activeSubId === null
+      : activeSubId === item.sub.id;
+    const h = item.type === 'cat' ? (isSel ? CAT_H_SEL : CAT_H) : (isSel ? SUB_H_SEL : SUB_H);
+    const pos = { y, h, isSel };
+    y += h + GAP;
+    return pos;
+  });
+}
+
+// ── RENDER ─────────────────────────────────────────────
+function render() {
+  const carousel = document.getElementById('ut-carousel');
+  const wrapH    = document.getElementById('ut-carousel-wrap').offsetHeight;
+  const items    = buildItemList();
+  const pos      = computePositions(items);
+  const totalH   = pos.length ? pos[pos.length-1].y + pos[pos.length-1].h : 0;
+
+  // clamp scroll: allow scrolling through the whole list
+  const minScroll = -(wrapH / 2);
+  const maxScroll = totalH - wrapH / 2;
+  scrollY = Math.max(minScroll, Math.min(maxScroll, scrollY));
+
+  // track which uids exist
+  const existingEls = {};
+  carousel.querySelectorAll('.ut-item').forEach(el => { existingEls[el.dataset.uid] = el; });
+  const newUids = new Set();
+  items.forEach(item => newUids.add(uid(item)));
+  Object.keys(existingEls).forEach(u => { if (!newUids.has(u)) existingEls[u].remove(); });
+
+  // viewport center
+  const vc = wrapH / 2;
+
+  items.forEach((item, i) => {
+    const u = uid(item);
+    const { y: iy, h, isSel } = pos[i];
+
+    // position relative to viewport center
+    const screenY = iy - scrollY;
+    const itemCenter = screenY + h / 2;
+    const distFromCenter = itemCenter - vc;
+    const absD = Math.abs(distFromCenter);
+    const maxD = wrapH * 0.52;
+
+    // osu curve: items further away pushed right
+    const pushFrac = Math.min(absD / maxD, 1);
+    // ease it: more push at the edges
+    const push = Math.pow(pushFrac, 1.4) * (item.type === 'sub' ? 52 : 68);
+
+    // fade near edges
+    const fadeFrac = Math.min(absD / (wrapH * 0.44), 1);
+    const opacity  = Math.max(0, 1 - Math.pow(fadeFrac, 1.8));
+
+    if (opacity <= 0.01) {
+      if (existingEls[u]) existingEls[u].style.opacity = '0';
+      return;
+    }
+
+    let el = existingEls[u];
+    if (!el) {
+      el = document.createElement('div');
+      el.dataset.uid = u;
+      el.innerHTML = buildInner(item);
+      el.addEventListener('click', () => onItemClick(item));
+      carousel.appendChild(el);
+    }
+
+    el.className = 'ut-item' +
+      (item.type === 'sub' ? ' is-sub' : ' is-cat') +
+      ' ut-acc-' + item.cat.acc +
+      (isSel ? ' selected' : '');
+
+    el.style.top     = screenY + 'px';
+    el.style.height  = h + 'px';
+    el.style.transform = `translateX(${push}px)`;
+    el.style.opacity = opacity.toFixed(3);
+  });
+
+  carousel.style.height = wrapH + 'px';
+}
+
+function uid(item) {
+  return item.type === 'cat' ? item.cat.id : item.cat.id + '__' + item.sub.id;
+}
+
+function buildInner(item) {
+  if (item.type === 'cat') {
+    return `<div class="ut-item-bg"></div>
+<div class="ut-item-overlay"></div>
+<div class="ut-item-accent-bar"></div>
+<div class="ut-item-inner">
+  <i class="ti ${item.cat.icon} ut-item-icon" aria-hidden="true"></i>
+  <div class="ut-item-text">
+    <div class="ut-item-label">${item.cat.label}</div>
+    <div class="ut-item-sub-count">${item.cat.subs.length} techniques</div>
+  </div>
+  <i class="ti ti-chevron-right" style="font-size:14px;color:#6B4FBB;flex-shrink:0" aria-hidden="true"></i>
+</div>`;
+  } else {
+    return `<div class="ut-item-bg"></div>
+<div class="ut-item-overlay"></div>
+<div class="ut-item-accent-bar"></div>
+<div class="ut-item-inner">
+  <i class="ti ti-circle-dot ut-item-icon" aria-hidden="true"></i>
+  <div class="ut-item-text">
+    <div class="ut-item-label">${item.sub.label}</div>
+  </div>
+  <i class="ti ti-arrow-right" style="font-size:13px;color:#6B4FBB;flex-shrink:0" aria-hidden="true"></i>
+</div>`;
+  }
+}
+
+// ── CLICK ──────────────────────────────────────────────
+function onItemClick(item) {
+  if (item.type === 'cat') {
+    if (activeCatId === item.cat.id && activeSubId === null) {
+      activeCatId = null;
+      showSplash();
+    } else {
+      activeCatId = item.cat.id;
+      activeSubId = null;
+      showCat(item.cat);
+    }
+  } else {
+    activeCatId = item.cat.id;
+    activeSubId = item.sub.id;
+    showSub(item.cat, item.sub);
+  }
+  scrollToSelected();
+  render();
+}
+
+function scrollToSelected() {
+  const items = buildItemList();
+  const pos   = computePositions(items);
+  const wrapH = document.getElementById('ut-carousel-wrap').offsetHeight;
+  let selY = null, selH = CAT_H;
+  items.forEach((item, i) => {
+    const isSel = item.type === 'cat'
+      ? activeCatId === item.cat.id && activeSubId === null
+      : activeSubId === item.sub?.id;
+    if (isSel) { selY = pos[i].y; selH = pos[i].h; }
+  });
+  if (selY !== null) {
+    animateScroll(selY + selH / 2 - wrapH / 2);
+  }
+}
+
+// Spring scroll — sets velocity toward target naturally instead of teleporting
+function animateScroll(target) {
+  // Stop any current momentum and spring toward target
+  momentumRunning = false;
+  velocity = 0;
+  const SPRING = 0.12;  // attraction strength per frame
+  const DAMP   = 0.72;  // damping to prevent overshoot
+  let springRunning = true;
+  let sv = 0;           // spring velocity separate from main velocity
+  function step() {
+    if (!springRunning) return;
+    const diff = target - scrollY;
+    if (Math.abs(diff) < 0.5 && Math.abs(sv) < 0.5) {
+      scrollY = target;
+      render();
+      springRunning = false;
+      return;
+    }
+    sv += diff * SPRING;
+    sv *= DAMP;
+    scrollY += sv;
+    render();
+    requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+// ── CONTENT AREA ───────────────────────────────────────
+const splash  = document.getElementById('ut-splash');
+const content = document.getElementById('ut-content');
+
+function showSplash() {
+  splash.classList.remove('hidden');
+  content.classList.add('hidden');
+}
+function showCat(cat) {
+  splash.classList.add('hidden');
+  content.classList.remove('hidden');
+  document.getElementById('ut-breadcrumb').textContent    = 'Universal Tech';
+  document.getElementById('ut-content-title').textContent = cat.label;
+  document.getElementById('ut-content-desc').textContent  = cat.desc;
+  document.getElementById('ut-card-grid').innerHTML = '';
+  document.getElementById('ut-open-btn').href = '/wiki/doku.php?id=' + cat.wikiId;
+  document.getElementById('ut-btn-label').textContent = 'Open ' + cat.label + ' overview';
+}
+function showSub(cat, sub) {
+  splash.classList.add('hidden');
+  content.classList.remove('hidden');
+  document.getElementById('ut-breadcrumb').textContent    = 'Universal Tech › ' + cat.label;
+  document.getElementById('ut-content-title').textContent = sub.label;
+  document.getElementById('ut-content-desc').textContent  = sub.desc;
+  document.getElementById('ut-card-grid').innerHTML = '';
+  document.getElementById('ut-open-btn').href = '/wiki/doku.php?id=' + sub.wikiId;
+  document.getElementById('ut-btn-label').textContent = 'Open ' + sub.label + ' page';
+}
+
+// ── SCROLL ─────────────────────────────────────────────
+const wrap = document.getElementById('ut-carousel-wrap');
+let momentumRunning = false;
+
+// Wheel sensitivity: low so small scrolls move little, fast scrolls build up
+const WHEEL_ACCEL   = 0.18;   // fraction of deltaY added to velocity each event
+const FRICTION      = 0.82;   // velocity multiplied each frame (lower = stops sooner)
+const VEL_CAP       = 380;    // max px/frame velocity
+const VEL_STOP      = 0.6;    // below this velocity, stop the loop
+
+function startMomentum() {
+  if (momentumRunning) return;
+  momentumRunning = true;
+  function step() {
+    velocity *= FRICTION;
+    if (Math.abs(velocity) < VEL_STOP) {
+      velocity = 0;
+      momentumRunning = false;
+      return;
+    }
+    scrollY += velocity;
+    render();
+    requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+// WHEEL — accumulate velocity proportional to scroll speed
+wrap.addEventListener('wheel', e => {
+  e.preventDefault();
+  const scale = e.deltaMode === 1 ? 20 : e.deltaMode === 2 ? 300 : 1;
+  const delta = e.deltaY * scale;
+  // Add a fraction of delta to velocity — proportional feel
+  velocity += delta * WHEEL_ACCEL;
+  velocity = Math.max(-VEL_CAP, Math.min(VEL_CAP, velocity));
+  startMomentum();
+}, { passive: false });
+
+// DRAG
+wrap.addEventListener('mousedown', e => {
+  momentumRunning = false;
+  velocity = 0;
+  isDragging = true; lastDragY = e.clientY; lastDragT = performance.now();
+  wrap.style.cursor = 'grabbing';
+  e.preventDefault();
+});
+window.addEventListener('mousemove', e => {
+  if (!isDragging) return;
+  const now = performance.now();
+  const dy  = e.clientY - lastDragY;
+  const dt  = Math.max(now - lastDragT, 1);
+  velocity  = (-dy / dt) * 8;
+  scrollY  -= dy;
+  lastDragY = e.clientY; lastDragT = now;
+  render();
+});
+window.addEventListener('mouseup', () => {
+  if (!isDragging) return;
+  isDragging = false;
+  wrap.style.cursor = 'grab';
+  startMomentum();
+});
+
+// TOUCH
+wrap.addEventListener('touchstart', e => {
+  momentumRunning = false; velocity = 0;
+  isDragging = true; lastDragY = e.touches[0].clientY; lastDragT = performance.now();
+}, { passive: true });
+wrap.addEventListener('touchmove', e => {
+  if (!isDragging) return;
+  const now = performance.now();
+  const dy  = e.touches[0].clientY - lastDragY;
+  velocity  = (-dy / Math.max(now - lastDragT, 1)) * 8;
+  scrollY  -= dy;
+  lastDragY = e.touches[0].clientY; lastDragT = now;
+  render();
+}, { passive: true });
+wrap.addEventListener('touchend', () => { isDragging = false; startMomentum(); });
+
+// ── SEARCH ─────────────────────────────────────────────
+document.getElementById('ut-search').addEventListener('input', e => {
+  filter = e.target.value;
+  render();
+});
+
+// ── INIT ───────────────────────────────────────────────
+window.addEventListener('resize', render);
+// start scroll so first item is near center
+scrollY = -(document.getElementById('ut-carousel-wrap').offsetHeight / 2 - CAT_H / 2);
+render();
+
+})();
+</script>
+</body>
+";}i:2;i:3;i:3;s:29872:"
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+body.mode_show #dokuwiki__site { display: none !important; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+.navbar.navbar-default { z-index: 10000 !important; }
+body:not(.mode_show) #ut-page { display: none !important; }
+
+#ut-page {
+  position: fixed;
+  top: 0;
+  left: 0; right: 0; bottom: 0;
+  z-index: 9000;
+  background: #0A0816;
+  display: flex;
+  overflow: hidden;
+  font-family: 'Forevs', sans-serif;
+  color: #EDE8F5;
+}
+
+/* VIDEO BG */
+#ut-video-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+#ut-video-bg video {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  opacity: 0.55;
+}
+#ut-video-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(10,8,22,0.95) 20%, rgba(10,8,22,0.55) 55%, rgba(10,8,22,0.1) 100%);
+}
+
+/* LEFT */
+#ut-left {
+  position: relative;
+  z-index: 10;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 0 64px 64px;
+  pointer-events: none;
+}
+
+#ut-splash, #ut-content {
+  transition: opacity 0.35s, transform 0.35s;
+}
+#ut-splash.hidden, #ut-content.hidden {
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  position: absolute;
+}
+#ut-content { pointer-events: all; }
+
+.ut-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #6B4FBB;
+  margin-bottom: 12px;
+}
+#ut-splash-title {
+  font-size: 72px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -1.5px;
+  margin-bottom: 18px;
+  color: #EDE8F5;
+}
+#ut-splash-title em { color: #6B4FBB; font-style: normal; }
+#ut-splash-desc {
+  font-size: 15px;
+  color: #9D85DB;
+  max-width: 400px;
+  line-height: 1.65;
+}
+
+/* content state */
+#ut-breadcrumb {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #6B4FBB;
+  margin-bottom: 10px;
+}
+#ut-content-title {
+  font-size: 56px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  line-height: 1;
+  margin-bottom: 12px;
+  color: #EDE8F5;
+}
+#ut-content-desc {
+  font-size: 14px;
+  color: #9D85DB;
+  max-width: 420px;
+  line-height: 1.65;
+  margin-bottom: 24px;
+}
+#ut-card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 22px;
+  pointer-events: all;
+}
+.ut-guide-card {
+  background: rgba(18,15,41,0.7);
+  border: 1px solid rgba(108,79,187,0.3);
+  border-radius: 10px;
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: all 0.15s;
+  text-decoration: none;
+  display: block;
+}
+.ut-guide-card:hover {
+  background: rgba(61,43,122,0.5);
+  border-color: rgba(184,173,219,0.45);
+  transform: translateY(-2px);
+}
+.ut-guide-card-name { font-size: 13px; font-weight: 600; color: #C8BFED; margin-bottom: 3px; }
+.ut-guide-card-meta { font-size: 11px; color: #6B4FBB; }
+
+#ut-open-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(108,79,187,0.28);
+  border: 1px solid rgba(108,79,187,0.5);
+  border-radius: 10px;
+  padding: 10px 20px;
+  color: #B8ADDB;
+  font-size: 13px;
+  font-family: 'Forevs', sans-serif;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.15s;
+  pointer-events: all;
+}
+#ut-open-btn:hover {
+  background: rgba(108,79,187,0.5);
+  color: #EDE8F5;
+  border-color: rgba(184,173,219,0.6);
+}
+
+/* RIGHT — osu carousel */
+#ut-carousel-wrap {
+  position: relative;
+  z-index: 10;
+  width: 500px;
+  flex-shrink: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  user-select: none;
+}
+
+#ut-carousel {
+  position: absolute;
+  right: 0;
+  width: 100%;
+}
+
+/* tiles */
+.ut-item {
+  position: absolute;
+  right: 0;
+  border-radius: 16px 0 0 16px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid rgba(108,79,187,0.2);
+  border-right: none;
+  will-change: transform, top, height, width, opacity;
+  transition:
+    width 0.22s cubic-bezier(0.4,0,0.2,1),
+    height 0.22s cubic-bezier(0.4,0,0.2,1),
+    opacity 0.22s;
+}
+
+.ut-item.is-cat        { width: 420px; height: 80px; }
+.ut-item.is-sub        { width: 370px; height: 60px; }
+.ut-item.is-cat.selected { width: 480px; height: 96px; }
+.ut-item.is-sub.selected { width: 440px; height: 72px; }
+
+.ut-item-bg {
+  position: absolute; inset: 0;
+  opacity: 0.2;
+  transition: opacity 0.2s;
+}
+.ut-item:hover .ut-item-bg { opacity: 0.3; }
+.ut-item.selected .ut-item-bg { opacity: 0.38; }
+
+.ut-item-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(90deg, rgba(10,8,22,0.85) 0%, rgba(10,8,22,0.25) 100%);
+}
+
+.ut-item-inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 22px;
+  width: 100%;
+  height: 100%;
+}
+
+.ut-item-icon {
+  font-size: 22px;
+  color: #9D85DB;
+  flex-shrink: 0;
+  transition: color 0.2s, font-size 0.2s;
+}
+.ut-item.selected .ut-item-icon  { color: #C8BFED; font-size: 24px; }
+.ut-item.is-sub .ut-item-icon    { font-size: 15px; color: #6B4FBB; }
+.ut-item.is-sub.selected .ut-item-icon { font-size: 17px; color: #9D85DB; }
+
+.ut-item-text { flex: 1; min-width: 0; }
+.ut-item-label {
+  font-size: 15px;
+  font-weight: 600;
+  color: #C8BFED;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.2s, font-size 0.2s;
+}
+.ut-item.selected .ut-item-label     { color: #EDE8F5; font-size: 17px; }
+.ut-item.is-sub .ut-item-label       { font-size: 13px; color: #9D85DB; font-weight: 500; }
+.ut-item.is-sub.selected .ut-item-label { color: #C8BFED; font-size: 14px; }
+
+.ut-item-sub-count {
+  font-size: 11px;
+  color: #6B4FBB;
+  margin-top: 3px;
+}
+
+.ut-item-accent-bar {
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  border-radius: 16px 0 0 16px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.ut-item.selected .ut-item-accent-bar { opacity: 1; }
+
+/* accent colors */
+.ut-acc-movement .ut-item-bg  { background: linear-gradient(90deg,#3D2B7A,#6B4FBB); }
+.ut-acc-movement .ut-item-accent-bar { background: #9D85DB; }
+.ut-acc-combat .ut-item-bg    { background: linear-gradient(90deg,#7A2B4A,#BB4F7A); }
+.ut-acc-combat .ut-item-accent-bar   { background: #DB85AD; }
+.ut-acc-items .ut-item-bg     { background: linear-gradient(90deg,#1E5A7A,#2B8FBB); }
+.ut-acc-items .ut-item-accent-bar    { background: #85CADB; }
+.ut-acc-map .ut-item-bg       { background: linear-gradient(90deg,#1E7A4A,#2BBB6F); }
+.ut-acc-map .ut-item-accent-bar      { background: #85DBA8; }
+.ut-acc-mechanics .ut-item-bg { background: linear-gradient(90deg,#7A5A1E,#BB8F2B); }
+.ut-acc-mechanics .ut-item-accent-bar{ background: #DBC085; }
+.ut-acc-abilities .ut-item-bg { background: linear-gradient(90deg,#5A1E7A,#8F2BBB); }
+.ut-acc-abilities .ut-item-accent-bar{ background: #C085DB; }
+
+/* search */
+#ut-search-wrap {
+  position: absolute;
+  top: 24px; right: 0;
+  width: 440px;
+  z-index: 20;
+}
+#ut-search {
+  width: 100%;
+  background: rgba(10,8,22,0.8);
+  border: 1px solid rgba(108,79,187,0.4);
+  border-right: none;
+  border-radius: 10px 0 0 10px;
+  padding: 10px 16px;
+  color: #EDE8F5;
+  font-size: 13px;
+  font-family: 'Forevs', sans-serif;
+  outline: none;
+  transition: border-color 0.15s;
+}
+#ut-search::placeholder { color: rgba(108,79,187,0.55); }
+#ut-search:focus { border-color: rgba(184,173,219,0.55); }
+</style>
+</head>
+<body>
+<div id="ut-page">
+
+  <div id="ut-video-bg">
+    <video autoplay muted loop playsinline id="ut-video">
+      <source src="/wiki/lib/exe/fetch.php?media=0%3Awiki1.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <div id="ut-left">
+    <div id="ut-splash">
+      <div class="ut-eyebrow">JumpStart Wiki</div>
+      <div id="ut-splash-title">Master the<br><em>Fundamentals</em></div>
+      <div id="ut-splash-desc">Mechanics and techniques that apply to every hero in Deadlock. Pick a category to explore.</div>
+    </div>
+    <div id="ut-content" class="hidden">
+      <div id="ut-breadcrumb"></div>
+      <div id="ut-content-title"></div>
+      <div id="ut-content-desc"></div>
+      <div id="ut-card-grid"></div>
+      <a id="ut-open-btn" href="#"><i class="ti ti-external-link"></i><span id="ut-btn-label">Open wiki page</span></a>
+    </div>
+  </div>
+
+  <div id="ut-carousel-wrap">
+    <div id="ut-search-wrap">
+      <input type="text" id="ut-search" placeholder="Search tech..." autocomplete="off" />
+    </div>
+    <div id="ut-carousel"></div>
+  </div>
+
+</div>
+<script>
+(function(){
+
+const CATS = [
+  { id:'movement', icon:'ti-run', label:'Movement', acc:'movement',
+    desc:'Core ground movement — walking, sprinting, crouching, sliding, jumping, and stamina management.',
+    wikiId:'universaltech:movement',
+    subs:[
+      {id:'walking',   label:'Walking',   desc:'Base movement speed and mechanics.', wikiId:'universaltech:movement:walking'},
+      {id:'sprinting', label:'Sprinting', desc:'Sprint mechanics and speed thresholds.', wikiId:'universaltech:movement:sprinting'},
+      {id:'crouching', label:'Crouching', desc:'Crouch movement and hitbox changes.', wikiId:'universaltech:movement:crouching'},
+      {id:'sliding',   label:'Sliding',   desc:'Slide mechanics, speed, and timing.', wikiId:'universaltech:movement:sliding'},
+      {id:'stamina',   label:'Stamina',   desc:'Stamina system, regeneration, and management.', wikiId:'universaltech:movement:stamina'},
+      {id:'jumping',   label:'Jumping',   desc:'Jump mechanics, height, and timing.', wikiId:'universaltech:movement:jumping'},
+    ]},
+  { id:'dashing', icon:'ti-player-skip-forward', label:'Dashing', acc:'combat',
+    desc:'Dash techs — directional dashes, aerial dash combos, and advanced dash cancels.',
+    wikiId:'universaltech:dashing',
+    subs:[
+      {id:'strafedash', label:'Strafe Dashing',         desc:'Dashing at angles for lateral speed.', wikiId:'universaltech:dashing:strafedash'},
+      {id:'dashjump',   label:'Dash Jumping',           desc:'Combining a dash into a jump for distance.', wikiId:'universaltech:dashing:dashjump'},
+      {id:'dashslide',  label:'Dash Sliding',           desc:'Cancelling a dash into a slide.', wikiId:'universaltech:dashing:dashslide'},
+      {id:'iad',        label:'Instant Air Dash (I.A.D)',desc:'Minimal-height air dash for fast horizontal movement.', wikiId:'universaltech:dashing:iad'},
+      {id:'wallstrafe', label:'Wall Strafe',            desc:'Dashing along walls for momentum.', wikiId:'universaltech:dashing:wallstrafe'},
+    ]},
+  { id:'mantling', icon:'ti-arrow-bar-up', label:'Mantling', acc:'map',
+    desc:'Mantle techs — advanced ledge grabs, super glides, and mantle-based launches.',
+    wikiId:'universaltech:mantling',
+    subs:[
+      {id:'mantleslide',  label:'Mantle Slide',      desc:'Sliding immediately out of a mantle.', wikiId:'universaltech:mantling:mantleslide'},
+      {id:'superglide',   label:'Super Glide',       desc:'Gaining extra airtime off a mantle.', wikiId:'universaltech:mantling:superglide'},
+      {id:'glidewj',      label:'Glide Wall Jump',   desc:'Wall jumping during a glide for height.', wikiId:'universaltech:mantling:glidewj'},
+      {id:'mantlestrafe', label:'Mantle Strafe',     desc:'Angling movement during mantle animation.', wikiId:'universaltech:mantling:mantlestrafe'},
+      {id:'fakemantle',   label:'Fake Mantle',       desc:'Cancelling the mantle animation early.', wikiId:'universaltech:mantling:fakemantle'},
+      {id:'mantlelaunch', label:'Mantle Launch',     desc:'Using mantle momentum to launch far.', wikiId:'universaltech:mantling:mantlelaunch'},
+    ]},
+  { id:'ziplines', icon:'ti-line-dashed', label:'Ziplines', acc:'items',
+    desc:'Zipline techs — momentum conservation, cancels, jumps, and launch techniques.',
+    wikiId:'universaltech:ziplines',
+    subs:[
+      {id:'zmc',     label:'Zipline Momentum Conservation (Z.M.C)', desc:'Keeping speed when leaving a zipline.', wikiId:'universaltech:ziplines:zmc'},
+      {id:'zipcancel',label:'Zip Cancel', desc:'Cancelling off a zipline at the right moment.', wikiId:'universaltech:ziplines:zipcancel'},
+      {id:'zipjump', label:'Zip Jump',   desc:'Jumping from a zipline with extra height.', wikiId:'universaltech:ziplines:zipjump'},
+      {id:'zipdash', label:'Zip Dash',   desc:'Dashing on or off a zipline.', wikiId:'universaltech:ziplines:zipdash'},
+      {id:'ziplaunch',label:'Zip Launch',desc:'Using zipline exit for maximum launch speed.', wikiId:'universaltech:ziplines:ziplaunch'},
+    ]},
+  { id:'ropes', icon:'ti-minus-vertical', label:'Ropes', acc:'mechanics',
+    desc:'Rope techs — cancels, launches, and wall jumps off rope anchors.',
+    wikiId:'universaltech:ropes',
+    subs:[
+      {id:'ropecancel', label:'Rope Cancel',    desc:'Cancelling rope grab for momentum burst.', wikiId:'universaltech:ropes:ropecancel'},
+      {id:'ropelaunch', label:'Rope Launch',    desc:'Using rope to catapult in a direction.', wikiId:'universaltech:ropes:ropelaunch'},
+      {id:'ropewj',     label:'Rope Wall Jump', desc:'Wall jumping off a rope attachment point.', wikiId:'universaltech:ropes:ropewj'},
+    ]},
+  { id:'vent', icon:'ti-wind', label:'Vent', acc:'abilities',
+    desc:'Vent interactions — boost techs and stun mechanics.',
+    wikiId:'universaltech:vent',
+    subs:[
+      {id:'ventboost', label:'Vent Boost', desc:'Using vents for extra upward velocity.', wikiId:'universaltech:vent:ventboost'},
+      {id:'ventstun',  label:'Vent Stun',  desc:'Vent stun timing and counterplay.', wikiId:'universaltech:vent:ventstun'},
+    ]},
+  { id:'melee', icon:'ti-sword', label:'Melee', acc:'combat',
+    desc:'Melee techs — light, heavy, parry, cancels, and advanced melee interactions.',
+    wikiId:'universaltech:melee',
+    subs:[
+      {id:'lightmelee', label:'Light Melee',               desc:'Light melee timing and combo use.', wikiId:'universaltech:melee:lightmelee'},
+      {id:'heavymelee', label:'Heavy Melee',               desc:'Heavy melee range, knockback, and setup.', wikiId:'universaltech:melee:heavymelee'},
+      {id:'parry',      label:'Parry',                     desc:'Parry window, animation, and rewards.', wikiId:'universaltech:melee:parry'},
+      {id:'hmc',        label:'Heavy Melee Cancel (H.M.C)',desc:'Cancelling heavy melee for free movement.', wikiId:'universaltech:melee:hmc'},
+      {id:'hiddenmelee',label:'Hidden Melee',              desc:'Concealed melee animations and setups.', wikiId:'universaltech:melee:hiddenmelee'},
+      {id:'feign',      label:'Feign',                     desc:'Feinting melee to bait parry responses.', wikiId:'universaltech:melee:feign'},
+    ]},
+  { id:'walljump', icon:'ti-arrow-bounce', label:'Wall Jumping', acc:'movement',
+    desc:'Wall jump techs — directional control, corner and edge boosts, surf, and fatigue management.',
+    wikiId:'universaltech:walljump',
+    subs:[
+      {id:'wjd',       label:'Wall Jump Direction (W.J.D)', desc:'Controlling angle and direction off walls.', wikiId:'universaltech:walljump:wjd'},
+      {id:'cornerboost',label:'Corner Boost',              desc:'Using corners for extra launch speed.', wikiId:'universaltech:walljump:cornerboost'},
+      {id:'edgeboost',  label:'Edge Boost',                desc:'Boosting off ledge geometry.', wikiId:'universaltech:walljump:edgeboost'},
+      {id:'refundwj',   label:'Refund Window',             desc:'Timing wall jumps to recover stamina.', wikiId:'universaltech:walljump:refundwj'},
+      {id:'wjfatigue',  label:'Wall Jump Fatigue',         desc:'Managing wall jump degradation over time.', wikiId:'universaltech:walljump:wjfatigue'},
+      {id:'wallsurf',   label:'Wall Surf',                 desc:'Riding wall surfaces for sustained speed.', wikiId:'universaltech:walljump:wallsurf'},
+    ]},
+  { id:'strafing', icon:'ti-arrows-left-right', label:'Strafing', acc:'movement',
+    desc:'Advanced strafe techs — air strafing, bunnyhopping, and slide bunnyhopping.',
+    wikiId:'universaltech:strafing',
+    subs:[
+      {id:'airstrafe',   label:'Air Strafing',      desc:'Directional air control for speed and evasion.', wikiId:'universaltech:strafing:airstrafe'},
+      {id:'bunnyhop',    label:'Bunnyhopping',       desc:'Chaining jumps to maintain and build speed.', wikiId:'universaltech:strafing:bunnyhop'},
+      {id:'slidebhop',   label:'Slide Bunnyhopping', desc:'Combining slides and hops for max momentum.', wikiId:'universaltech:strafing:slidebhop'},
+    ]},
+  { id:'itemtech', icon:'ti-package', label:'Item Tech', acc:'items',
+    desc:'Universal item interactions and advanced tech with purchasable items.',
+    wikiId:'universaltech:itemtech',
+    subs:[
+      {id:'majesticleap',  label:'Majestic Leap',    desc:'Launch techs and landing timing.', wikiId:'universaltech:itemtech:majesticleap'},
+      {id:'warpstone',     label:'Warp Stone',        desc:'Positioning tricks and cancel windows.', wikiId:'universaltech:itemtech:warpstone'},
+      {id:'rescuebeam',    label:'Rescue Beam',       desc:'Beam pull interactions and edge cases.', wikiId:'universaltech:itemtech:rescuebeam'},
+      {id:'magiccarpet',   label:'Magic Carpet',      desc:'Hover positioning and advanced uses.', wikiId:'universaltech:itemtech:magiccarpet'},
+      {id:'slowinghex',    label:'Slowing Hex',       desc:'Slow application timing and combos.', wikiId:'universaltech:itemtech:slowinghex'},
+      {id:'staminamaster', label:'Stamina Mastery',   desc:'Maximising stamina regen and usage.', wikiId:'universaltech:itemtech:staminamaster'},
+      {id:'capacitor',     label:'Capacitor',         desc:'Charge timing and burst application.', wikiId:'universaltech:itemtech:capacitor'},
+    ]},
+];
+
+const VIDS = [
+  '/wiki/lib/exe/fetch.php?media=0%3Awiki1.mp4',
+  '/wiki/lib/exe/fetch.php?media=0%3Awiki2.mp4',
+  '/wiki/lib/exe/fetch.php?media=0%3Awiki3.mp4',
+  '/wiki/lib/exe/fetch.php?media=0%3Awiki4.mp4',
+];
+let vi = 0;
+const video = document.getElementById('ut-video');
+video.addEventListener('ended', () => {
+  vi = (vi + 1) % VIDS.length;
+  video.src = VIDS[vi];
+  video.play();
+});
+
+// ── STATE ──────────────────────────────────────────────
+let activeCatId = null;
+let activeSubId = null;
+let filter = '';
+
+// ── LAYOUT CONSTANTS ────────────────────────────────────
+const CAT_H     = 80;
+const CAT_H_SEL = 96;
+const SUB_H     = 60;
+const SUB_H_SEL = 72;
+const GAP       = 7;
+
+// scrollY = offset into virtual list (px). Center of viewport = scrollY.
+let scrollY   = 0;
+let velocity  = 0;
+let rafId     = null;
+let isDragging = false;
+let lastDragY  = 0;
+let lastDragT  = 0;
+
+// ── FLAT ITEM LIST ──────────────────────────────────────
+function buildItemList() {
+  const items = [];
+  const q = filter.toLowerCase();
+  CATS.forEach(cat => {
+    const subMatch = cat.subs.filter(s =>
+      !q || s.label.toLowerCase().includes(q) || cat.label.toLowerCase().includes(q)
+    );
+    if (q && subMatch.length === 0 && !cat.label.toLowerCase().includes(q)) return;
+    items.push({ type:'cat', cat, sub:null });
+    if (activeCatId === cat.id) {
+      (q ? subMatch : cat.subs).forEach(sub => items.push({ type:'sub', cat, sub }));
+    }
+  });
+  return items;
+}
+
+// ── POSITIONS ───────────────────────────────────────────
+function computePositions(items) {
+  let y = 0;
+  return items.map(item => {
+    const isSel = item.type === 'cat'
+      ? activeCatId === item.cat.id && activeSubId === null
+      : activeSubId === item.sub.id;
+    const h = item.type === 'cat' ? (isSel ? CAT_H_SEL : CAT_H) : (isSel ? SUB_H_SEL : SUB_H);
+    const pos = { y, h, isSel };
+    y += h + GAP;
+    return pos;
+  });
+}
+
+// ── RENDER ─────────────────────────────────────────────
+function render() {
+  const carousel = document.getElementById('ut-carousel');
+  const wrapH    = document.getElementById('ut-carousel-wrap').offsetHeight;
+  const items    = buildItemList();
+  const pos      = computePositions(items);
+  const totalH   = pos.length ? pos[pos.length-1].y + pos[pos.length-1].h : 0;
+
+  // clamp scroll: allow scrolling through the whole list
+  const minScroll = -(wrapH / 2);
+  const maxScroll = totalH - wrapH / 2;
+  scrollY = Math.max(minScroll, Math.min(maxScroll, scrollY));
+
+  // track which uids exist
+  const existingEls = {};
+  carousel.querySelectorAll('.ut-item').forEach(el => { existingEls[el.dataset.uid] = el; });
+  const newUids = new Set();
+  items.forEach(item => newUids.add(uid(item)));
+  Object.keys(existingEls).forEach(u => { if (!newUids.has(u)) existingEls[u].remove(); });
+
+  // viewport center
+  const vc = wrapH / 2;
+
+  items.forEach((item, i) => {
+    const u = uid(item);
+    const { y: iy, h, isSel } = pos[i];
+
+    // position relative to viewport center
+    const screenY = iy - scrollY;
+    const itemCenter = screenY + h / 2;
+    const distFromCenter = itemCenter - vc;
+    const absD = Math.abs(distFromCenter);
+    const maxD = wrapH * 0.52;
+
+    // osu curve: items further away pushed right
+    const pushFrac = Math.min(absD / maxD, 1);
+    // ease it: more push at the edges
+    const push = Math.pow(pushFrac, 1.4) * (item.type === 'sub' ? 52 : 68);
+
+    // fade near edges
+    const fadeFrac = Math.min(absD / (wrapH * 0.44), 1);
+    const opacity  = Math.max(0, 1 - Math.pow(fadeFrac, 1.8));
+
+    if (opacity <= 0.01) {
+      if (existingEls[u]) existingEls[u].style.opacity = '0';
+      return;
+    }
+
+    let el = existingEls[u];
+    if (!el) {
+      el = document.createElement('div');
+      el.dataset.uid = u;
+      el.innerHTML = buildInner(item);
+      el.addEventListener('click', () => onItemClick(item));
+      carousel.appendChild(el);
+    }
+
+    el.className = 'ut-item' +
+      (item.type === 'sub' ? ' is-sub' : ' is-cat') +
+      ' ut-acc-' + item.cat.acc +
+      (isSel ? ' selected' : '');
+
+    el.style.top     = screenY + 'px';
+    el.style.height  = h + 'px';
+    el.style.transform = `translateX(${push}px)`;
+    el.style.opacity = opacity.toFixed(3);
+  });
+
+  carousel.style.height = wrapH + 'px';
+}
+
+function uid(item) {
+  return item.type === 'cat' ? item.cat.id : item.cat.id + '__' + item.sub.id;
+}
+
+function buildInner(item) {
+  if (item.type === 'cat') {
+    return `<div class="ut-item-bg"></div>
+<div class="ut-item-overlay"></div>
+<div class="ut-item-accent-bar"></div>
+<div class="ut-item-inner">
+  <i class="ti ${item.cat.icon} ut-item-icon" aria-hidden="true"></i>
+  <div class="ut-item-text">
+    <div class="ut-item-label">${item.cat.label}</div>
+    <div class="ut-item-sub-count">${item.cat.subs.length} techniques</div>
+  </div>
+  <i class="ti ti-chevron-right" style="font-size:14px;color:#6B4FBB;flex-shrink:0" aria-hidden="true"></i>
+</div>`;
+  } else {
+    return `<div class="ut-item-bg"></div>
+<div class="ut-item-overlay"></div>
+<div class="ut-item-accent-bar"></div>
+<div class="ut-item-inner">
+  <i class="ti ti-circle-dot ut-item-icon" aria-hidden="true"></i>
+  <div class="ut-item-text">
+    <div class="ut-item-label">${item.sub.label}</div>
+  </div>
+  <i class="ti ti-arrow-right" style="font-size:13px;color:#6B4FBB;flex-shrink:0" aria-hidden="true"></i>
+</div>`;
+  }
+}
+
+// ── CLICK ──────────────────────────────────────────────
+function onItemClick(item) {
+  if (item.type === 'cat') {
+    if (activeCatId === item.cat.id && activeSubId === null) {
+      activeCatId = null;
+      showSplash();
+    } else {
+      activeCatId = item.cat.id;
+      activeSubId = null;
+      showCat(item.cat);
+    }
+  } else {
+    activeCatId = item.cat.id;
+    activeSubId = item.sub.id;
+    showSub(item.cat, item.sub);
+  }
+  scrollToSelected();
+  render();
+}
+
+function scrollToSelected() {
+  const items = buildItemList();
+  const pos   = computePositions(items);
+  const wrapH = document.getElementById('ut-carousel-wrap').offsetHeight;
+  let selY = null, selH = CAT_H;
+  items.forEach((item, i) => {
+    const isSel = item.type === 'cat'
+      ? activeCatId === item.cat.id && activeSubId === null
+      : activeSubId === item.sub?.id;
+    if (isSel) { selY = pos[i].y; selH = pos[i].h; }
+  });
+  if (selY !== null) {
+    animateScroll(selY + selH / 2 - wrapH / 2);
+  }
+}
+
+// Spring scroll — sets velocity toward target naturally instead of teleporting
+function animateScroll(target) {
+  // Stop any current momentum and spring toward target
+  momentumRunning = false;
+  velocity = 0;
+  const SPRING = 0.12;  // attraction strength per frame
+  const DAMP   = 0.72;  // damping to prevent overshoot
+  let springRunning = true;
+  let sv = 0;           // spring velocity separate from main velocity
+  function step() {
+    if (!springRunning) return;
+    const diff = target - scrollY;
+    if (Math.abs(diff) < 0.5 && Math.abs(sv) < 0.5) {
+      scrollY = target;
+      render();
+      springRunning = false;
+      return;
+    }
+    sv += diff * SPRING;
+    sv *= DAMP;
+    scrollY += sv;
+    render();
+    requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+// ── CONTENT AREA ───────────────────────────────────────
+const splash  = document.getElementById('ut-splash');
+const content = document.getElementById('ut-content');
+
+function showSplash() {
+  splash.classList.remove('hidden');
+  content.classList.add('hidden');
+}
+function showCat(cat) {
+  splash.classList.add('hidden');
+  content.classList.remove('hidden');
+  document.getElementById('ut-breadcrumb').textContent    = 'Universal Tech';
+  document.getElementById('ut-content-title').textContent = cat.label;
+  document.getElementById('ut-content-desc').textContent  = cat.desc;
+  document.getElementById('ut-card-grid').innerHTML = '';
+  document.getElementById('ut-open-btn').href = '/wiki/doku.php?id=' + cat.wikiId;
+  document.getElementById('ut-btn-label').textContent = 'Open ' + cat.label + ' overview';
+}
+function showSub(cat, sub) {
+  splash.classList.add('hidden');
+  content.classList.remove('hidden');
+  document.getElementById('ut-breadcrumb').textContent    = 'Universal Tech › ' + cat.label;
+  document.getElementById('ut-content-title').textContent = sub.label;
+  document.getElementById('ut-content-desc').textContent  = sub.desc;
+  document.getElementById('ut-card-grid').innerHTML = '';
+  document.getElementById('ut-open-btn').href = '/wiki/doku.php?id=' + sub.wikiId;
+  document.getElementById('ut-btn-label').textContent = 'Open ' + sub.label + ' page';
+}
+
+// ── SCROLL ─────────────────────────────────────────────
+const wrap = document.getElementById('ut-carousel-wrap');
+let momentumRunning = false;
+
+// Wheel sensitivity: low so small scrolls move little, fast scrolls build up
+const WHEEL_ACCEL   = 0.18;   // fraction of deltaY added to velocity each event
+const FRICTION      = 0.82;   // velocity multiplied each frame (lower = stops sooner)
+const VEL_CAP       = 380;    // max px/frame velocity
+const VEL_STOP      = 0.6;    // below this velocity, stop the loop
+
+function startMomentum() {
+  if (momentumRunning) return;
+  momentumRunning = true;
+  function step() {
+    velocity *= FRICTION;
+    if (Math.abs(velocity) < VEL_STOP) {
+      velocity = 0;
+      momentumRunning = false;
+      return;
+    }
+    scrollY += velocity;
+    render();
+    requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+// WHEEL — accumulate velocity proportional to scroll speed
+wrap.addEventListener('wheel', e => {
+  e.preventDefault();
+  const scale = e.deltaMode === 1 ? 20 : e.deltaMode === 2 ? 300 : 1;
+  const delta = e.deltaY * scale;
+  // Add a fraction of delta to velocity — proportional feel
+  velocity += delta * WHEEL_ACCEL;
+  velocity = Math.max(-VEL_CAP, Math.min(VEL_CAP, velocity));
+  startMomentum();
+}, { passive: false });
+
+// DRAG
+wrap.addEventListener('mousedown', e => {
+  momentumRunning = false;
+  velocity = 0;
+  isDragging = true; lastDragY = e.clientY; lastDragT = performance.now();
+  wrap.style.cursor = 'grabbing';
+  e.preventDefault();
+});
+window.addEventListener('mousemove', e => {
+  if (!isDragging) return;
+  const now = performance.now();
+  const dy  = e.clientY - lastDragY;
+  const dt  = Math.max(now - lastDragT, 1);
+  velocity  = (-dy / dt) * 8;
+  scrollY  -= dy;
+  lastDragY = e.clientY; lastDragT = now;
+  render();
+});
+window.addEventListener('mouseup', () => {
+  if (!isDragging) return;
+  isDragging = false;
+  wrap.style.cursor = 'grab';
+  startMomentum();
+});
+
+// TOUCH
+wrap.addEventListener('touchstart', e => {
+  momentumRunning = false; velocity = 0;
+  isDragging = true; lastDragY = e.touches[0].clientY; lastDragT = performance.now();
+}, { passive: true });
+wrap.addEventListener('touchmove', e => {
+  if (!isDragging) return;
+  const now = performance.now();
+  const dy  = e.touches[0].clientY - lastDragY;
+  velocity  = (-dy / Math.max(now - lastDragT, 1)) * 8;
+  scrollY  -= dy;
+  lastDragY = e.touches[0].clientY; lastDragT = now;
+  render();
+}, { passive: true });
+wrap.addEventListener('touchend', () => { isDragging = false; startMomentum(); });
+
+// ── SEARCH ─────────────────────────────────────────────
+document.getElementById('ut-search').addEventListener('input', e => {
+  filter = e.target.value;
+  render();
+});
+
+// ── INIT ───────────────────────────────────────────────
+window.addEventListener('resize', render);
+// start scroll so first item is near center
+scrollY = -(document.getElementById('ut-carousel-wrap').offsetHeight / 2 - CAT_H / 2);
+render();
+
+})();
+</script>
+</body>
+";}i:2;i:19;}i:6;a:3:{i:0;s:6:"plugin";i:1;a:4:{i:0;s:17:"confightmlok_html";i:1;a:2:{i:0;i:4;i:1;s:7:"</html>";}i:2;i:4;i:3;s:7:"</html>";}i:2;i:29891;}i:7;a:3:{i:0;s:5:"cdata";i:1;a:1:{i:0;s:8:"
+</html>";}i:2;i:29898;}i:8;a:3:{i:0;s:7:"p_close";i:1;a:0:{}i:2;i:29898;}i:9;a:3:{i:0;s:12:"document_end";i:1;a:0:{}i:2;i:29898;}}

@@ -1,0 +1,300 @@
+====== Characters ======
+
+<html>
+<!--
+  CHARACTER SELECT PAGE
+  Add one js-char-data div per hero.
+  Attributes:
+    data-name     = Hero display name
+    data-diff     = beginner / intermediate / advanced / expert
+    data-tier     = S / A / B / C
+    data-move     = Move speed (e.g. 6.4)
+    data-stamina  = Stamina count (e.g. 3)
+    data-dashspd  = Dash speed (e.g. 14.3)
+    data-color    = Hex color for hero accent (e.g. #6B2020)
+    data-slug     = URL slug (e.g. abrams) — leave blank to auto-generate
+    data-video    = (optional) path to hero video when available
+-->
+
+<!-- ═══════════════════════
+     ROSTER — add heroes here
+════════════════════════ -->
+
+<div class="js-char-data"
+  data-name="Abrams"
+  data-diff="advanced"
+  data-tier="S"
+  data-move="6.4"
+  data-stamina="3"
+  data-dashspd="14.3"
+  data-color="#6B2020"
+  data-slug="abrams">
+</div>
+
+<div class="js-char-data"
+  data-name="Bebop"
+  data-diff="intermediate"
+  data-tier="A"
+  data-move="6.0"
+  data-stamina="2"
+  data-dashspd="12.0"
+  data-color="#6B4B20"
+  data-slug="bebop">
+</div>
+
+<div class="js-char-data"
+  data-name="Dynamo"
+  data-diff="beginner"
+  data-tier="S"
+  data-move="5.8"
+  data-stamina="3"
+  data-dashspd="13.0"
+  data-color="#205B3A"
+  data-slug="dynamo">
+</div>
+
+<div class="js-char-data"
+  data-name="Grey Talon"
+  data-diff="advanced"
+  data-tier="B"
+  data-move="6.2"
+  data-stamina="2"
+  data-dashspd="13.5"
+  data-color="#2A2A40"
+  data-slug="grey_talon">
+</div>
+
+<div class="js-char-data"
+  data-name="Haze"
+  data-diff="intermediate"
+  data-tier="S"
+  data-move="7.0"
+  data-stamina="3"
+  data-dashspd="15.0"
+  data-color="#3A1A50"
+  data-slug="haze">
+</div>
+
+<div class="js-char-data"
+  data-name="Infernus"
+  data-diff="beginner"
+  data-tier="A"
+  data-move="6.6"
+  data-stamina="2"
+  data-dashspd="14.0"
+  data-color="#5A2010"
+  data-slug="infernus">
+</div>
+
+<div class="js-char-data"
+  data-name="Ivy"
+  data-diff="expert"
+  data-tier="A"
+  data-move="6.4"
+  data-stamina="4"
+  data-dashspd="16.0"
+  data-color="#1A3A20"
+  data-slug="ivy">
+</div>
+
+<div class="js-char-data"
+  data-name="Kelvin"
+  data-diff="beginner"
+  data-tier="B"
+  data-move="5.8"
+  data-stamina="3"
+  data-dashspd="13.0"
+  data-color="#102040"
+  data-slug="kelvin">
+</div>
+
+<div class="js-char-data"
+  data-name="Lady Geist"
+  data-diff="intermediate"
+  data-tier="A"
+  data-move="6.2"
+  data-stamina="2"
+  data-dashspd="13.5"
+  data-color="#4A1040"
+  data-slug="lady_geist">
+</div>
+
+<div class="js-char-data"
+  data-name="Lash"
+  data-diff="advanced"
+  data-tier="S"
+  data-move="7.2"
+  data-stamina="4"
+  data-dashspd="16.0"
+  data-color="#1A2A10"
+  data-slug="lash">
+</div>
+
+<div class="js-char-data"
+  data-name="McGinnis"
+  data-diff="beginner"
+  data-tier="B"
+  data-move="5.6"
+  data-stamina="3"
+  data-dashspd="12.5"
+  data-color="#202840"
+  data-slug="mcginnis">
+</div>
+
+<div class="js-char-data"
+  data-name="Mo and Krill"
+  data-diff="advanced"
+  data-tier="A"
+  data-move="6.0"
+  data-stamina="3"
+  data-dashspd="14.0"
+  data-color="#2A1810"
+  data-slug="mo_and_krill">
+</div>
+
+<div class="js-char-data"
+  data-name="Paradox"
+  data-diff="expert"
+  data-tier="B"
+  data-move="6.8"
+  data-stamina="2"
+  data-dashspd="14.5"
+  data-color="#1A1050"
+  data-slug="paradox">
+</div>
+
+<div class="js-char-data"
+  data-name="Pocket"
+  data-diff="expert"
+  data-tier="A"
+  data-move="6.6"
+  data-stamina="3"
+  data-dashspd="15.0"
+  data-color="#3A2010"
+  data-slug="pocket">
+</div>
+
+<div class="js-char-data"
+  data-name="Seven"
+  data-diff="intermediate"
+  data-tier="B"
+  data-move="6.4"
+  data-stamina="2"
+  data-dashspd="13.5"
+  data-color="#3A3A10"
+  data-slug="seven">
+</div>
+
+<div class="js-char-data"
+  data-name="Shiv"
+  data-diff="intermediate"
+  data-tier="A"
+  data-move="7.0"
+  data-stamina="3"
+  data-dashspd="15.5"
+  data-color="#3A1020"
+  data-slug="shiv">
+</div>
+
+<div class="js-char-data"
+  data-name="Vindicta"
+  data-diff="intermediate"
+  data-tier="B"
+  data-move="6.2"
+  data-stamina="2"
+  data-dashspd="13.0"
+  data-color="#2A1030"
+  data-slug="vindicta">
+</div>
+
+<div class="js-char-data"
+  data-name="Viscous"
+  data-diff="beginner"
+  data-tier="S"
+  data-move="5.8"
+  data-stamina="3"
+  data-dashspd="13.0"
+  data-color="#103040"
+  data-slug="viscous">
+</div>
+
+<div class="js-char-data"
+  data-name="Warden"
+  data-diff="beginner"
+  data-tier="B"
+  data-move="6.0"
+  data-stamina="3"
+  data-dashspd="14.0"
+  data-color="#202020"
+  data-slug="warden">
+</div>
+
+<div class="js-char-data"
+  data-name="Wraith"
+  data-diff="intermediate"
+  data-tier="A"
+  data-move="6.8"
+  data-stamina="2"
+  data-dashspd="14.5"
+  data-color="#1A1030"
+  data-slug="wraith">
+</div>
+
+<div class="js-char-data"
+  data-name="Yamato"
+  data-diff="advanced"
+  data-tier="S"
+  data-move="7.0"
+  data-stamina="3"
+  data-dashspd="15.5"
+  data-color="#3A1010"
+  data-slug="yamato">
+</div>
+
+<div class="js-char-data"
+  data-name="Calico"
+  data-diff="expert"
+  data-tier="A"
+  data-move="7.2"
+  data-stamina="4"
+  data-dashspd="16.0"
+  data-color="#302040"
+  data-slug="calico">
+</div>
+
+<div class="js-char-data"
+  data-name="Holliday"
+  data-diff="intermediate"
+  data-tier="B"
+  data-move="6.4"
+  data-stamina="2"
+  data-dashspd="13.5"
+  data-color="#2A1A10"
+  data-slug="holliday">
+</div>
+
+<div class="js-char-data"
+  data-name="Mirage"
+  data-diff="advanced"
+  data-tier="A"
+  data-move="6.6"
+  data-stamina="3"
+  data-dashspd="14.5"
+  data-color="#102030"
+  data-slug="mirage">
+</div>
+
+<div class="js-char-data"
+  data-name="Sinclair"
+  data-diff="expert"
+  data-tier="B"
+  data-move="6.0"
+  data-stamina="3"
+  data-dashspd="13.5"
+  data-color="#201030"
+  data-slug="sinclair">
+</div>
+
+<!-- Add new heroes below this line using the same format -->
+
+</html>

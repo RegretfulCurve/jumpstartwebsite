@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edit Profile — JumpStart</title>
+<style>
+  @font-face{font-family:'Forevs';src:url('/wiki/lib/tpl/bootstrap3/fonts/ForevsDemo-Bold.otf') format('opentype');font-weight:bold;}
+  @font-face{font-family:'Radiance';src:url('/wiki/lib/tpl/bootstrap3/fonts/radiance-semibold.otf') format('opentype');font-weight:600;}
+  @font-face{font-family:'Radiance';src:url('/wiki/lib/tpl/bootstrap3/fonts/radiance-regular.otf') format('opentype');font-weight:400;}
+
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html,body{background:#0a0716;color:#EDE8F5;font-family:'Radiance',sans-serif;width:100%;min-height:100vh;}
+
+  /* Force DokuWiki wrapper background to match */
+  body, .dokuwiki, #dokuwiki__site, #dokuwiki__top,
+  .dw-container, main.dw-container, .page-content-page,
+  .panel.panel-default, .panel-body, article#dokuwiki__content,
+  .col-sm-12, .col-md-12{
+    background:#0a0716 !important;
+    border:none !important;
+    box-shadow:none !important;
+  }
+
+  /* Hide breadcrumbs, page tools panel, last modified, and pageId label */
+  #dw__breadcrumbs,
+  #dokuwiki__pageheader,
+  .tools.panel.panel-default,
+  .small.text-right,
+  p.text-right { display:none !important; }
+
+  /* ── PAGE LAYOUT ── */
+  .edit-page{
+    max-width:800px;
+    margin:0 auto;
+    padding:100px 24px 80px;
+  }
+
+  .edit-header{margin-bottom:40px;}
+
+  .edit-back{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:1rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;
+    color:rgba(107,79,187,0.7);text-decoration:none;
+    transition:color 0.15s ease;margin-bottom:20px;
+  }
+  .edit-back:hover{color:#B8ADDB;}
+  .edit-back svg{width:15px;height:15px;stroke:currentColor;}
+
+  .edit-title{
+    font-family:'Forevs',serif;font-size:3rem;font-weight:bold;
+    letter-spacing:0.06em;color:#ffffff;
+    text-shadow:0 0 40px rgba(107,79,187,0.4);
+    margin-bottom:6px;
+  }
+
+  .edit-subtitle{
+    font-size:1.1rem;color:rgba(184,173,219,0.45);letter-spacing:0.04em;
+  }
+
+  /* ── SECTION CARD ── */
+  .edit-section{
+    background:rgba(14,10,30,0.7);
+    border:1px solid rgba(107,79,187,0.15);
+    border-radius:4px;overflow:hidden;margin-bottom:16px;
+  }
+
+  .edit-section-header{
+    padding:16px 24px;border-bottom:1px solid rgba(107,79,187,0.12);
+    background:rgba(18,12,40,0.5);display:flex;align-items:center;gap:10px;
+  }
+
+  .edit-section-title{
+    font-size:1rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;
+    color:rgba(184,173,219,0.6);
+  }
+  .edit-section-title svg{width:15px;height:15px;stroke:rgba(184,173,219,0.4);flex-shrink:0;}
+
+  .edit-section-body{padding:24px;}
+
+  /* ── FORM FIELDS ── */
+  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
+  .field-row.full{grid-template-columns:1fr;}
+
+  .field{display:flex;flex-direction:column;gap:7px;}
+
+  .field-label{
+    font-size:0.95rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;
+    color:rgba(184,173,219,0.55);
+  }
+
+  .field-input{
+    background:rgba(10,7,22,0.7);border:1px solid rgba(107,79,187,0.25);
+    border-radius:3px;padding:12px 16px;
+    font-family:'Radiance',sans-serif;font-size:1.1rem;font-weight:400;
+    color:#EDE8F5;outline:none;
+    transition:border-color 0.15s ease,box-shadow 0.15s ease;width:100%;
+  }
+  .field-input:focus{border-color:rgba(107,79,187,0.6);box-shadow:0 0 0 3px rgba(107,79,187,0.1);}
+  .field-input::placeholder{color:rgba(184,173,219,0.25);}
+  .field-input:disabled{color:rgba(184,173,219,0.3);cursor:not-allowed;}
+
+  textarea.field-input{resize:vertical;min-height:100px;line-height:1.6;}
+
+  .field-hint{font-size:0.95rem;color:rgba(184,173,219,0.38);letter-spacing:0.02em;}
+
+  /* ── AVATAR UPLOAD ── */
+  .avatar-upload-row{display:flex;align-items:center;gap:24px;margin-bottom:20px;}
+
+  .avatar-preview{
+    width:100px;height:100px;flex-shrink:0;
+    border:2px solid rgba(107,79,187,0.4);
+    overflow:hidden;position:relative;background:#1a1433;
+  }
+
+  .avatar-preview img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;}
+
+  .avatar-preview::before{
+    content:'';position:absolute;top:0;bottom:0;left:0;
+    width:3px;background:linear-gradient(to bottom,#B8ADDB,#6B4FBB,#3D2B7A);z-index:2;
+  }
+
+  .avatar-upload-controls{flex:1;display:flex;flex-direction:column;gap:10px;}
+
+  .btn-avatar-pick{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:10px 22px;background:rgba(107,79,187,0.12);
+    border:1px solid rgba(107,79,187,0.35);border-radius:3px;
+    font-family:'Radiance',sans-serif;font-size:0.95rem;font-weight:600;
+    letter-spacing:0.14em;text-transform:uppercase;
+    color:rgba(184,173,219,0.7);cursor:pointer;transition:all 0.15s ease;width:fit-content;
+  }
+  .btn-avatar-pick:hover{border-color:#6B4FBB;color:#EDE8F5;background:rgba(107,79,187,0.2);}
+  .btn-avatar-pick svg{width:15px;height:15px;stroke:currentColor;}
+
+  /* ── SOCIAL FIELDS ── */
+  .social-field{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
+  .social-field:last-child{margin-bottom:0;}
+
+  .social-icon{
+    width:40px;height:40px;flex-shrink:0;
+    background:rgba(18,15,41,0.85);border:1px solid rgba(107,79,187,0.25);
+    border-radius:3px;display:flex;align-items:center;justify-content:center;
+    color:rgba(184,173,219,0.5);
+  }
+  .social-icon svg{width:18px;height:18px;}
+
+  /* ── DIVIDER ── */
+  .field-divider{height:1px;background:rgba(107,79,187,0.1);margin:20px 0;}
+
+  /* ── PASSWORD HINT ── */
+  .password-note{
+    font-size:1rem;color:rgba(184,173,219,0.4);
+    padding:10px 14px;background:rgba(107,79,187,0.05);
+    border:1px solid rgba(107,79,187,0.1);border-radius:3px;margin-bottom:16px;
+  }
+
+  /* ── BUTTONS ── */
+  .form-actions{display:flex;align-items:center;gap:10px;margin-top:24px;}
+
+  .btn-save{
+    padding:12px 34px;background:rgba(107,79,187,0.7);
+    border:1px solid rgba(107,79,187,0.8);border-radius:3px;
+    font-family:'Radiance',sans-serif;font-size:1rem;font-weight:600;
+    letter-spacing:0.16em;text-transform:uppercase;
+    color:#EDE8F5;cursor:pointer;transition:all 0.15s ease;
+  }
+  .btn-save:hover{background:#6B4FBB;box-shadow:0 0 16px rgba(107,79,187,0.4);}
+
+  .btn-reset{
+    padding:12px 26px;background:transparent;
+    border:1px solid rgba(107,79,187,0.25);border-radius:3px;
+    font-family:'Radiance',sans-serif;font-size:1rem;font-weight:600;
+    letter-spacing:0.16em;text-transform:uppercase;
+    color:rgba(184,173,219,0.5);cursor:pointer;transition:all 0.15s ease;
+  }
+  .btn-reset:hover{border-color:rgba(107,79,187,0.5);color:#B8ADDB;}
+
+  /* ── STATUS TOAST ── */
+  .toast{
+    position:fixed;bottom:32px;right:32px;
+    padding:14px 24px;border-radius:4px;
+    font-family:'Radiance',sans-serif;font-size:1rem;font-weight:600;
+    letter-spacing:0.08em;
+    opacity:0;transform:translateY(8px);
+    transition:opacity 0.2s ease,transform 0.2s ease;
+    pointer-events:none;z-index:99999;
+  }
+  .toast.show{opacity:1;transform:translateY(0);}
+  .toast.success{background:rgba(43,100,60,0.95);border:1px solid rgba(80,180,100,0.4);color:#a8f0b8;}
+  .toast.error{background:rgba(100,30,30,0.95);border:1px solid rgba(180,60,60,0.4);color:#f0a8a8;}
+
+  /* ── DELETE ACCOUNT ── */
+  .delete-section{
+    background:rgba(14,10,30,0.7);border:1px solid rgba(180,40,40,0.2);
+    border-radius:4px;overflow:hidden;margin-bottom:16px;
+  }
+
+  .delete-section-header{
+    padding:16px 24px;border-bottom:1px solid rgba(180,40,40,0.15);
+    background:rgba(30,10,10,0.4);display:flex;align-items:center;gap:10px;
+  }
+
+  .delete-section-title{
+    font-size:1rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;
+    color:rgba(220,100,100,0.7);
+  }
+
+  .delete-warning{
+    font-size:1rem;color:rgba(184,173,219,0.5);margin-bottom:20px;line-height:1.5;
+  }
+
+  .delete-confirm-row{display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+
+  .delete-checkbox{width:16px;height:16px;accent-color:#8b2a2a;cursor:pointer;flex-shrink:0;}
+
+  .delete-checkbox-label{font-size:1rem;color:rgba(184,173,219,0.6);cursor:pointer;}
+
+  .btn-delete{
+    padding:12px 28px;background:rgba(120,30,30,0.5);
+    border:1px solid rgba(180,50,50,0.5);border-radius:3px;
+    font-family:'Radiance',sans-serif;font-size:1rem;font-weight:600;
+    letter-spacing:0.16em;text-transform:uppercase;
+    color:rgba(240,150,150,0.8);cursor:pointer;transition:all 0.15s ease;
+    opacity:0.4;pointer-events:none;
+  }
+  .btn-delete.armed{opacity:1;pointer-events:auto;}
+  .btn-delete.armed:hover{background:rgba(160,40,40,0.7);border-color:rgba(220,80,80,0.7);color:#f0a8a8;}
+
+</style>
+</head>
+<body>
+
+<div class="edit-page">
+
+  <div class="edit-header">
+    <a class="edit-back" href="/wiki/doku.php?id=user:__USERNAME__">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      Back to Profile
+    </a>
+    <div class="edit-title">Edit Profile</div>
+    <div class="edit-subtitle">Changes to account fields require your current password.</div>
+  </div>
+
+  <!-- ── AVATAR ── -->
+  <div class="edit-section">
+    <div class="edit-section-header">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      <span class="edit-section-title">Avatar</span>
+    </div>
+    <div class="edit-section-body">
+      <div class="avatar-upload-row">
+        <div class="avatar-preview">
+          <img id="avatar-preview-img" src="/wiki/lib/tpl/bootstrap3/images/avatar.png" alt="Avatar">
+        </div>
+        <div class="avatar-upload-controls">
+          <button class="btn-avatar-pick" onclick="document.getElementById('avatar-file-input').click()">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            Upload Photo
+          </button>
+          <input type="file" id="avatar-file-input" accept="image/*" style="display:none">
+          <span class="field-hint">PNG, JPG, WEBP — drag the preview to position, or use sliders.</span>
+        </div>
+      </div>
+
+      <!-- Canvas editor — hidden until image selected -->
+      <div id="avatar-editor" style="display:none;margin-bottom:20px;">
+        <div id="avatar-canvas-wrap" style="
+          width:200px;height:200px;overflow:hidden;
+          border:1px solid rgba(107,79,187,0.3);border-radius:3px;
+          background:#0a0716;cursor:grab;margin-bottom:14px;position:relative;
+        ">
+          <canvas id="avatar-canvas" width="200" height="200" style="display:block;"></canvas>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+          <span class="field-label" style="flex-shrink:0;width:60px;">Zoom</span>
+          <input type="range" id="avatar-zoom" min="0.5" max="4" step="0.01" value="1" style="flex:1;accent-color:#6B4FBB;">
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+          <span class="field-label" style="flex-shrink:0;width:60px;">Offset X</span>
+          <input type="range" id="avatar-offset-x" min="-1" max="1" step="0.005" value="0" style="flex:1;accent-color:#6B4FBB;">
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <span class="field-label" style="flex-shrink:0;width:60px;">Offset Y</span>
+          <input type="range" id="avatar-offset-y" min="-1" max="1" step="0.005" value="0" style="flex:1;accent-color:#6B4FBB;">
+        </div>
+      </div>
+
+      <div class="form-actions" style="margin-top:0;">
+        <button class="btn-save" id="btn-save-avatar" onclick="saveAvatar()">Save Avatar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── BIO ── -->
+  <div class="edit-section">
+    <div class="edit-section-header">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="17" y1="10" x2="3" y2="10"/><line x1="21" y1="6" x2="3" y2="6"/><line x1="21" y1="14" x2="3" y2="14"/><line x1="17" y1="18" x2="3" y2="18"/></svg>
+      <span class="edit-section-title">Bio</span>
+    </div>
+    <div class="edit-section-body">
+      <div class="field full">
+        <textarea class="field-input" id="bio-input" placeholder="Tell people about yourself..." rows="3"></textarea>
+        <span class="field-hint">Shown on your profile. Plain text only.</span>
+      </div>
+      <div class="form-actions">
+        <button class="btn-save" onclick="saveBio()">Save Bio</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SOCIAL LINKS ── -->
+  <div class="edit-section">
+    <div class="edit-section-header">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+      <span class="edit-section-title">Social Links</span>
+    </div>
+    <div class="edit-section-body">
+
+      <div class="social-field">
+        <div class="social-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.879V14.89h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.989C18.343 21.129 22 16.99 22 12c0-5.523-4.477-10-10-10z"/></svg>
+        </div>
+        <input class="field-input" id="social-steam" type="url" placeholder="https://steamcommunity.com/id/..." data-key="steam">
+      </div>
+
+      <div class="social-field">
+        <div class="social-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+        </div>
+        <input class="field-input" id="social-statlocker" type="url" placeholder="https://deadlocktracker.gg/..." data-key="statlocker">
+      </div>
+
+      <div class="social-field">
+        <div class="social-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057c.002.022.015.043.03.053a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+        </div>
+        <input class="field-input" id="social-discord" type="text" placeholder="username or server invite" data-key="discord">
+      </div>
+
+      <div class="social-field">
+        <div class="social-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </div>
+        <input class="field-input" id="social-twitter" type="url" placeholder="https://x.com/..." data-key="twitter">
+      </div>
+
+      <div class="social-field">
+        <div class="social-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        </div>
+        <input class="field-input" id="social-youtube" type="url" placeholder="https://youtube.com/@..." data-key="youtube">
+      </div>
+
+      <div class="social-field">
+        <div class="social-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714z"/></svg>
+        </div>
+        <input class="field-input" id="social-twitch" type="url" placeholder="https://twitch.tv/..." data-key="twitch">
+      </div>
+
+      <div class="form-actions">
+        <button class="btn-save" onclick="saveSocials()">Save Links</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── ACCOUNT DETAILS ── -->
+  <form id="dw-profile-form" method="post" action="/wiki/doku.php">
+    <input type="hidden" name="do" value="profile">
+    <input type="hidden" name="save" value="1">
+    <input type="hidden" name="sectok" value="__SECTOK__">
+
+    <div class="edit-section">
+      <div class="edit-section-header">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span class="edit-section-title">Account Details</span>
+      </div>
+      <div class="edit-section-body">
+
+        <div class="field-row">
+          <div class="field">
+            <label class="field-label" for="dw-username">Username</label>
+            <input class="field-input" id="dw-username" type="text" value="__USERNAME__" disabled>
+          </div>
+          <div class="field">
+            <label class="field-label" for="dw-realname">Display Name</label>
+            <input class="field-input" id="dw-realname" name="fullname" type="text" value="__REALNAME__">
+          </div>
+        </div>
+
+        <div class="field-row full">
+          <div class="field">
+            <label class="field-label" for="dw-email">Email</label>
+            <input class="field-input" id="dw-email" name="email" type="email" value="__EMAIL__">
+          </div>
+        </div>
+
+        <div class="field-divider"></div>
+
+        <p class="password-note">Leave password fields blank to keep your current password.</p>
+
+        <div class="field-row">
+          <div class="field">
+            <label class="field-label" for="dw-newpass">New Password</label>
+            <input class="field-input" id="dw-newpass" name="newpass" type="password" placeholder="New password" autocomplete="new-password">
+          </div>
+          <div class="field">
+            <label class="field-label" for="dw-newpass2">Confirm Password</label>
+            <input class="field-input" id="dw-newpass2" name="newpass2" type="password" placeholder="Repeat password" autocomplete="new-password">
+          </div>
+        </div>
+
+        <div class="field-row full">
+          <div class="field">
+            <label class="field-label" for="dw-curpass">Current Password <span style="color:rgba(220,100,100,0.7)">*</span></label>
+            <input class="field-input" id="dw-curpass" name="oldpass" type="password" placeholder="Required to save changes" autocomplete="current-password">
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button class="btn-save" type="submit">Save Account</button>
+          <button class="btn-reset" type="reset">Reset</button>
+        </div>
+
+      </div>
+    </div>
+  </form>
+
+  <!-- ── DELETE ACCOUNT ── -->
+  <form id="dw-delete-form" method="post" action="/wiki/doku.php">
+    <input type="hidden" name="do" value="profile">
+    <input type="hidden" name="delete" value="1">
+    <input type="hidden" name="sectok" value="__SECTOK__">
+
+    <div class="delete-section">
+      <div class="delete-section-header">
+        <svg viewBox="0 0 24 24" fill="none" stroke="rgba(220,100,100,0.7)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
+        <span class="delete-section-title">Delete Account</span>
+      </div>
+      <div class="edit-section-body">
+        <p class="delete-warning">This will permanently remove your account from JumpStart. This action cannot be undone.</p>
+
+        <div class="delete-confirm-row">
+          <input type="checkbox" class="delete-checkbox" id="delete-confirm-check" onchange="toggleDeleteBtn(this)">
+          <label class="delete-checkbox-label" for="delete-confirm-check">I understand this is permanent and cannot be undone.</label>
+        </div>
+
+        <div class="field-row full" style="margin-bottom:16px;">
+          <div class="field">
+            <label class="field-label" for="dw-delete-pass">Current Password</label>
+            <input class="field-input" id="dw-delete-pass" name="oldpass" type="password" placeholder="Required to delete account" autocomplete="current-password">
+          </div>
+        </div>
+
+        <button class="btn-delete" id="btn-delete" type="submit">Remove My Account</button>
+      </div>
+    </div>
+  </form>
+
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+  var username = '__USERNAME__';
+
+  /* ── Load existing data ── */
+  fetch('/wiki/doku.php?do=userprofile&user=' + encodeURIComponent(username))
+    .then(function(r){return r.json();})
+    .then(function(d){
+      if (d.error) return;
+
+      /* Avatar */
+      if (d.avatar) document.getElementById('avatar-preview-img').src = d.avatar;
+
+      /* Bio */
+      if (d.bio) document.getElementById('bio-input').value = d.bio;
+
+      /* Socials */
+      var socials = d.socials || {};
+      ['steam','statlocker','discord','twitter','youtube','twitch'].forEach(function(k){
+        var el = document.getElementById('social-' + k);
+        if (el && socials[k]) el.value = socials[k];
+      });
+    })
+    .catch(function(){});
+
+  /* ── Avatar canvas editor ── */
+  var _avatarImg = null;
+  var _avatarZoom = 1, _avatarOX = 0, _avatarOY = 0;
+
+  function drawAvatarCanvas() {
+    if (!_avatarImg) return;
+    var canvas = document.getElementById('avatar-canvas');
+    var ctx = canvas.getContext('2d');
+    var size = 200;
+    ctx.clearRect(0, 0, size, size);
+    var iw = _avatarImg.naturalWidth, ih = _avatarImg.naturalHeight;
+    var base = Math.min(iw, ih);
+    var scale = (size / base) * _avatarZoom;
+    var sw = iw * scale, sh = ih * scale;
+    var dx = (size - sw) / 2 + _avatarOX * (size / 2);
+    var dy = (size - sh) / 2 + _avatarOY * (size / 2);
+    ctx.drawImage(_avatarImg, dx, dy, sw, sh);
+    // Update small preview too
+    document.getElementById('avatar-preview-img').src = canvas.toDataURL('image/png');
+  }
+
+  document.getElementById('avatar-file-input').addEventListener('change', function(e) {
+    var file = e.target.files[0];
+    if (!file) return;
+    var reader = new FileReader();
+    reader.onload = function(ev) {
+      var img = new Image();
+      img.onload = function() {
+        _avatarImg = img;
+        _avatarZoom = 1; _avatarOX = 0; _avatarOY = 0;
+        document.getElementById('avatar-zoom').value = 1;
+        document.getElementById('avatar-offset-x').value = 0;
+        document.getElementById('avatar-offset-y').value = 0;
+        document.getElementById('avatar-editor').style.display = 'block';
+        drawAvatarCanvas();
+      };
+      img.src = ev.target.result;
+    };
+    reader.readAsDataURL(file);
+  });
+
+  document.getElementById('avatar-zoom').addEventListener('input', function() {
+    _avatarZoom = parseFloat(this.value); drawAvatarCanvas();
+  });
+  document.getElementById('avatar-offset-x').addEventListener('input', function() {
+    _avatarOX = parseFloat(this.value); drawAvatarCanvas();
+  });
+  document.getElementById('avatar-offset-y').addEventListener('input', function() {
+    _avatarOY = parseFloat(this.value); drawAvatarCanvas();
+  });
+
+  window.saveAvatar = function() {
+    if (!_avatarImg) { showToast('No new avatar selected.', 'error'); return; }
+    // Render final at 400x400 for storage quality
+    var out = document.createElement('canvas');
+    out.width = 400; out.height = 400;
+    var ctx = out.getContext('2d');
+    var size = 400;
+    var iw = _avatarImg.naturalWidth, ih = _avatarImg.naturalHeight;
+    var base = Math.min(iw, ih);
+    var scale = (size / base) * _avatarZoom;
+    var sw = iw * scale, sh = ih * scale;
+    var dx = (size - sw) / 2 + _avatarOX * (size / 2);
+    var dy = (size - sh) / 2 + _avatarOY * (size / 2);
+    ctx.drawImage(_avatarImg, dx, dy, sw, sh);
+    var dataUrl = out.toDataURL('image/png');
+
+    fetch('/wiki/doku.php?do=saveprofile', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({type: 'avatar', value: dataUrl})
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(d) {
+      if (d.ok) {
+        showToast('Avatar saved.', 'success');
+        _avatarImg = null;
+        document.getElementById('avatar-editor').style.display = 'none';
+        // Update navbar avatar live
+        var navImg = document.querySelector('#dw__user_menu img.img-circle');
+        if (navImg) navImg.src = dataUrl;
+      } else {
+        showToast(d.error || 'Failed to save avatar.', 'error');
+      }
+    })
+    .catch(function() { showToast('Failed to save avatar.', 'error'); });
+  };
+
+  /* ── Bio ── */
+  window.saveBio = function(){
+    var bio = document.getElementById('bio-input').value.trim();
+    fetch('/wiki/doku.php?do=saveprofile', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({type:'bio', value:bio})
+    })
+    .then(function(r){return r.json();})
+    .then(function(d){
+      if (d.ok) showToast('Bio saved.', 'success');
+      else showToast(d.error || 'Failed to save bio.', 'error');
+    })
+    .catch(function(){ showToast('Failed to save bio.', 'error'); });
+  };
+
+  /* ── Socials ── */
+  window.saveSocials = function(){
+    var socials = {};
+    ['steam','statlocker','discord','twitter','youtube','twitch'].forEach(function(k){
+      var el = document.getElementById('social-' + k);
+      if (el) socials[k] = el.value.trim();
+    });
+    fetch('/wiki/doku.php?do=saveprofile', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({type:'socials', value:socials})
+    })
+    .then(function(r){return r.json();})
+    .then(function(d){
+      if (d.ok) showToast('Links saved.', 'success');
+      else showToast(d.error || 'Failed to save links.', 'error');
+    })
+    .catch(function(){ showToast('Failed to save links.', 'error'); });
+  };
+
+  /* ── Delete toggle ── */
+  window.toggleDeleteBtn = function(cb){
+    var btn = document.getElementById('btn-delete');
+    if (cb.checked) btn.classList.add('armed');
+    else btn.classList.remove('armed');
+  };
+
+  /* ── Toast ── */
+  var toastTimer;
+  function showToast(msg, type){
+    var el = document.getElementById('toast');
+    el.textContent = msg;
+    el.className = 'toast ' + type;
+    void el.offsetWidth;
+    el.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ el.classList.remove('show'); }, 3000);
+  }
+})();
+</script>
+
+</body>
+</html>

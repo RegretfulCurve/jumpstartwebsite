@@ -1,0 +1,397 @@
+/* ============================================================
+   JUMPSTART — hero.css
+   Scoped to body.hero (added by hero-init.js for heroes: namespace)
+   ============================================================ */
+
+/* ── HERO BANNER ── */
+
+body.hero .js-hero-banner {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  overflow: hidden;
+  background: linear-gradient(160deg, #0d0820 0%, #1e0f40 25%, #3d1a70 50%, #1a0d35 75%, #080518 100%);
+}
+
+body.hero .js-hero-banner-img {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center top;
+  transition: transform 0.4s ease;
+}
+
+body.hero .js-hero-banner:hover .js-hero-banner-img {
+  transform: scale(1.02);
+}
+
+body.hero .js-hero-banner-lines {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent 0px, transparent 40px,
+    rgba(107,79,187,0.03) 40px, rgba(107,79,187,0.03) 41px
+  );
+  pointer-events: none;
+}
+
+body.hero .js-hero-banner-vig {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 140px;
+  background: linear-gradient(to bottom, transparent, rgba(18,15,41,0.97));
+  pointer-events: none;
+}
+
+body.hero .js-hero-banner-line {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, #6B4FBB 30%, #B8ADDB 50%, #6B4FBB 70%, transparent 100%);
+}
+
+body.hero .js-hero-banner-id {
+  position: absolute;
+  bottom: 20px; left: 32px;
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+}
+
+body.hero .js-hero-portrait {
+  width: 76px; height: 76px;
+  border: 2px solid rgba(184,173,219,0.5);
+  border-radius: 3px;
+  background: linear-gradient(135deg, #2d1654, #1a0f3a);
+  overflow: hidden;
+  flex-shrink: 0;
+  box-shadow: 0 0 24px rgba(107,79,187,0.5);
+}
+
+body.hero .js-hero-portrait img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+
+body.hero .js-hero-eyebrow {
+  font-family: 'Forevs', serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(107,79,187,0.85);
+  margin-bottom: 3px;
+  display: block;
+}
+
+body.hero .js-hero-name {
+  font-family: 'Forevs', serif;
+  font-size: 2.6rem;
+  font-weight: bold;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+  text-shadow: 0 0 40px rgba(107,79,187,0.7), 0 2px 12px rgba(0,0,0,1);
+  line-height: 1;
+  margin-bottom: 8px;
+  display: block;
+}
+
+body.hero .js-hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+body.hero .js-hero-tag {
+  font-family: 'Forevs', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 2px 10px;
+  border-radius: 2px;
+  font-weight: bold;
+}
+
+body.hero .js-hero-tag-role   { background: rgba(176,64,64,0.3);   border: 1px solid rgba(176,64,64,0.5);   color: #e07070; }
+body.hero .js-hero-tag-type   { background: rgba(58,110,158,0.3);  border: 1px solid rgba(58,110,158,0.5);  color: #7ab4cf; }
+body.hero .js-hero-tag-tier-s { background: rgba(194,136,58,0.25); border: 1px solid rgba(194,136,58,0.5);  color: #e8c17a; }
+body.hero .js-hero-tag-tier-a { background: rgba(58,158,106,0.25); border: 1px solid rgba(58,158,106,0.5);  color: #7acf9e; }
+body.hero .js-hero-tag-tier-b { background: rgba(58,110,158,0.25); border: 1px solid rgba(58,110,158,0.5);  color: #7ab4cf; }
+body.hero .js-hero-tag-tier-c { background: rgba(120,120,120,0.2); border: 1px solid rgba(120,120,120,0.4); color: #b8b8b8; }
+body.hero .js-hero-tag-diff   { background: rgba(107,79,187,0.2);  border: 1px solid rgba(107,79,187,0.4);  color: #B8ADDB; }
+
+/* ── MOVEMENT STAT STRIP ── */
+
+body.hero .js-hero-stat-strip {
+  background: rgba(14,10,32,0.98);
+  border-bottom: 1px solid rgba(107,79,187,0.2);
+  padding: 14px 32px;
+  display: flex;
+}
+
+body.hero .js-hero-stat {
+  flex: 1;
+  text-align: center;
+  padding: 0 10px;
+  border-right: 1px solid rgba(107,79,187,0.1);
+}
+
+body.hero .js-hero-stat:last-child { border-right: none; }
+
+body.hero .js-hero-stat-label {
+  font-family: 'Forevs', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(107,79,187,0.65);
+  display: block;
+  margin-bottom: 3px;
+}
+
+body.hero .js-hero-stat-value {
+  font-family: 'Forevs', serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #EDE8F5;
+}
+
+body.hero .js-hero-stat-unit {
+  font-size: 0.7rem;
+  color: rgba(184,173,219,0.4);
+  margin-left: 1px;
+}
+
+/* ── PAGE BODY ── */
+
+body.hero .js-hero-body {
+  padding: 28px 32px;
+  max-width: 100%;
+}
+
+/* Quote */
+body.hero .js-hero-quote {
+  display: flex;
+  gap: 10px;
+  border-left: 3px solid rgba(107,79,187,0.4);
+  padding: 10px 16px;
+  margin-bottom: 18px;
+  background: rgba(107,79,187,0.05);
+}
+
+body.hero .js-hero-quote-mark {
+  font-size: 24px;
+  color: rgba(107,79,187,0.5);
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: -2px;
+  font-family: Georgia, serif;
+}
+
+body.hero .js-hero-quote-text {
+  font-style: italic;
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: rgba(184,173,219,0.75);
+  font-family: 'Forevs', serif;
+}
+
+/* Section heading */
+body.hero .js-hero-h2 {
+  font-family: 'Forevs', serif;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #EDE8F5;
+  margin: 28px 0 14px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(107,79,187,0.3);
+  position: relative;
+  letter-spacing: 0.04em;
+}
+
+body.hero .js-hero-h2::after {
+  content: '';
+  position: absolute;
+  bottom: -1px; left: 0;
+  width: 50px; height: 2px;
+  background: linear-gradient(90deg, #6B4FBB, transparent);
+}
+
+/* Overview prose */
+body.hero .js-hero-overview {
+  font-family: 'Forevs', serif;
+  font-size: 0.95rem;
+  line-height: 1.9;
+  color: rgba(237,232,245,0.8);
+  margin-bottom: 14px;
+}
+
+/* ── TECH ENTRIES ── */
+
+body.hero .js-tech-entry {
+  margin-bottom: 36px;
+}
+
+body.hero .js-tech-h3 {
+  font-family: 'Forevs', serif;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #EDE8F5;
+  margin-bottom: 12px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid rgba(107,79,187,0.15);
+  letter-spacing: 0.03em;
+}
+
+body.hero .js-tech-inner {
+  display: grid;
+  grid-template-columns: 1fr 230px;
+  gap: 24px;
+  align-items: start;
+}
+
+body.hero .js-tech-prose {
+  font-family: 'Forevs', serif;
+  font-size: 0.9rem;
+  line-height: 1.9;
+  color: rgba(237,232,245,0.78);
+}
+
+body.hero .js-tech-prose p { margin-bottom: 10px; }
+body.hero .js-tech-prose p:last-child { margin-bottom: 0; }
+body.hero .js-tech-prose strong { color: #EDE8F5; }
+body.hero .js-tech-prose em { font-style: italic; color: #B8ADDB; }
+body.hero .js-tech-prose a { color: #7acf9e; text-decoration: none; }
+body.hero .js-tech-prose a:hover { text-decoration: underline; }
+body.hero .js-tech-prose code {
+  background: rgba(107,79,187,0.15);
+  border: 1px solid rgba(107,79,187,0.25);
+  border-radius: 2px;
+  padding: 1px 5px;
+  font-size: 0.8rem;
+  color: #EDE8F5;
+  font-family: 'Consolas', monospace;
+}
+
+body.hero .js-tech-side {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Video block */
+body.hero .js-tech-video {
+  background: rgba(10,7,24,0.9);
+  border: 1px solid rgba(107,79,187,0.2);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+body.hero .js-tech-video-wrap {
+  position: relative;
+  padding-top: 56.25%;
+  background: linear-gradient(135deg, #0d0820, #1a0f3a);
+}
+
+body.hero .js-tech-video-wrap video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+body.hero .js-tech-video-cap {
+  padding: 5px 10px;
+  font-family: 'Forevs', serif;
+  font-size: 0.65rem;
+  color: rgba(184,173,219,0.4);
+  letter-spacing: 0.08em;
+  border-top: 1px solid rgba(107,79,187,0.1);
+  text-transform: uppercase;
+}
+
+/* Tech meta */
+body.hero .js-tech-meta {
+  background: rgba(18,15,41,0.7);
+  border: 1px solid rgba(107,79,187,0.18);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+body.hero .js-tech-meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 6px 12px;
+  border-bottom: 1px solid rgba(107,79,187,0.08);
+  gap: 10px;
+}
+
+body.hero .js-tech-meta-row:last-child { border-bottom: none; }
+
+body.hero .js-tech-meta-key {
+  font-family: 'Forevs', serif;
+  font-size: 0.68rem;
+  color: rgba(184,173,219,0.5);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+body.hero .js-tech-meta-val {
+  font-family: 'Forevs', serif;
+  font-size: 0.68rem;
+  color: #EDE8F5;
+  font-weight: bold;
+  text-align: right;
+  line-height: 1.7;
+}
+
+body.hero .js-tech-type-universal { color: #7ab4cf; }
+body.hero .js-tech-type-character  { color: #7acf9e; }
+body.hero .js-tech-diff-beginner   { color: #7acf9e; }
+body.hero .js-tech-diff-intermediate { color: #e8c17a; }
+body.hero .js-tech-diff-advanced   { color: #e07070; }
+body.hero .js-tech-diff-expert     { color: #b87bdf; }
+
+body.hero .js-tech-arrow { color: rgba(107,79,187,0.5); }
+
+/* Tips */
+body.hero .js-hero-callout {
+  display: flex;
+  margin-bottom: 8px;
+}
+
+body.hero .js-hero-callout-bar {
+  width: 3px;
+  flex-shrink: 0;
+}
+
+body.hero .js-hero-callout-inner {
+  padding: 8px 14px;
+  flex: 1;
+  background: rgba(18,15,41,0.4);
+}
+
+body.hero .js-hero-callout-label {
+  font-family: 'Forevs', serif;
+  font-size: 0.6rem;
+  font-weight: bold;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 3px;
+}
+
+body.hero .js-hero-callout-text {
+  font-family: 'Forevs', serif;
+  font-size: 0.88rem;
+  line-height: 1.75;
+  color: rgba(237,232,245,0.75);
+}
+
+body.hero .js-hero-callout-bar.tip     { background: #3a9e6a; }
+body.hero .js-hero-callout-bar.warning { background: #c2883a; }
+body.hero .js-hero-callout-bar.danger  { background: #b04040; }
+body.hero .js-hero-callout-bar.tip    ~ .js-hero-callout-inner .js-hero-callout-label { color: #3a9e6a; }
+body.hero .js-hero-callout-bar.warning ~ .js-hero-callout-inner .js-hero-callout-label { color: #c2883a; }
+body.hero .js-hero-callout-bar.danger  ~ .js-hero-callout-inner .js-hero-callout-label { color: #b04040; }

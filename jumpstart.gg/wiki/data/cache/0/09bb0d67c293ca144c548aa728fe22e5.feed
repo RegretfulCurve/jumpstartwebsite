@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- generator="FeedCreator 1.8" -->
+<?xml-stylesheet href="http://jumpstart.gg/wiki/lib/exe/css.php?s=feed" type="text/css"?>
+<rdf:RDF
+    xmlns="http://purl.org/rss/1.0/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <channel rdf:about="http://jumpstart.gg/wiki/feed.php">
+        <title>JumpStart - characters</title>
+        <description></description>
+        <link>http://jumpstart.gg/wiki/</link>
+        <image rdf:resource="http://jumpstart.gg/wiki/lib/exe/fetch.php?media=wiki:logo.png" />
+       <dc:date>2026-08-27T03:14:33+00:00</dc:date>
+        <items>
+            <rdf:Seq>
+                <rdf:li rdf:resource="http://jumpstart.gg/wiki/doku.php?id=characters:abrams&amp;rev=1782550351&amp;do=diff"/>
+            </rdf:Seq>
+        </items>
+    </channel>
+    <image rdf:about="http://jumpstart.gg/wiki/lib/exe/fetch.php?media=wiki:logo.png">
+        <title>JumpStart</title>
+        <link>http://jumpstart.gg/wiki/</link>
+        <url>http://jumpstart.gg/wiki/lib/exe/fetch.php?media=wiki:logo.png</url>
+    </image>
+    <item rdf:about="http://jumpstart.gg/wiki/doku.php?id=characters:abrams&amp;rev=1782550351&amp;do=diff">
+        <dc:format>text/html</dc:format>
+        <dc:date>2026-06-27T08:52:31+00:00</dc:date>
+        <dc:creator>jumpstartadmin (jumpstartadmin@undisclosed.example.com)</dc:creator>
+        <title>abrams</title>
+        <link>http://jumpstart.gg/wiki/doku.php?id=characters:abrams&amp;rev=1782550351&amp;do=diff</link>
+        <description>ABRAMS
+
+
+&lt;div data-jw-att=&quot;1&quot; data-jw-side=&quot;right&quot; data-jw-w=&quot;320px&quot; data-jw-type=&quot;image&quot; style=&quot;overflow:hidden;&quot;&gt;
+&lt;div class=&quot;js-att-image&quot; style=&quot;float:right;margin:0 0 12px 20px;width:320px;max-width:50%;&quot;&gt;&lt;img src=&quot;/wiki/lib/exe/fetch.php?media=characters%3Aabrams%3Aabrams_card.png&quot; alt=&quot;&quot; style=&quot;width:100%;height:auto;display:block;&quot;&gt;&lt;div class=&quot;js-video-caption&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p style=&quot;font-family:Forevs,serif;font-size:2.2rem;line-height:2.2;color:rgba(237,232,245,0.85);margin:0;&quot;&gt;Write y…</description>
+    </item>
+</rdf:RDF>

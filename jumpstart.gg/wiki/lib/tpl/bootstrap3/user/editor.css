@@ -1,0 +1,1945 @@
+/* ============================================================
+   JUMPSTART — editor.css
+   Clean rewrite. Registered in style.ini.
+   ============================================================ */
+
+/* ============================================================
+   PAGE BACKGROUND
+   ============================================================ */
+
+body:not([data-page-id="start"]) {
+  background-color: #120F29 !important;
+}
+
+/* ============================================================
+   HIDE CHROME ON EDIT PAGES
+   ============================================================ */
+
+body.mode_edit .breadcrumbs,
+body.mode_edit .wrap_breadcrumbs,
+body.mode_edit #dokuwiki__pageheader,
+body.mode_edit #dokuwiki__pagetools,
+body.mode_edit .dw__pagetools,
+body.mode_edit .docInfo,
+body.mode_edit .small.text-right,
+body.mode_edit #dw__footer,
+body.mode_edit footer.dw-container,
+body.mode_edit #draft__status {
+  display: none !important;
+}
+
+/* Strip Bootstrap container constraints */
+body.mode_edit main.dw-container,
+body.mode_edit main.container-fluid {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  max-width: 100% !important;
+}
+
+body.mode_edit #dokuwiki__content,
+body.mode_edit #dokuwiki__content .col-sm-12,
+body.mode_edit #dokuwiki__content .col-document,
+body.mode_edit #dokuwiki__content .row {
+  padding: 0 !important;
+  margin: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  float: none !important;
+}
+
+body.mode_edit .panel.panel-default,
+body.mode_edit .panel-body,
+body.mode_edit .px-3.py-2,
+body.mode_edit .dokuwiki .page {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* ============================================================
+   SPLIT SHELL
+   ============================================================ */
+
+#js-editor-shell {
+  display: flex !important;
+  width: 100% !important;
+  min-height: calc(100vh - 70px) !important;
+  background: #0a0716 !important;
+  align-items: stretch !important;
+  padding-top: 48px !important;
+}
+
+#js-editor-left {
+  width: 42% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  min-width: 280px !important;
+}
+
+#js-editor-left .editBox {
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 !important;
+}
+
+#js-editor-left form,
+#js-editor-left .doku_form {
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 !important;
+}
+
+#js-editor-handle {
+  width: 5px !important;
+  flex-shrink: 0 !important;
+  background: rgba(107, 79, 187, 0.12) !important;
+  cursor: col-resize !important;
+  transition: background 0.2s !important;
+  position: sticky !important;
+  top: 0 !important;
+  align-self: stretch !important;
+}
+
+#js-editor-handle:hover { background: rgba(107, 79, 187, 0.5) !important; }
+
+#js-editor-right {
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  min-width: 300px !important;
+  background: rgba(10, 7, 24, 0.7) !important;
+}
+
+/* ============================================================
+   TOPBAR — fixed just below navbar
+   ============================================================ */
+
+#js-editor-topbar {
+  position: fixed !important;
+  top: 70px !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 200 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 6px 16px !important;
+  background: rgba(14, 10, 32, 0.99) !important;
+  border-bottom: 1px solid rgba(107, 79, 187, 0.25) !important;
+  min-height: 48px !important;
+  flex-wrap: nowrap !important;
+}
+
+#js-toolbar-slot {
+  flex: 1 !important;
+  display: flex !important;
+  align-items: center !important;
+  min-width: 0 !important;
+  overflow: hidden !important;
+}
+
+#js-toolbar-slot #tool__bar,
+#js-toolbar-slot .tool__bar {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  gap: 3px !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow-x: auto !important;
+  scrollbar-width: none !important;
+}
+
+#js-toolbar-slot #tool__bar::-webkit-scrollbar { display: none !important; }
+
+#js-template-picker,
+#js-editor-actions { flex-shrink: 0 !important; }
+
+/* ============================================================
+   NATIVE TOOLBAR BUTTONS
+   ============================================================ */
+
+div#tool__bar button.toolbutton,
+div.tool__bar button.toolbutton {
+  background: rgba(26, 20, 51, 0.7) !important;
+  border: 1px solid rgba(107, 79, 187, 0.2) !important;
+  border-radius: 2px !important;
+  color: #B8ADDB !important;
+  padding: 4px 7px !important;
+  font-size: 12px !important;
+  min-width: 28px !important;
+  min-height: 28px !important;
+  cursor: pointer !important;
+  box-shadow: none !important;
+  transition: background 0.12s !important;
+}
+
+div#tool__bar button.toolbutton:hover {
+  background: rgba(107, 79, 187, 0.35) !important;
+  border-color: rgba(107, 79, 187, 0.55) !important;
+  color: #EDE8F5 !important;
+}
+
+div#tool__bar button.toolbutton img {
+  filter: brightness(0) invert(1) opacity(0.6) !important;
+  vertical-align: middle !important;
+  width: 16px !important;
+  height: 16px !important;
+}
+
+div#tool__bar button.toolbutton:hover img {
+  filter: brightness(0) invert(1) opacity(1) !important;
+}
+
+/* ============================================================
+   TEMPLATE PICKER
+   ============================================================ */
+
+#js-template-picker { position: relative !important; }
+
+.js-tpl-btn {
+  background: rgba(107, 79, 187, 0.25) !important;
+  border: 1px solid rgba(107, 79, 187, 0.5) !important;
+  border-radius: 3px !important;
+  color: #B8ADDB !important;
+  font-family: 'Forevs', serif !important;
+  font-size: 0.78rem !important;
+  letter-spacing: 0.1em !important;
+  padding: 5px 14px !important;
+  cursor: pointer !important;
+  white-space: nowrap !important;
+  transition: all 0.15s !important;
+}
+
+.js-tpl-btn:hover {
+  background: rgba(107, 79, 187, 0.45) !important;
+  color: #EDE8F5 !important;
+}
+
+.js-tpl-dropdown {
+  display: none !important;
+  position: absolute !important;
+  top: calc(100% + 4px) !important;
+  left: 0 !important;
+  background: rgba(14, 10, 32, 0.99) !important;
+  border: 1px solid rgba(107, 79, 187, 0.4) !important;
+  border-radius: 6px !important;
+  min-width: 200px !important;
+  z-index: 9999 !important;
+  padding: 4px !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.6) !important;
+}
+
+.js-tpl-dropdown.js-tpl-open { display: block !important; }
+
+.js-tpl-item {
+  font-family: 'Forevs', serif !important;
+  font-size: 0.8rem !important;
+  letter-spacing: 0.08em !important;
+  color: #B8ADDB !important;
+  padding: 9px 12px !important;
+  border-radius: 4px !important;
+  cursor: pointer !important;
+  border-left: 2px solid transparent !important;
+  transition: all 0.12s !important;
+}
+
+.js-tpl-item:hover {
+  background: rgba(107, 79, 187, 0.2) !important;
+  border-left-color: #B8ADDB !important;
+  color: #EDE8F5 !important;
+  padding-left: 14px !important;
+}
+
+/* ============================================================
+   SAVE BAR (inside topbar)
+   ============================================================ */
+
+#js-editor-actions {
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+}
+
+#js-editor-actions .editBar,
+#js-editor-actions #wiki__editBar {
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+#js-editor-actions .editButtons {
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+}
+
+#js-editor-actions #size__ctl { display: none !important; }
+
+button#edbtn__save,
+button[name="do[save]"] {
+  background: rgba(107, 79, 187, 0.8) !important;
+  border: 1px solid rgba(107, 79, 187, 0.7) !important;
+  border-radius: 3px !important;
+  color: #EDE8F5 !important;
+  font-family: 'Forevs', serif !important;
+  font-size: 0.75rem !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+  padding: 5px 18px !important;
+  cursor: pointer !important;
+  box-shadow: none !important;
+  transition: background 0.2s !important;
+}
+
+button#edbtn__save:hover { background: #6B4FBB !important; }
+
+button#edbtn__preview,
+button[name="do[preview]"] {
+  background: transparent !important;
+  border: 1px solid rgba(107, 79, 187, 0.3) !important;
+  border-radius: 3px !important;
+  color: #B8ADDB !important;
+  font-family: 'Forevs', serif !important;
+  font-size: 0.75rem !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+  padding: 5px 14px !important;
+  cursor: pointer !important;
+  box-shadow: none !important;
+  transition: all 0.2s !important;
+}
+
+button#edbtn__preview:hover { border-color: rgba(107,79,187,0.6) !important; color: #EDE8F5 !important; }
+
+button[name="do[cancel]"] {
+  background: transparent !important;
+  border: 1px solid rgba(107, 79, 187, 0.15) !important;
+  border-radius: 3px !important;
+  color: rgba(184, 173, 219, 0.45) !important;
+  font-family: 'Forevs', serif !important;
+  font-size: 0.75rem !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+  padding: 5px 14px !important;
+  cursor: pointer !important;
+  box-shadow: none !important;
+}
+
+button[name="do[cancel]"]:hover { color: #B8ADDB !important; border-color: rgba(107,79,187,0.35) !important; }
+
+div.summary input[name="summary"],
+input#edit__summary {
+  background: rgba(18, 14, 40, 0.9) !important;
+  border: 1px solid rgba(107, 79, 187, 0.22) !important;
+  border-radius: 3px !important;
+  color: rgba(237, 232, 245, 0.8) !important;
+  font-family: 'Forevs', serif !important;
+  font-size: 0.72rem !important;
+  padding: 5px 10px !important;
+  outline: none !important;
+  box-shadow: none !important;
+  min-width: 120px !important;
+}
+
+div.summary label,
+div.editButtons label {
+  color: rgba(184, 173, 219, 0.4) !important;
+  font-family: 'Forevs', serif !important;
+  font-size: 0.68rem !important;
+}
+
+/* ============================================================
+   TEXTAREA
+   ============================================================ */
+
+textarea#wiki__text {
+  background: rgba(8, 5, 20, 0.95) !important;
+  color: rgba(237, 232, 245, 0.9) !important;
+  border: none !important;
+  border-radius: 0 !important;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', 'Courier New', monospace !important;
+  font-size: 14px !important;
+  line-height: 1.8 !important;
+  padding: 20px 24px !important;
+  caret-color: #B8ADDB !important;
+  resize: none !important;
+  flex: 1 !important;
+  width: 100% !important;
+  min-height: calc(100vh - 200px) !important;
+  box-sizing: border-box !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+textarea#wiki__text:focus {
+  background: rgba(6, 4, 16, 0.98) !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Hide the native save bar since it's moved to topbar */
+.editBox #wiki__editbar,
+.editBox #wiki__editBar,
+.editBox div.editBar {
+  display: none !important;
+}
+
+/* ============================================================
+   PREVIEW PANE
+   ============================================================ */
+
+#js-preview-header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 8px 20px !important;
+  background: rgba(14, 10, 32, 0.98) !important;
+  border-bottom: 1px solid rgba(107, 79, 187, 0.2) !important;
+  flex-shrink: 0 !important;
+}
+
+.js-preview-label {
+  font-family: 'Forevs', serif !important;
+  font-size: 0.62rem !important;
+  letter-spacing: 0.22em !important;
+  text-transform: uppercase !important;
+  color: rgba(107, 79, 187, 0.7) !important;
+}
+
+.js-preview-status {
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+}
+
+.js-preview-status-text {
+  font-family: 'Forevs', serif !important;
+  font-size: 0.6rem !important;
+  letter-spacing: 0.1em !important;
+  color: rgba(184, 173, 219, 0.35) !important;
+}
+
+.js-preview-dot {
+  width: 6px !important;
+  height: 6px !important;
+  border-radius: 50% !important;
+  background: rgba(107, 79, 187, 0.4) !important;
+  transition: background 0.3s !important;
+}
+
+.js-preview-dot--ready   { background: #3a9e6a !important; }
+.js-preview-dot--loading { background: #c2883a !important; animation: jspulse 1s infinite !important; }
+.js-preview-dot--error   { background: #b04040 !important; }
+
+@keyframes jspulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+#js-preview-body {
+  flex: 1 !important;
+  padding: 40px 52px !important;
+  scrollbar-width: thin !important;
+  scrollbar-color: rgba(107, 79, 187, 0.3) transparent !important;
+}
+
+#js-preview-body::-webkit-scrollbar { width: 4px; }
+#js-preview-body::-webkit-scrollbar-track { background: transparent; }
+#js-preview-body::-webkit-scrollbar-thumb { background: rgba(107,79,187,0.3); border-radius: 2px; }
+
+.js-preview-empty {
+  font-family: 'Forevs', serif !important;
+  font-size: 0.72rem !important;
+  letter-spacing: 0.12em !important;
+  color: rgba(107, 79, 187, 0.3) !important;
+  text-align: center !important;
+  margin-top: 80px !important;
+  text-transform: uppercase !important;
+}
+
+/* ============================================================
+   PREVIEW CONTENT TYPOGRAPHY
+   ============================================================ */
+
+#js-preview-body h1 {
+  font-family: 'Forevs', serif !important;
+  font-size: 2.4rem !important;
+  font-weight: bold !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  color: #EDE8F5 !important;
+  text-shadow: 0 0 30px rgba(107,79,187,0.45) !important;
+  margin: 0 0 16px !important;
+  padding-bottom: 12px !important;
+  border-bottom: 1px solid rgba(107,79,187,0.2) !important;
+}
+
+#js-preview-body h2 {
+  font-family: 'Forevs', serif !important;
+  font-size: 1.1rem !important;
+  font-weight: bold !important;
+  letter-spacing: 0.18em !important;
+  text-transform: uppercase !important;
+  color: #B8ADDB !important;
+  border-bottom: 1px solid rgba(107,79,187,0.15) !important;
+  padding-bottom: 6px !important;
+  margin: 32px 0 12px !important;
+}
+
+#js-preview-body h3 {
+  font-family: 'Forevs', serif !important;
+  font-size: 0.92rem !important;
+  font-weight: bold !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  color: rgba(184,173,219,0.65) !important;
+  margin: 22px 0 10px !important;
+}
+
+#js-preview-body p {
+  font-family: 'Forevs', serif !important;
+  font-size: 1rem !important;
+  line-height: 1.9 !important;
+  color: rgba(237,232,245,0.8) !important;
+  letter-spacing: 0.03em !important;
+  margin-bottom: 1em !important;
+}
+
+#js-preview-body a { color: #B8ADDB !important; }
+#js-preview-body a:hover { color: #EDE8F5 !important; }
+
+#js-preview-body code {
+  background: rgba(107,79,187,0.15) !important;
+  border: 1px solid rgba(107,79,187,0.25) !important;
+  border-radius: 3px !important;
+  padding: 1px 6px !important;
+  font-size: 0.85em !important;
+  color: #EDE8F5 !important;
+}
+
+#js-preview-body table { width: 100% !important; border-collapse: collapse !important; margin: 16px 0 !important; }
+#js-preview-body th { background: rgba(107,79,187,0.15) !important; color: #B8ADDB !important; font-family: 'Forevs', serif !important; font-size: 0.68rem !important; letter-spacing: 0.15em !important; text-transform: uppercase !important; padding: 9px 14px !important; border: 1px solid rgba(107,79,187,0.2) !important; text-align: left !important; }
+#js-preview-body td { padding: 8px 14px !important; border: 1px solid rgba(107,79,187,0.1) !important; color: rgba(237,232,245,0.78) !important; font-size: 0.9rem !important; }
+#js-preview-body tr:hover td { background: rgba(107,79,187,0.06) !important; }
+#js-preview-body ul, #js-preview-body ol { color: rgba(237,232,245,0.8) !important; font-family: 'Forevs', serif !important; font-size: 1rem !important; line-height: 1.9 !important; padding-left: 1.5em !important; margin-bottom: 1em !important; }
+
+/* Hide DokuWiki section edit buttons and preview notice */
+#js-preview-body .secedit,
+#js-preview-body form.btn_secedit,
+#js-preview-body .editbutton_section { display: none !important; }
+
+#js-preview-body p:first-child:has(strong:first-child) { display: none !important; }
+
+/* ============================================================
+   TECHNIQUE COMPONENTS IN PREVIEW
+   ============================================================ */
+
+#js-preview-body .js-technique-wrap { display: grid !important; grid-template-columns: 200px 1fr !important; gap: 0 !important; align-items: start !important; }
+#js-preview-body .js-infostrip { display: flex !important; flex-direction: column !important; gap: 6px !important; padding-right: 20px !important; width: 200px !important; flex-shrink: 0 !important; }
+#js-preview-body .js-infostrip-label { font-family: 'Forevs', serif !important; font-size: 0.6rem !important; letter-spacing: 0.2em !important; text-transform: uppercase !important; color: rgba(107,79,187,0.6) !important; padding: 8px 0 3px !important; border-top: 1px solid rgba(107,79,187,0.18) !important; margin-top: 4px !important; }
+#js-preview-body .js-chip { display: inline-flex !important; align-items: center !important; gap: 6px !important; padding: 5px 10px !important; border-radius: 3px !important; font-family: 'Forevs', serif !important; font-size: 0.72rem !important; letter-spacing: 0.1em !important; text-transform: uppercase !important; background: rgba(26,20,51,0.9) !important; border: 1px solid rgba(107,79,187,0.3) !important; border-left: 3px solid rgba(107,79,187,0.5) !important; color: #B8ADDB !important; align-self: flex-start !important; }
+#js-preview-body .js-chip-dot { width: 7px !important; height: 7px !important; border-radius: 50% !important; flex-shrink: 0 !important; }
+#js-preview-body .js-chip-beginner { border-left-color: #3a9e6a !important; } #js-preview-body .js-chip-beginner .js-chip-dot { background: #3a9e6a !important; }
+#js-preview-body .js-chip-intermediate { border-left-color: #c2883a !important; } #js-preview-body .js-chip-intermediate .js-chip-dot { background: #c2883a !important; }
+#js-preview-body .js-chip-advanced { border-left-color: #b04040 !important; } #js-preview-body .js-chip-advanced .js-chip-dot { background: #b04040 !important; }
+#js-preview-body .js-chip-expert { border-left-color: #9b3ab8 !important; } #js-preview-body .js-chip-expert .js-chip-dot { background: #9b3ab8 !important; }
+#js-preview-body .js-chip-tier-s { border-left-color: #c2883a !important; color: #e8c17a !important; }
+#js-preview-body .js-chip-tier-a { border-left-color: #3a9e6a !important; color: #7acf9e !important; }
+#js-preview-body .js-chip-tier-b { border-left-color: #3a6e9e !important; color: #7ab4cf !important; }
+#js-preview-body .js-chip-tier-c { border-left-color: #7a7a7a !important; color: #b8b8b8 !important; }
+#js-preview-body .js-hero-tag { display: inline-flex !important; align-items: center !important; gap: 5px !important; padding: 4px 10px !important; background: rgba(26,20,51,0.9) !important; border: 1px solid rgba(107,79,187,0.25) !important; border-radius: 3px !important; font-family: 'Forevs', serif !important; font-size: 0.68rem !important; letter-spacing: 0.1em !important; text-transform: uppercase !important; color: #B8ADDB !important; text-decoration: none !important; align-self: flex-start !important; }
+#js-preview-body .js-technique-body { min-width: 0 !important; flex: 1 !important; }
+#js-preview-body .js-page-header { padding: 20px 0 16px !important; border-bottom: 1px solid rgba(107,79,187,0.2) !important; margin-bottom: 20px !important; }
+#js-preview-body .js-page-eyebrow { font-family: 'Forevs', serif !important; font-size: 0.65rem !important; letter-spacing: 0.25em !important; text-transform: uppercase !important; color: rgba(107,79,187,0.8) !important; margin-bottom: 6px !important; display: block !important; }
+#js-preview-body .js-page-title { font-family: 'Forevs', serif !important; font-size: 2.2rem !important; font-weight: bold !important; letter-spacing: 0.08em !important; text-transform: uppercase !important; color: #EDE8F5 !important; text-shadow: 0 0 30px rgba(107,79,187,0.4) !important; margin: 0 0 10px !important; line-height: 1.05 !important; border: none !important; padding: 0 !important; }
+#js-preview-body .js-page-subtitle { font-size: 0.95rem !important; color: rgba(184,173,219,0.75) !important; line-height: 1.6 !important; font-family: 'Forevs', serif !important; margin: 0 !important; }
+#js-preview-body .js-steps { display: flex !important; flex-direction: column !important; margin: 16px 0 !important; }
+#js-preview-body .js-step { display: grid !important; grid-template-columns: 36px 1fr !important; gap: 14px !important; padding: 12px 0 !important; border-bottom: 1px solid rgba(107,79,187,0.1) !important; align-items: start !important; }
+#js-preview-body .js-step:last-child { border-bottom: none !important; }
+#js-preview-body .js-step-num { font-family: 'Forevs', serif !important; font-size: 1.3rem !important; font-weight: bold !important; color: rgba(107,79,187,0.4) !important; text-align: right !important; line-height: 1 !important; padding-top: 2px !important; }
+#js-preview-body .js-step-title { font-family: 'Forevs', serif !important; font-size: 0.85rem !important; font-weight: bold !important; letter-spacing: 0.12em !important; text-transform: uppercase !important; color: #EDE8F5 !important; margin-bottom: 3px !important; }
+#js-preview-body .js-step-desc { font-family: 'Forevs', serif !important; font-size: 0.88rem !important; line-height: 1.7 !important; color: rgba(184,173,219,0.75) !important; margin: 0 !important; }
+#js-preview-body .js-callout { display: flex !important; flex-direction: row !important; margin: 14px 0 !important; background: rgba(18,15,41,0.5) !important; border-radius: 0 6px 6px 0 !important; overflow: hidden !important; }
+#js-preview-body .js-callout-bar { width: 4px !important; min-width: 4px !important; flex-shrink: 0 !important; background: #6B4FBB !important; }
+#js-preview-body .js-callout-bar.tip { background: #3a9e6a !important; }
+#js-preview-body .js-callout-bar.warning { background: #c2883a !important; }
+#js-preview-body .js-callout-bar.danger { background: #b04040 !important; }
+#js-preview-body .js-callout-inner { flex: 1 !important; padding: 12px 16px !important; min-width: 0 !important; }
+#js-preview-body .js-callout-label { font-family: 'Forevs', serif !important; font-size: 0.65rem !important; letter-spacing: 0.2em !important; text-transform: uppercase !important; color: #6B4FBB !important; margin-bottom: 4px !important; display: block !important; font-weight: bold !important; }
+#js-preview-body .js-callout-bar.tip ~ .js-callout-inner .js-callout-label { color: #3a9e6a !important; }
+#js-preview-body .js-callout-bar.warning ~ .js-callout-inner .js-callout-label { color: #c2883a !important; }
+#js-preview-body .js-callout-bar.danger ~ .js-callout-inner .js-callout-label { color: #b04040 !important; }
+#js-preview-body .js-callout-text { font-family: 'Forevs', serif !important; font-size: 0.88rem !important; line-height: 1.7 !important; color: rgba(237,232,245,0.8) !important; margin: 0 !important; }
+#js-preview-body .js-related { display: grid !important; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important; gap: 10px !important; margin: 14px 0 !important; }
+#js-preview-body .js-related-card { display: block !important; padding: 12px 14px !important; background: rgba(18,15,41,0.7) !important; border: 1px solid rgba(107,79,187,0.2) !important; border-left: 3px solid rgba(107,79,187,0.4) !important; border-radius: 0 5px 5px 0 !important; text-decoration: none !important; }
+#js-preview-body .js-related-card-name { font-family: 'Forevs', serif !important; font-size: 0.82rem !important; font-weight: bold !important; letter-spacing: 0.1em !important; text-transform: uppercase !important; color: #EDE8F5 !important; display: block !important; margin-bottom: 3px !important; }
+#js-preview-body .js-related-card-desc { font-family: 'Forevs', serif !important; font-size: 0.72rem !important; color: rgba(184,173,219,0.6) !important; display: block !important; }
+#js-preview-body .js-key { display: inline-flex !important; align-items: center !important; padding: 2px 8px !important; background: rgba(26,20,51,0.9) !important; border: 1px solid rgba(107,79,187,0.45) !important; border-bottom: 2px solid rgba(107,79,187,0.65) !important; border-radius: 3px !important; font-size: 0.78rem !important; font-family: 'Forevs', serif !important; color: #EDE8F5 !important; }
+#js-preview-body .js-input-plus { color: rgba(107,79,187,0.6) !important; margin: 0 4px !important; }
+#js-preview-body .js-stat-val { font-weight: bold !important; color: #EDE8F5 !important; }
+#js-preview-body .js-stat-note { font-size: 0.75rem !important; color: rgba(184,173,219,0.5) !important; }
+#js-preview-body .js-input-table, #js-preview-body .js-stat-table { width: 100% !important; border-collapse: collapse !important; margin: 14px 0 !important; font-family: 'Forevs', serif !important; }
+#js-preview-body .js-input-table th, #js-preview-body .js-stat-table th { font-size: 0.65rem !important; letter-spacing: 0.2em !important; text-transform: uppercase !important; color: #B8ADDB !important; padding: 8px 14px !important; text-align: left !important; border-bottom: 1px solid rgba(107,79,187,0.25) !important; background: rgba(107,79,187,0.12) !important; }
+#js-preview-body .js-stat-table { background: rgba(18,15,41,0.5) !important; border: 1px solid rgba(107,79,187,0.18) !important; border-radius: 6px !important; overflow: hidden !important; }
+#js-preview-body .js-input-table td, #js-preview-body .js-stat-table td { padding: 9px 14px !important; border-bottom: 1px solid rgba(107,79,187,0.08) !important; font-size: 0.88rem !important; color: rgba(237,232,245,0.8) !important; }
+#js-preview-body .js-video-block { margin: 16px 0 !important; background: rgba(12,9,30,0.7) !important; border: 1px solid rgba(107,79,187,0.25) !important; border-radius: 6px !important; overflow: hidden !important; }
+#js-preview-body .js-video-wrap { position: relative !important; width: 100% !important; padding-top: 56.25% !important; }
+#js-preview-body .js-video-wrap video { position: absolute !important; inset: 0 !important; width: 100% !important; height: 100% !important; }
+#js-preview-body .js-video-grid { display: grid !important; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important; gap: 16px !important; margin: 16px 0 !important; }
+#js-preview-body .js-video-grid .js-video-block { margin: 0 !important; }
+#js-preview-body .js-video-caption { padding: 7px 14px !important; font-family: 'Forevs', serif !important; font-size: 0.72rem !important; letter-spacing: 0.1em !important; color: rgba(184,173,219,0.55) !important; border-top: 1px solid rgba(107,79,187,0.12) !important; text-transform: uppercase !important; }
+
+/* ============================================================
+   SNIPPET PANEL
+   ============================================================ */
+
+#js-snippet-panel {
+  position: fixed;
+  right: 0;
+  top: 120px;
+  width: 210px;
+  background: rgba(14, 10, 32, 0.98);
+  border: 1px solid rgba(107, 79, 187, 0.45);
+  border-right: none;
+  border-radius: 8px 0 0 8px;
+  z-index: 9000;
+  font-family: 'Forevs', serif;
+  box-shadow: -4px 0 24px rgba(0,0,0,0.6);
+  transition: transform 0.25s ease;
+}
+
+#js-snippet-panel.jstb-collapsed { transform: translateX(220px); }
+#js-snippet-tab { position: fixed; right: 0; top: 140px; width: 22px; padding: 10px 4px; background: rgba(107,79,187,0.7); border: 1px solid rgba(107,79,187,0.5); border-right: none; border-radius: 4px 0 0 4px; z-index: 8999; cursor: pointer; font-family: 'Forevs', serif; font-size: 8px; letter-spacing: 0.15em; color: #EDE8F5; text-align: center; line-height: 1.6; display: none; transition: background 0.2s; }
+#js-snippet-tab.jstb-visible { display: block; }
+#js-snippet-tab:hover { background: rgba(107,79,187,0.95); }
+.jstb-header { display: flex; align-items: center; gap: 6px; padding: 10px 12px 10px 14px; border-bottom: 1px solid rgba(107,79,187,0.25); cursor: grab; user-select: none; }
+.jstb-header:active { cursor: grabbing; }
+.jstb-title { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: #B8ADDB; font-weight: bold; }
+.jstb-sub { font-size: 0.55rem; letter-spacing: 0.12em; color: rgba(184,173,219,0.4); flex: 1; }
+.jstb-collapse { background: transparent; border: none; color: rgba(184,173,219,0.5); font-size: 0.65rem; cursor: pointer; padding: 2px 4px; line-height: 1; flex-shrink: 0; transition: color 0.2s; }
+.jstb-collapse:hover { color: #EDE8F5; }
+.jstb-body { max-height: calc(100vh - 220px); overflow-y: auto; padding: 6px 0 10px; scrollbar-width: thin; scrollbar-color: rgba(107,79,187,0.4) transparent; }
+.jstb-body::-webkit-scrollbar { width: 4px; } .jstb-body::-webkit-scrollbar-track { background: transparent; } .jstb-body::-webkit-scrollbar-thumb { background: rgba(107,79,187,0.4); border-radius: 2px; }
+.jstb-section { padding: 0 0 4px; }
+.jstb-section-label { font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(107,79,187,0.65); padding: 10px 14px 5px; border-top: 1px solid rgba(107,79,187,0.12); font-weight: bold; display: block; }
+.jstb-section:first-child .jstb-section-label { border-top: none; padding-top: 4px; color: rgba(184,173,219,0.7); }
+.jstb-btns { display: flex; flex-direction: column; gap: 2px; padding: 0 8px; }
+.jstb-btn { display: flex; align-items: center; width: 100%; padding: 7px 10px; background: rgba(26,20,51,0.6); border: 1px solid rgba(107,79,187,0.18); border-left: 2px solid rgba(107,79,187,0.35); border-radius: 0 3px 3px 0; cursor: pointer; text-align: left; transition: background 0.15s, border-left-color 0.15s, transform 0.1s; }
+.jstb-btn:hover { background: rgba(107,79,187,0.2); border-left-color: #B8ADDB; transform: translateX(2px); }
+.jstb-btn:active { transform: translateX(3px) scale(0.98); }
+.jstb-btn--flash { background: rgba(107,79,187,0.45) !important; border-left-color: #EDE8F5 !important; }
+.jstb-section:first-child .jstb-btn { border-left-color: rgba(184,173,219,0.4); }
+.jstb-section:first-child .jstb-btn:hover { border-left-color: #EDE8F5; background: rgba(107,79,187,0.28); }
+.jstb-btn-label { font-size: 0.72rem; letter-spacing: 0.06em; color: #B8ADDB; font-family: 'Forevs', serif; line-height: 1; }
+.jstb-btn:hover .jstb-btn-label { color: #EDE8F5; }
+
+/* ============================================================
+   FIXES
+   ============================================================ */
+
+/* Gap fix — reduce shell padding */
+#js-editor-shell {
+  padding-top: 48px !important;
+}
+
+/* Save bar — only hide the ORIGINAL one inside editBox, not the clone in topbar */
+.editBox #wiki__editbar,
+.editBox div.editBar {
+  display: none !important;
+}
+
+/* Un-hide the cloned save bar inside topbar actions */
+#js-editor-actions #wiki__editbar,
+#js-editor-actions .editBar {
+  display: flex !important;
+}
+
+#js-editor-actions .editButtons {
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+}
+
+#js-editor-actions .summary {
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+}
+
+/* Save bar moved to topbar and renamed */
+#js-savebar {
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+#js-savebar .editButtons {
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+}
+
+#js-savebar #size__ctl { display: none !important; }
+
+#js-savebar .summary {
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+}
+
+/* ============================================================
+   HIDE ALL GAP-CAUSING ELEMENTS
+   ============================================================ */
+
+body.mode_edit #dokuwiki__pageheader,
+body.mode_edit .wrap_breadcrumbs,
+body.mode_edit #dw__breadcrumbs,
+body.mode_edit .breadcrumbs,
+body.mode_edit #dokuwiki__content > div.dw-content-page,
+body.mode_edit .dw-content-page,
+body.mode_edit .dw-content,
+body.mode_edit article#dokuwiki__content > .panel,
+body.mode_edit .panel.panel-default,
+body.mode_edit #dokuwiki__pagetools,
+body.mode_edit .small.text-right,
+body.mode_edit .docInfo {
+  display: none !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+body.mode_edit main.dw-container {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+body.mode_edit .row {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* ============================================================
+   OPAQUE NAVBAR + TOPBAR — prevent content bleeding through
+   ============================================================ */
+
+body.mode_edit nav#dw__navbar::before {
+  background: rgba(10, 6, 26, 1) !important;
+}
+
+#js-editor-topbar {
+  background: rgba(14, 10, 32, 1) !important;
+  backdrop-filter: none !important;
+}
+
+/* Hide footer on edit pages */
+body.mode_edit #dw__footer,
+body.mode_edit footer,
+body.mode_edit footer.dw-container {
+  display: none !important;
+}
+
+body.mode_edit footer.dw-container.py-5 {
+  display: none !important;
+}
+
+/* ============================================================
+   ENTRANCE MODAL
+   ============================================================ */
+
+#js-entrance-modal {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 99999 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: rgba(8, 5, 20, 0.92) !important;
+  backdrop-filter: blur(4px) !important;
+}
+
+.jsem-overlay {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  width: 100% !important;
+  max-width: 680px !important;
+  padding: 0 24px !important;
+}
+
+.jsem-header { text-align: center; margin-bottom: 20px; }
+
+.jsem-eyebrow {
+  font-family: 'Forevs', serif !important;
+  font-size: 0.6rem !important;
+  letter-spacing: 0.3em !important;
+  text-transform: uppercase !important;
+  color: rgba(107, 79, 187, 0.7) !important;
+  margin-bottom: 6px !important;
+}
+
+.jsem-title {
+  font-family: 'Forevs', serif !important;
+  font-size: 2rem !important;
+  font-weight: bold !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  color: #EDE8F5 !important;
+  text-shadow: 0 0 40px rgba(107,79,187,0.6), 0 2px 8px rgba(0,0,0,0.9) !important;
+  margin-bottom: 4px !important;
+}
+
+.jsem-sub {
+  font-family: 'Forevs', serif !important;
+  font-size: 0.72rem !important;
+  letter-spacing: 0.08em !important;
+  color: rgba(184,173,219,0.5) !important;
+}
+
+.jsem-divider {
+  width: 200px !important;
+  height: 1px !important;
+  background: linear-gradient(90deg, transparent, #6B4FBB, #B8ADDB, #6B4FBB, transparent) !important;
+  margin: 16px auto 0 !important;
+}
+
+/* 2x2 grid — matches homepage */
+.jsem-grid {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 4px !important;
+  width: 100% !important;
+  margin-bottom: 16px !important;
+}
+
+.jsem-card {
+  position: relative !important;
+  height: 160px !important;
+  overflow: hidden !important;
+  cursor: pointer !important;
+}
+
+.jsem-card-bg {
+  position: absolute !important;
+  inset: 0 !important;
+  background-size: cover !important;
+  background-position: center !important;
+  transition: transform 0.4s ease, filter 0.4s ease !important;
+}
+
+/* Card backgrounds — using the wiki video thumbnails via fetch.php */
+.jsem-bg-movement {
+  background: linear-gradient(135deg, #1a0f3a 0%, #2d1654 40%, #0d1a2e 100%);
+  background-image: url('/wiki/lib/exe/fetch.php?media=wiki:wiki3.mp4');
+}
+.jsem-bg-characters {
+  background: linear-gradient(135deg, #0d1f1a 0%, #1a3028 40%, #0a1628 100%);
+  background-image: url('/wiki/lib/exe/fetch.php?media=wiki:wiki1.mp4');
+}
+.jsem-bg-items {
+  background: linear-gradient(135deg, #1a1200 0%, #2d2008 40%, #0f0e04 100%);
+  background-image: url('/wiki/lib/exe/fetch.php?media=wiki:wiki4.mp4');
+}
+.jsem-bg-guides {
+  background: linear-gradient(135deg, #200a1a 0%, #380f2a 40%, #100610 100%);
+  background-image: url('/wiki/lib/exe/fetch.php?media=wiki:wiki2.mp4');
+}
+
+.jsem-card-overlay {
+  position: absolute !important;
+  inset: 0 !important;
+  background: linear-gradient(to bottom, rgba(10,6,26,0.1) 0%, rgba(10,6,26,0.75) 100%) !important;
+  transition: opacity 0.35s ease !important;
+}
+
+.jsem-card:hover .jsem-card-overlay { opacity: 0 !important; }
+.jsem-card:hover .jsem-card-bg { transform: scale(1.04) !important; filter: brightness(1.1) !important; }
+
+.jsem-card-label {
+  position: absolute !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  padding: 14px !important;
+  text-align: center !important;
+  z-index: 2 !important;
+  transition: bottom 0.3s ease !important;
+}
+
+.jsem-card:hover .jsem-card-label { bottom: 8px !important; }
+
+.jsem-card-name {
+  font-family: 'Forevs', serif !important;
+  font-size: 0.85rem !important;
+  font-weight: bold !important;
+  letter-spacing: 0.2em !important;
+  text-transform: uppercase !important;
+  color: #EDE8F5 !important;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.9) !important;
+  display: block !important;
+  margin-bottom: 4px !important;
+}
+
+.jsem-card-sub {
+  font-family: 'Forevs', serif !important;
+  font-size: 0.65rem !important;
+  letter-spacing: 0.08em !important;
+  color: rgba(184,173,219,0.7) !important;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.9) !important;
+  display: none !important;
+}
+
+.jsem-card:hover .jsem-card-sub { display: block !important; }
+
+/* Active card border */
+.jsem-card.active::after {
+  content: '' !important;
+  position: absolute !important;
+  inset: 0 !important;
+  border: 2px solid rgba(184,173,219,0.7) !important;
+  pointer-events: none !important;
+  z-index: 3 !important;
+}
+
+/* Subtypes */
+.jsem-subtypes {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  margin-bottom: 20px !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+}
+
+.jsem-subtype-label {
+  font-family: 'Forevs', serif !important;
+  font-size: 0.6rem !important;
+  letter-spacing: 0.2em !important;
+  text-transform: uppercase !important;
+  color: rgba(107,79,187,0.6) !important;
+  white-space: nowrap !important;
+}
+
+.jsem-pills {
+  display: flex !important;
+  gap: 6px !important;
+  flex-wrap: wrap !important;
+}
+
+.jsem-pill {
+  background: rgba(26,20,51,0.9) !important;
+  border: 1px solid rgba(107,79,187,0.25) !important;
+  border-radius: 2px !important;
+  padding: 5px 14px !important;
+  font-family: 'Forevs', serif !important;
+  font-size: 0.7rem !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  color: #B8ADDB !important;
+  cursor: pointer !important;
+  transition: all 0.12s !important;
+}
+
+.jsem-pill:hover, .jsem-pill.active {
+  background: rgba(107,79,187,0.3) !important;
+  border-color: rgba(107,79,187,0.6) !important;
+  color: #EDE8F5 !important;
+}
+
+/* Footer buttons */
+.jsem-footer {
+  display: flex !important;
+  gap: 10px !important;
+  align-items: center !important;
+}
+
+.jsem-btn-create {
+  background: rgba(107,79,187,0.8) !important;
+  border: 1px solid rgba(107,79,187,0.7) !important;
+  border-radius: 3px !important;
+  color: #EDE8F5 !important;
+  font-family: 'Forevs', serif !important;
+  font-size: 0.75rem !important;
+  letter-spacing: 0.15em !important;
+  text-transform: uppercase !important;
+  padding: 8px 24px !important;
+  cursor: pointer !important;
+  transition: background 0.2s !important;
+}
+
+.jsem-btn-create:hover { background: #6B4FBB !important; }
+
+.jsem-btn-skip {
+  background: transparent !important;
+  border: 1px solid rgba(107,79,187,0.2) !important;
+  border-radius: 3px !important;
+  color: rgba(184,173,219,0.4) !important;
+  font-family: 'Forevs', serif !important;
+  font-size: 0.75rem !important;
+  letter-spacing: 0.15em !important;
+  text-transform: uppercase !important;
+  padding: 8px 16px !important;
+  cursor: pointer !important;
+}
+
+.jsem-btn-skip:hover { color: #B8ADDB !important; border-color: rgba(107,79,187,0.35) !important; }
+
+/* ============================================================
+   PREFAB PICKER
+   ============================================================ */
+
+#js-prefab-picker {
+  position: relative !important;
+  flex-shrink: 0 !important;
+}
+
+.js-prefab-trigger {
+  background: rgba(61, 43, 122, 0.35) !important;
+  border: 1px solid rgba(107, 79, 187, 0.55) !important;
+  border-radius: 3px !important;
+  color: #EDE8F5 !important;
+  font-family: 'Forevs', serif !important;
+  font-size: 0.75rem !important;
+  letter-spacing: 0.1em !important;
+  padding: 5px 14px !important;
+  cursor: pointer !important;
+  white-space: nowrap !important;
+  transition: all 0.15s !important;
+}
+
+.js-prefab-trigger:hover {
+  background: rgba(107, 79, 187, 0.5) !important;
+  color: #ffffff !important;
+}
+
+.js-prefab-dropdown {
+  display: none !important;
+  position: absolute !important;
+  top: calc(100% + 4px) !important;
+  left: 0 !important;
+  background: rgba(14, 10, 32, 0.99) !important;
+  border: 1px solid rgba(107, 79, 187, 0.4) !important;
+  border-radius: 6px !important;
+  min-width: 200px !important;
+  z-index: 9999 !important;
+  padding: 6px !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.6) !important;
+}
+
+.js-prefab-dropdown.js-prefab-open {
+  display: block !important;
+}
+
+.js-prefab-group-label {
+  font-family: 'Forevs', serif !important;
+  font-size: 0.58rem !important;
+  letter-spacing: 0.22em !important;
+  text-transform: uppercase !important;
+  color: rgba(107, 79, 187, 0.6) !important;
+  padding: 8px 10px 4px !important;
+  border-top: 1px solid rgba(107, 79, 187, 0.12) !important;
+  margin-top: 2px !important;
+}
+
+.js-prefab-dropdown .js-prefab-group-label:first-child {
+  border-top: none !important;
+  padding-top: 2px !important;
+}
+
+.js-prefab-item {
+  font-family: 'Forevs', serif !important;
+  font-size: 0.76rem !important;
+  letter-spacing: 0.06em !important;
+  color: #B8ADDB !important;
+  padding: 7px 10px !important;
+  border-radius: 3px !important;
+  cursor: pointer !important;
+  border-left: 2px solid transparent !important;
+  transition: all 0.1s !important;
+  white-space: nowrap !important;
+}
+
+.js-prefab-item:hover {
+  background: rgba(107, 79, 187, 0.2) !important;
+  border-left-color: #B8ADDB !important;
+  color: #EDE8F5 !important;
+  padding-left: 12px !important;
+}
+
+/* ============================================================
+   TOOLBAR + PREFAB — larger, more readable
+   ============================================================ */
+
+/* Topbar bigger overall */
+#js-editor-topbar {
+  min-height: 56px !important;
+  padding: 8px 18px !important;
+  gap: 10px !important;
+}
+
+/* Toolbar buttons bigger */
+div#tool__bar button.toolbutton,
+div.tool__bar button.toolbutton {
+  min-width: 34px !important;
+  min-height: 34px !important;
+  padding: 5px 8px !important;
+  font-size: 13px !important;
+}
+
+div#tool__bar button.toolbutton img,
+div.tool__bar button.toolbutton img {
+  width: 18px !important;
+  height: 18px !important;
+}
+
+/* Templates button bigger */
+.js-tpl-btn {
+  font-size: 0.82rem !important;
+  padding: 7px 18px !important;
+  min-height: 34px !important;
+}
+
+/* Insert button bigger */
+.js-prefab-trigger {
+  font-size: 0.82rem !important;
+  padding: 7px 18px !important;
+  min-height: 34px !important;
+}
+
+/* Save/Preview/Cancel buttons bigger */
+button#edbtn__save,
+button[name="do[save]"],
+button#edbtn__preview,
+button[name="do[preview]"],
+button[name="do[cancel]"] {
+  font-size: 0.8rem !important;
+  padding: 7px 18px !important;
+  min-height: 34px !important;
+}
+
+/* Prefab dropdown — bigger and more readable */
+.js-prefab-dropdown {
+  min-width: 240px !important;
+  padding: 8px !important;
+  border-radius: 8px !important;
+}
+
+.js-prefab-group-label {
+  font-size: 0.65rem !important;
+  letter-spacing: 0.2em !important;
+  padding: 10px 12px 5px !important;
+  color: rgba(107, 79, 187, 0.75) !important;
+}
+
+.js-prefab-item {
+  font-size: 0.85rem !important;
+  padding: 9px 12px !important;
+  letter-spacing: 0.05em !important;
+  border-radius: 4px !important;
+}
+
+.js-prefab-item:hover {
+  padding-left: 16px !important;
+}
+
+/* Template dropdown — same treatment */
+.js-tpl-dropdown {
+  min-width: 240px !important;
+  padding: 8px !important;
+}
+
+.js-tpl-item {
+  font-size: 0.85rem !important;
+  padding: 9px 12px !important;
+}
+
+.js-tpl-item:hover {
+  padding-left: 16px !important;
+}
+
+/* ============================================================
+   TOOLBAR — LARGE READABLE SIZE
+   ============================================================ */
+
+#js-editor-topbar {
+  min-height: 64px !important;
+  padding: 10px 20px !important;
+  gap: 12px !important;
+}
+
+/* Format buttons — full height, big icons */
+div#tool__bar button.toolbutton,
+div.tool__bar button.toolbutton {
+  min-width: 44px !important;
+  min-height: 44px !important;
+  padding: 8px 10px !important;
+  font-size: 16px !important;
+  border-radius: 4px !important;
+}
+
+div#tool__bar button.toolbutton img,
+div.tool__bar button.toolbutton img {
+  width: 22px !important;
+  height: 22px !important;
+}
+
+/* Insert / Templates / Save / Preview / Cancel */
+.js-prefab-trigger,
+.js-tpl-btn,
+button#edbtn__save,
+button[name="do[save]"],
+button#edbtn__preview,
+button[name="do[preview]"],
+button[name="do[cancel]"] {
+  font-size: 0.95rem !important;
+  padding: 10px 22px !important;
+  min-height: 44px !important;
+  letter-spacing: 0.08em !important;
+}
+
+/* Edit summary input */
+input#edit__summary {
+  font-size: 0.9rem !important;
+  padding: 8px 14px !important;
+  min-height: 44px !important;
+}
+
+/* Prefab dropdown */
+.js-prefab-dropdown {
+  min-width: 260px !important;
+  padding: 10px !important;
+}
+
+.js-prefab-group-label {
+  font-size: 0.72rem !important;
+  padding: 12px 14px 6px !important;
+  letter-spacing: 0.18em !important;
+}
+
+.js-prefab-item {
+  font-size: 0.95rem !important;
+  padding: 11px 14px !important;
+  letter-spacing: 0.04em !important;
+}
+
+.js-prefab-item:hover {
+  padding-left: 18px !important;
+}
+
+/* Template dropdown */
+.js-tpl-dropdown {
+  min-width: 260px !important;
+  padding: 10px !important;
+}
+
+.js-tpl-item {
+  font-size: 0.95rem !important;
+  padding: 11px 14px !important;
+  letter-spacing: 0.04em !important;
+}
+
+.js-tpl-item:hover {
+  padding-left: 18px !important;
+}
+
+/* ============================================================
+   TOOLBAR — FILL FULL HEIGHT, MOVE INSERT LEFT
+   ============================================================ */
+
+#js-editor-topbar {
+  min-height: 72px !important;
+  height: 72px !important;
+  padding: 0 16px !important;
+  gap: 8px !important;
+  align-items: stretch !important;
+}
+
+/* Toolbar slot fills height */
+#js-toolbar-slot {
+  align-items: stretch !important;
+  height: 100% !important;
+}
+
+#js-toolbar-slot #tool__bar,
+#js-toolbar-slot .tool__bar {
+  align-items: stretch !important;
+  height: 100% !important;
+  gap: 4px !important;
+}
+
+/* Format buttons — full toolbar height */
+div#tool__bar button.toolbutton,
+div.tool__bar button.toolbutton {
+  min-width: 50px !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  padding: 0 12px !important;
+  font-size: 18px !important;
+  border-radius: 4px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+div#tool__bar button.toolbutton img,
+div.tool__bar button.toolbutton img {
+  width: 24px !important;
+  height: 24px !important;
+}
+
+/* Insert, Templates, Save, Preview, Cancel — full height */
+.js-prefab-trigger,
+.js-tpl-btn,
+button#edbtn__save,
+button[name="do[save]"],
+button#edbtn__preview,
+button[name="do[preview]"],
+button[name="do[cancel]"] {
+  font-size: 1rem !important;
+  padding: 0 22px !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  letter-spacing: 0.08em !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+#js-prefab-picker,
+#js-template-picker,
+#js-editor-actions,
+#js-savebar {
+  height: 100% !important;
+  display: flex !important;
+  align-items: stretch !important;
+}
+
+#js-savebar .editButtons {
+  height: 100% !important;
+  display: flex !important;
+  align-items: stretch !important;
+  gap: 6px !important;
+}
+
+/* Edit summary */
+input#edit__summary {
+  font-size: 0.9rem !important;
+  padding: 0 14px !important;
+  height: 100% !important;
+}
+
+#js-savebar .summary {
+  display: flex !important;
+  align-items: center !important;
+  height: 100% !important;
+}
+
+/* ── PREFAB DROPDOWN — wide and very readable ── */
+.js-prefab-dropdown {
+  min-width: 420px !important;
+  padding: 12px !important;
+  border-radius: 8px !important;
+  left: 0 !important;
+  right: auto !important;
+}
+
+.js-prefab-group-label {
+  font-size: 0.78rem !important;
+  padding: 14px 16px 7px !important;
+  letter-spacing: 0.2em !important;
+  color: rgba(107, 79, 187, 0.8) !important;
+}
+
+.js-prefab-item {
+  font-size: 1.05rem !important;
+  padding: 13px 16px !important;
+  letter-spacing: 0.04em !important;
+  border-radius: 4px !important;
+}
+
+.js-prefab-item:hover {
+  padding-left: 20px !important;
+}
+
+/* ============================================================
+   PREFAB DROPDOWN — BOLD READABLE TEXT
+   ============================================================ */
+
+.js-prefab-dropdown {
+  min-width: 440px !important;
+}
+
+.js-prefab-group-label {
+  font-size: 0.72rem !important;
+  font-weight: bold !important;
+  color: #B8ADDB !important;
+  letter-spacing: 0.25em !important;
+  text-transform: uppercase !important;
+}
+
+.js-prefab-item {
+  font-size: 1.1rem !important;
+  font-weight: bold !important;
+  color: #EDE8F5 !important;
+  letter-spacing: 0.06em !important;
+  padding: 14px 18px !important;
+}
+
+.js-prefab-item:hover {
+  color: #ffffff !important;
+  padding-left: 22px !important;
+}
+
+/* Toolbar buttons — bold text */
+div#tool__bar button.toolbutton,
+div.tool__bar button.toolbutton {
+  font-weight: bold !important;
+}
+
+.js-prefab-trigger,
+.js-tpl-btn,
+button#edbtn__save,
+button[name="do[save]"],
+button#edbtn__preview,
+button[name="do[preview]"],
+button[name="do[cancel]"] {
+  font-weight: bold !important;
+  font-size: 1rem !important;
+}
+
+/* Prefab text size bump */
+.js-prefab-item {
+  font-size: 1.3rem !important;
+  padding: 16px 18px !important;
+}
+
+.js-prefab-group-label {
+  font-size: 0.85rem !important;
+}
+
+.js-prefab-trigger {
+  font-size: 1.15rem !important;
+}
+
+.js-tpl-btn {
+  font-size: 1.15rem !important;
+}
+
+/* ============================================================
+   PREFAB GRID LAYOUT
+   ============================================================ */
+
+.js-prefab-dropdown {
+  min-width: 480px !important;
+  padding: 12px !important;
+  border-radius: 8px !important;
+}
+
+.js-prefab-section {
+  margin-bottom: 12px !important;
+}
+
+.js-prefab-section:last-child { margin-bottom: 0 !important; }
+
+.js-prefab-group-label {
+  font-family: 'Forevs', serif !important;
+  font-size: 0.7rem !important;
+  font-weight: bold !important;
+  letter-spacing: 0.22em !important;
+  text-transform: uppercase !important;
+  color: rgba(184,173,219,0.65) !important;
+  padding: 0 4px 6px !important;
+  display: block !important;
+  border-bottom: 1px solid rgba(107,79,187,0.15) !important;
+  margin-bottom: 8px !important;
+}
+
+.js-prefab-grid {
+  display: grid !important;
+  gap: 6px !important;
+}
+
+.js-prefab-grid-1 { grid-template-columns: 1fr !important; }
+.js-prefab-grid-2 { grid-template-columns: repeat(2, 1fr) !important; }
+.js-prefab-grid-3 { grid-template-columns: repeat(3, 1fr) !important; }
+.js-prefab-grid-4 { grid-template-columns: repeat(4, 1fr) !important; }
+
+/* Base card — consistent for all types */
+.js-prefab-card {
+  background: rgba(26,20,51,0.8) !important;
+  border: 1px solid rgba(107,79,187,0.25) !important;
+  border-radius: 5px !important;
+  padding: 14px 10px !important;
+  cursor: pointer !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 7px !important;
+  text-align: center !important;
+  transition: all 0.12s !important;
+  min-height: 72px !important;
+}
+
+.js-prefab-card:hover {
+  background: rgba(107,79,187,0.28) !important;
+  border-color: rgba(184,173,219,0.45) !important;
+  transform: translateY(-1px) !important;
+}
+
+.js-prefab-card-icon {
+  font-size: 20px !important;
+  line-height: 1 !important;
+  display: block !important;
+}
+
+.js-prefab-card-label {
+  font-family: 'Forevs', serif !important;
+  font-size: 0.85rem !important;
+  font-weight: bold !important;
+  color: #EDE8F5 !important;
+  letter-spacing: 0.04em !important;
+  line-height: 1.2 !important;
+  display: block !important;
+}
+
+/* Callout cards — colored left border + tinted bg */
+.js-prefab-callout-tip {
+  border-left: 3px solid #3a9e6a !important;
+  background: rgba(58,158,106,0.1) !important;
+}
+.js-prefab-callout-tip .js-prefab-card-label { color: #7acf9e !important; }
+.js-prefab-callout-tip:hover { background: rgba(58,158,106,0.2) !important; border-color: #7acf9e !important; }
+
+.js-prefab-callout-warning {
+  border-left: 3px solid #c2883a !important;
+  background: rgba(194,136,58,0.1) !important;
+}
+.js-prefab-callout-warning .js-prefab-card-label { color: #e8c17a !important; }
+.js-prefab-callout-warning:hover { background: rgba(194,136,58,0.2) !important; border-color: #e8c17a !important; }
+
+.js-prefab-callout-danger {
+  border-left: 3px solid #b04040 !important;
+  background: rgba(176,64,64,0.1) !important;
+}
+.js-prefab-callout-danger .js-prefab-card-label { color: #e07070 !important; }
+.js-prefab-callout-danger:hover { background: rgba(176,64,64,0.2) !important; border-color: #e07070 !important; }
+
+.js-prefab-callout-info {
+  border-left: 3px solid #6B4FBB !important;
+  background: rgba(107,79,187,0.12) !important;
+}
+.js-prefab-callout-info .js-prefab-card-label { color: #B8ADDB !important; }
+.js-prefab-callout-info:hover { background: rgba(107,79,187,0.25) !important; border-color: #B8ADDB !important; }
+
+/* Inline card — horizontal layout */
+.js-prefab-inline {
+  flex-direction: row !important;
+  justify-content: flex-start !important;
+  padding: 12px 16px !important;
+  gap: 12px !important;
+  min-height: 0 !important;
+}
+
+.js-prefab-inline .js-prefab-card-label {
+  font-size: 0.9rem !important;
+}
+
+/* ============================================================
+   PREFAB CARDS — BIGGER READABLE TEXT
+   ============================================================ */
+
+.js-prefab-card-icon {
+  font-size: 24px !important;
+}
+
+.js-prefab-card-label {
+  font-size: 1rem !important;
+  font-weight: bold !important;
+  color: #EDE8F5 !important;
+}
+
+.js-prefab-group-label {
+  font-size: 0.78rem !important;
+  font-weight: bold !important;
+  color: #B8ADDB !important;
+  letter-spacing: 0.2em !important;
+}
+
+.js-prefab-card {
+  min-height: 80px !important;
+  padding: 14px 8px !important;
+}
+
+.js-prefab-dropdown {
+  min-width: 520px !important;
+  max-height: 80vh !important;
+  overflow-y: auto !important;
+  scrollbar-width: thin !important;
+  scrollbar-color: rgba(107,79,187,0.4) transparent !important;
+}
+
+/* ============================================================
+   SECTION BANNER
+   ============================================================ */
+
+.js-section-banner {
+  position: relative !important;
+  width: 100% !important;
+  padding: 28px 32px !important;
+  margin: 24px 0 !important;
+  background: linear-gradient(135deg, rgba(26,20,51,0.95) 0%, rgba(42,31,82,0.9) 50%, rgba(18,14,36,0.95) 100%) !important;
+  border-left: 4px solid #6B4FBB !important;
+  border-bottom: 1px solid rgba(107,79,187,0.25) !important;
+  overflow: hidden !important;
+}
+
+.js-section-banner::before {
+  content: '' !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background: repeating-linear-gradient(-45deg, transparent 0px, transparent 40px, rgba(107,79,187,0.02) 40px, rgba(107,79,187,0.02) 41px) !important;
+  pointer-events: none !important;
+}
+
+.js-section-banner-inner { position: relative; z-index: 1; }
+
+.js-section-banner-eyebrow {
+  font-family: 'Forevs', serif !important;
+  font-size: 0.65rem !important;
+  letter-spacing: 0.28em !important;
+  text-transform: uppercase !important;
+  color: rgba(107,79,187,0.85) !important;
+  display: block !important;
+  margin-bottom: 6px !important;
+}
+
+.js-section-banner-title {
+  font-family: 'Forevs', serif !important;
+  font-size: 1.8rem !important;
+  font-weight: bold !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  color: #EDE8F5 !important;
+  text-shadow: 0 0 30px rgba(107,79,187,0.4) !important;
+  margin: 0 0 8px !important;
+  border: none !important;
+  padding: 0 !important;
+}
+
+.js-section-banner-sub {
+  font-family: 'Forevs', serif !important;
+  font-size: 0.95rem !important;
+  color: rgba(184,173,219,0.65) !important;
+  line-height: 1.6 !important;
+  margin: 0 !important;
+}
+
+/* Divider */
+hr.js-divider {
+  border: none !important;
+  height: 1px !important;
+  background: linear-gradient(90deg, transparent 0%, #6B4FBB 30%, #B8ADDB 50%, #6B4FBB 70%, transparent 100%) !important;
+  margin: 28px 0 !important;
+}
+
+/* ============================================================
+   ITEM BLOCK
+   ============================================================ */
+
+.js-item-block {
+  background: rgba(18,15,41,0.7) !important;
+  border: 1px solid rgba(107,79,187,0.25) !important;
+  border-left: 3px solid rgba(194,136,58,0.7) !important;
+  border-radius: 0 6px 6px 0 !important;
+  padding: 14px 16px !important;
+  margin: 12px 0 !important;
+}
+
+.js-item-block-header {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  margin-bottom: 8px !important;
+}
+
+.js-item-block-icon {
+  width: 36px !important;
+  height: 36px !important;
+  background: rgba(194,136,58,0.2) !important;
+  border: 1px solid rgba(194,136,58,0.4) !important;
+  border-radius: 4px !important;
+  flex-shrink: 0 !important;
+}
+
+.js-item-block-name {
+  font-family: 'Forevs', serif !important;
+  font-size: 1rem !important;
+  font-weight: bold !important;
+  color: #EDE8F5 !important;
+  letter-spacing: 0.06em !important;
+  display: block !important;
+}
+
+.js-item-block-category {
+  font-family: 'Forevs', serif !important;
+  font-size: 0.68rem !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  color: rgba(194,136,58,0.8) !important;
+  display: block !important;
+}
+
+.js-item-block-cost {
+  font-family: 'Forevs', serif !important;
+  font-size: 0.85rem !important;
+  font-weight: bold !important;
+  color: #e8c17a !important;
+  margin-left: auto !important;
+  white-space: nowrap !important;
+}
+
+.js-item-block-desc {
+  font-family: 'Forevs', serif !important;
+  font-size: 0.88rem !important;
+  line-height: 1.75 !important;
+  color: rgba(237,232,245,0.75) !important;
+  margin: 0 0 10px !important;
+}
+
+.js-item-block-stats {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 8px !important;
+}
+
+.js-item-stat {
+  background: rgba(26,20,51,0.8) !important;
+  border: 1px solid rgba(107,79,187,0.2) !important;
+  border-radius: 3px !important;
+  padding: 4px 10px !important;
+  display: flex !important;
+  gap: 6px !important;
+  align-items: center !important;
+}
+
+.js-item-stat-label {
+  font-family: 'Forevs', serif !important;
+  font-size: 0.68rem !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  color: rgba(184,173,219,0.55) !important;
+}
+
+.js-item-stat-val {
+  font-family: 'Forevs', serif !important;
+  font-size: 0.85rem !important;
+  font-weight: bold !important;
+  color: #e8c17a !important;
+}
+
+/* ============================================================
+   ABILITY BLOCK
+   ============================================================ */
+
+.js-ability-block {
+  background: rgba(18,15,41,0.6) !important;
+  border: 1px solid rgba(107,79,187,0.2) !important;
+  border-left: 3px solid rgba(107,79,187,0.6) !important;
+  border-radius: 0 6px 6px 0 !important;
+  padding: 14px 16px !important;
+  margin: 12px 0 !important;
+}
+
+.js-ability-block-header {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  margin-bottom: 8px !important;
+}
+
+.js-ability-block-icon {
+  width: 32px !important;
+  height: 32px !important;
+  background: rgba(107,79,187,0.25) !important;
+  border: 1px solid rgba(107,79,187,0.4) !important;
+  border-radius: 4px !important;
+  flex-shrink: 0 !important;
+}
+
+.js-ability-block-name {
+  font-family: 'Forevs', serif !important;
+  font-size: 1rem !important;
+  font-weight: bold !important;
+  color: #EDE8F5 !important;
+  letter-spacing: 0.06em !important;
+  flex: 1 !important;
+}
+
+.js-ability-block-meta {
+  display: flex !important;
+  gap: 6px !important;
+}
+
+.js-ability-meta-stat {
+  background: rgba(26,20,51,0.8) !important;
+  border: 1px solid rgba(107,79,187,0.2) !important;
+  border-radius: 3px !important;
+  padding: 2px 8px !important;
+  font-family: 'Forevs', serif !important;
+  font-size: 0.72rem !important;
+  color: #B8ADDB !important;
+}
+
+.js-ability-block-desc {
+  font-family: 'Forevs', serif !important;
+  font-size: 0.88rem !important;
+  line-height: 1.75 !important;
+  color: rgba(237,232,245,0.75) !important;
+  margin: 0 0 10px !important;
+}
+
+.js-ability-block-upgrades {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 6px !important;
+}
+
+.js-ability-upgrade {
+  background: rgba(26,20,51,0.7) !important;
+  border: 1px solid rgba(107,79,187,0.18) !important;
+  border-radius: 3px !important;
+  padding: 8px !important;
+  text-align: center !important;
+}
+
+.js-upgrade-tier {
+  font-family: 'Forevs', serif !important;
+  font-size: 0.72rem !important;
+  font-weight: bold !important;
+  color: rgba(107,79,187,0.8) !important;
+  display: block !important;
+  margin-bottom: 4px !important;
+}
+
+.js-upgrade-desc {
+  font-family: 'Forevs', serif !important;
+  font-size: 0.75rem !important;
+  line-height: 1.4 !important;
+  color: rgba(184,173,219,0.7) !important;
+}
+
+/* ============================================================
+   IMAGE BLOCKS
+   ============================================================ */
+
+.js-image-block {
+  background: rgba(10,7,24,0.9) !important;
+  border: 1px solid rgba(107,79,187,0.2) !important;
+  border-radius: 4px !important;
+  overflow: hidden !important;
+  margin: 16px 0 !important;
+}
+
+.js-image {
+  width: 100% !important;
+  display: block !important;
+  object-fit: cover !important;
+}
+
+.js-image-caption {
+  padding: 7px 12px !important;
+  font-family: 'Forevs', serif !important;
+  font-size: 0.72rem !important;
+  letter-spacing: 0.08em !important;
+  color: rgba(184,173,219,0.45) !important;
+  border-top: 1px solid rgba(107,79,187,0.12) !important;
+  text-transform: uppercase !important;
+}
+
+.js-image-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)) !important;
+  gap: 12px !important;
+  margin: 16px 0 !important;
+}
+
+.js-image-grid .js-image-block { margin: 0 !important; }
+
+/* ============================================================
+   BAR CHART
+   ============================================================ */
+
+.js-bar-chart {
+  background: rgba(18,15,41,0.6) !important;
+  border: 1px solid rgba(107,79,187,0.2) !important;
+  border-radius: 6px !important;
+  padding: 20px !important;
+  margin: 16px 0 !important;
+}
+
+.js-bar-chart-inner { display: flex; flex-direction: column; gap: 10px; }
+
+.js-bar-row {
+  display: grid !important;
+  grid-template-columns: 120px 1fr 48px !important;
+  align-items: center !important;
+  gap: 10px !important;
+}
+
+.js-bar-label {
+  font-family: 'Forevs', serif !important;
+  font-size: 0.8rem !important;
+  color: rgba(184,173,219,0.75) !important;
+  text-align: right !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.js-bar-track {
+  height: 22px !important;
+  background: rgba(26,20,51,0.8) !important;
+  border: 1px solid rgba(107,79,187,0.15) !important;
+  border-radius: 3px !important;
+  overflow: hidden !important;
+}
+
+.js-bar-fill {
+  height: 100% !important;
+  background: linear-gradient(90deg, rgba(107,79,187,0.7), rgba(184,173,219,0.6)) !important;
+  border-radius: 2px !important;
+  transition: width 0.3s ease !important;
+}
+
+.js-bar-val {
+  font-family: 'Forevs', serif !important;
+  font-size: 0.82rem !important;
+  font-weight: bold !important;
+  color: #EDE8F5 !important;
+  text-align: left !important;
+}
+
+/* Preview pane scoping for new components */
+#js-preview-body .js-section-banner { display: block !important; }
+#js-preview-body .js-item-block { display: block !important; }
+#js-preview-body .js-ability-block { display: block !important; }
+#js-preview-body .js-image-block { display: block !important; }
+#js-preview-body .js-bar-chart { display: block !important; }
+#js-preview-body hr.js-divider { display: block !important; }

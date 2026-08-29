@@ -1,0 +1,20 @@
+2026-06-17 15:28:16	/home/jumpsta1/public_html/jumpstart.gg/wiki/lib/plugins/jumpstart/action.php(76)	E_WARNING: Undefined variable $userPageId
+  #0 /home/jumpsta1/public_html/jumpstart.gg/wiki/lib/plugins/jumpstart/action.php(76): dokuwiki\ErrorHandler::errorHandler(2, 'Undefined varia...', '/home/jumpsta1/...', 76)
+  #1 /home/jumpsta1/public_html/jumpstart.gg/wiki/inc/Extension/EventHandler.php(80): action_plugin_jumpstart->handle_profile_api(Object(dokuwiki\Extension\Event), NULL)
+  #2 /home/jumpsta1/public_html/jumpstart.gg/wiki/inc/Extension/Event.php(75): dokuwiki\Extension\EventHandler->process_event(Object(dokuwiki\Extension\Event), 'BEFORE')
+  #3 /home/jumpsta1/public_html/jumpstart.gg/wiki/inc/ActionRouter.php(83): dokuwiki\Extension\Event->advise_before()
+  #4 /home/jumpsta1/public_html/jumpstart.gg/wiki/inc/ActionRouter.php(49): dokuwiki\ActionRouter->setupAction('userprofile')
+  #5 /home/jumpsta1/public_html/jumpstart.gg/wiki/inc/ActionRouter.php(62): dokuwiki\ActionRouter->__construct()
+  #6 /home/jumpsta1/public_html/jumpstart.gg/wiki/inc/actions.php(19): dokuwiki\ActionRouter::getInstance(true)
+  #7 /home/jumpsta1/public_html/jumpstart.gg/wiki/doku.php(131): act_dispatch()
+  #8 {main}
+2026-06-17 15:28:18	/home/jumpsta1/public_html/jumpstart.gg/wiki/lib/plugins/jumpstart/action.php(76)	E_WARNING: Undefined variable $userPageId
+  #0 /home/jumpsta1/public_html/jumpstart.gg/wiki/lib/plugins/jumpstart/action.php(76): dokuwiki\ErrorHandler::errorHandler(2, 'Undefined varia...', '/home/jumpsta1/...', 76)
+  #1 /home/jumpsta1/public_html/jumpstart.gg/wiki/inc/Extension/EventHandler.php(80): action_plugin_jumpstart->handle_profile_api(Object(dokuwiki\Extension\Event), NULL)
+  #2 /home/jumpsta1/public_html/jumpstart.gg/wiki/inc/Extension/Event.php(75): dokuwiki\Extension\EventHandler->process_event(Object(dokuwiki\Extension\Event), 'BEFORE')
+  #3 /home/jumpsta1/public_html/jumpstart.gg/wiki/inc/ActionRouter.php(83): dokuwiki\Extension\Event->advise_before()
+  #4 /home/jumpsta1/public_html/jumpstart.gg/wiki/inc/ActionRouter.php(49): dokuwiki\ActionRouter->setupAction('userprofile')
+  #5 /home/jumpsta1/public_html/jumpstart.gg/wiki/inc/ActionRouter.php(62): dokuwiki\ActionRouter->__construct()
+  #6 /home/jumpsta1/public_html/jumpstart.gg/wiki/inc/actions.php(19): dokuwiki\ActionRouter::getInstance(true)
+  #7 /home/jumpsta1/public_html/jumpstart.gg/wiki/doku.php(131): act_dispatch()
+  #8 {main}
